@@ -1,5 +1,5 @@
-package com.icare.icare.screens
 
+package com.icare.icare.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.icare.icare.R
-import com.icare.icare.databinding.FragmentForgotPasswordBinding
+import com.icare.icare.databinding.FragmentConfirmPswBinding
 
+class ConfirmPswFragment : BaseFragment() {
 
-class ForgotPasswordFragment : BaseFragment() {
-
-    private var binding: FragmentForgotPasswordBinding? = null
+    private var binding: FragmentConfirmPswBinding? = null
 
     override fun isLoggedin(): Boolean = false
 
@@ -21,7 +20,7 @@ class ForgotPasswordFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
+        binding = FragmentConfirmPswBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -29,8 +28,8 @@ class ForgotPasswordFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.let { bindingNotNull ->
-            bindingNotNull.buttonSendEmail.setOnClickListener {
-                findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotToConfirmNewPsw())
+            bindingNotNull.tvButtonNextLogin.setOnClickListener {
+                findNavController().navigate(UserConfirmFragmentDirections.actionConfirmToLogin())
             }
         }
     }
@@ -40,4 +39,3 @@ class ForgotPasswordFragment : BaseFragment() {
         binding = null
     }
 }
-

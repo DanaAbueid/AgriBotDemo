@@ -13,7 +13,11 @@
     <fragment
         android:id="@+id/forgotpassword"
         android:name="com.icare.icare.screens.ForgotPasswordFragment"
-        android:label="forgot password fragment" />
+        android:label="forgot password fragment">
+        <action
+        android:id="@+id/action_forgot_to_confirm_new_psw"
+        app:destination="@id/cofirmpsw" />
+    </fragment>
     <fragment
         android:id="@+id/becomePartnerFragment"
         android:name="com.icare.icare.screens.BecomePartnerFragment"
@@ -70,6 +74,14 @@
             app:destination="@id/loginFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/cofirmpsw"
+        android:name="com.icare.icare.screens.ConfirmPswFragment"
+        android:label="Confirm subscription" >
+        <action
+            android:id="@+id/action_confirm_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
 
 
