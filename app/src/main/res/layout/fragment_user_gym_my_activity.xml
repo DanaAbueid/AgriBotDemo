@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.user_gym.UserGymMyActivityFragment">
+
+    <include
+        android:id="@+id/view_toolbar"
+        layout="@layout/view_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_tomorrow_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:backgroundTint="@color/light_grey"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:translationZ="-1000dp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="@id/button_link"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_toolbar" />
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginVertical="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_notifications_active_24"
+        app:layout_constraintEnd_toEndOf="@id/cv_tomorrow_appointment"
+        app:layout_constraintTop_toTopOf="@id/cv_tomorrow_appointment"
+        app:layout_goneMarginEnd="@dimen/_10sdp"
+        app:tint="@color/orange" />
+
+    <TextView
+        android:id="@+id/tv_tomorrow_appointment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:text="You have appointment tomorrow at 5PM"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/iv_bg"
+        app:layout_constraintStart_toStartOf="@id/cv_tomorrow_appointment"
+        app:layout_constraintTop_toTopOf="@id/cv_tomorrow_appointment"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <Button
+        android:id="@+id/button_link"
+        style="@style/genericButton"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:enabled="true"
+        android:text="@string/online_appointment_link"
+        app:layout_constraintBottom_toBottomOf="@id/cv_tomorrow_appointment"
+        app:layout_constraintEnd_toStartOf="@id/button_cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tomorrow_appointment"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        style="@style/genericButton"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:enabled="true"
+        android:text="@string/cancel_appointment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_link"
+        app:layout_constraintTop_toTopOf="@+id/button_link"
+        app:layout_constraintWidth_percent="0.4" />
+
+
+    <Button
+        android:id="@+id/button_food_list_of_week"
+        style="@style/genericButton"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="@string/food_list_of_the_week"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_tomorrow_appointment" />
+
+
+    <Button
+        android:id="@+id/button_upload_inbody_test"
+        style="@style/genericButton"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:backgroundTint="@color/light_green"
+        android:text="@string/upload_your_inbody_test_file"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_food_list_of_week" />
+</androidx.constraintlayout.widget.ConstraintLayout>

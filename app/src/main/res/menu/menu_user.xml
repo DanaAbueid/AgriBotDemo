@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_bar_item_myprofile"
+            android:enabled="true"
+            android:icon="@drawable/user_4_fill__4_"
+            android:title="@string/myprofile" />
+        <item
+            android:id="@+id/nav_bar_item_dashboard"
+            android:enabled="true"
+            android:icon="@drawable/round_dashboard__1_"
+            android:title="@string/Dashboard" />
+
+        <item
+            android:id="@+id/nav_bar_item_my_weather"
+            android:enabled="true"
+            android:icon="@drawable/cloud_circle"
+            android:title="@string/Weather" />
+
+        <item
+            android:id="@+id/nav_bar_item_progress"
+            android:enabled="true"
+            android:icon="@drawable/progress__2_"
+            android:title="@string/Progress" />
+        <item
+            android:id="@+id/nav_bar_item_robot"
+            android:enabled="true"
+            android:icon="@drawable/robot_2__1_"
+            android:title="@string/Robot" />
+        <item
+            android:id="@+id/nav_bar_item_soil"
+            android:enabled="true"
+            android:icon="@drawable/soil_moisture_field"
+            android:title="@string/Soil" />
+        <item
+            android:id="@+id/nav_bar_item_reports"
+            android:enabled="true"
+            android:icon="@drawable/round_report"
+            android:title="@string/Report" />
+
+
+    </group>
+</menu>

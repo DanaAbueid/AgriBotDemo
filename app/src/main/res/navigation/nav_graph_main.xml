@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/userNutritionCentersFragment"
+        android:name="com.icare.icare.screens.user_nutrition_centers.UserNutritionCentersFragment"
+        android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/forgotpassword"
+        android:name="com.icare.icare.screens.ForgotPasswordFragment"
+        android:label="forgot password fragment" />
+    <fragment
+        android:id="@+id/becomePartnerFragment"
+        android:name="com.icare.icare.screens.BecomePartnerFragment"
+        android:label="BecomePartnerFragment" >
+        <action
+            android:id="@+id/action_becomePartnerFragment_to_signupUpGymFragment"
+            app:destination="@id/signupUpGymFragment" />
+        <action
+            android:id="@+id/action_becomePartnerFragment_to_signupUpNutrientsFragment"
+            app:destination="@id/signupUpNutrientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupUpGymFragment"
+        android:name="com.icare.icare.screens.SignupUpGymFragment"
+        android:label="SignupUpGymFragment" />
+    <fragment
+        android:id="@+id/signupUpUserFragment"
+        android:name="com.icare.icare.screens.SignupUpUserFragment"
+        android:label="SignupUpUserFragment" >
+        <action
+            android:id="@+id/action_signupUpUserFragment_to_lifeStyleFragment"
+            app:destination="@id/lifeStyleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupUpNutrientsFragment"
+        android:name="com.icare.icare.screens.SignupUpNutrientsFragment"
+        android:label="SignupUpNutrientsFragment" />
+
+    <fragment
+        android:id="@+id/signupUpFarmer"
+        android:name="com.icare.icare.screens.UserSignUpFragment"
+        android:label="SignupUp" >
+        <action
+            android:id="@+id/action_signup_to_subPlan"
+            app:destination="@id/signupUpSubscribtion" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupUppayment"
+        android:name="com.icare.icare.screens.UserPaymentFragment"
+        android:label="subscription plan" />
+
+    <fragment
+        android:id="@+id/signupUpSubscribtion"
+        android:name="com.icare.icare.screens.UserSubscribtionFragment"
+        android:label="subscription plan" >
+        <action
+        android:id="@+id/action_signup_to_payment"
+        app:destination="@id/signupUppayment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.icare.icare.screens.LoginFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_user_nutrition_centers" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupUpUserFragment"
+            app:destination="@id/signupUpFarmer" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotpassword"
+            app:destination="@id/forgotpassword" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_becomePartnerFragment"
+            app:destination="@id/becomePartnerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userGymFragment"
+            app:destination="@id/userGymFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userHealthFoodFragment"
+            app:destination="@id/userHealthFoodFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userNutritionCentersFragment"
+            app:destination="@id/userNutritionCentersFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userMyActivityFragment"
+            app:destination="@id/userMyActivityFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/lifeStyleFragment"
+        android:name="com.icare.icare.screens.LifeStyleFragment"
+        android:label="LifeStyleFragment" >
+        <action
+            android:id="@+id/action_lifeStyleFragment_to_chronicDiseaseFragment"
+            app:destination="@id/chronicDiseaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chronicDiseaseFragment"
+        android:name="com.icare.icare.screens.ChronicDiseaseFragment"
+        android:label="ChronicDiseaseFragment" />
+    <fragment
+        android:id="@+id/userGymFragment"
+        android:name="com.icare.icare.screens.user_gym.UserGymFragment"
+        android:label="fragment_user_gym"
+        tools:layout="@layout/fragment_user_gym" />
+    <fragment
+        android:id="@+id/userHealthFoodFragment"
+        android:name="com.icare.icare.screens.user_health_food.UserHealthFoodFragment"
+        android:label="fragment_user_health_food"
+        tools:layout="@layout/fragment_user_health_food" />
+    <fragment
+        android:id="@+id/userMyActivityFragment"
+        android:name="com.icare.icare.screens.user_my_activity.UserMyActivityFragment"
+        android:label="UserMyActivityFragment" />
+</navigation>

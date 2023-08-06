@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_bar_item_nutrient"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="@string/my_information" />
+
+    <item
+        android:id="@+id/nav_bar_item_health_food"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="@string/records" />
+
+
+    <item
+        android:id="@+id/nav_bar_item_gym"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="@string/gym_offers" />
+    </group>
+</menu>

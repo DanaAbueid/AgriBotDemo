@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="months">
+        <item>"Month"</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string-array name="years">
+        <item>"Year"</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+
+    </string-array>
+
+    <string-array name="reasons">
+        <item>Technical Issues</item>
+        <item>Racism, discrimination, or insults</item>
+        <item>Violation of privacy</item>
+        <item>Others</item>
+    </string-array>
+
+
+    <string-array name="reasonsforrest">
+        <item>Technical Issues</item>
+        <item>Cannot Update Information</item>
+        <item>Bugs Or Security Issues</item>
+        <item>Others</item>
+    </string-array>
+
+
+    <string-array name="time_from">
+        <item>From</item>
+        <item>9:00am </item>
+        <item>10:00am </item>
+        <item>11:00am </item>
+        <item>12:00pm </item>
+        <item>1:00pm </item>
+        <item>2:00pm </item>
+        <item>3:00pm </item>
+        <item>4:00pm </item>
+        <item>5:00pm </item>
+        <item>6:00pm </item>
+        <item>7:00pm </item>
+        <item>8:00pm </item>
+        <item>9:00pm </item>
+        <item>10:00pm </item>
+        <item>11:00pm </item>
+
+    </string-array>
+
+    <string-array name="time_to">
+        <item>To</item>
+        <item>10:00am </item>
+        <item>11:00am </item>
+        <item>12:00pm </item>
+        <item>1:00pm </item>
+        <item>2:00pm </item>
+        <item>3:00pm </item>
+        <item>4:00pm </item>
+        <item>5:00pm </item>
+        <item>6:00pm </item>
+        <item>7:00pm </item>
+        <item>8:00pm </item>
+        <item>9:00pm </item>
+        <item>10:00pm </item>
+        <item>11:00pm </item>
+        <item>12:00am </item>
+
+    </string-array>
+</resources>

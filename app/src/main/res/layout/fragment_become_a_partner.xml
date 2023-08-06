@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".screens.BecomePartnerFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name"
+            style="@style/genericEditText"
+            android:hint="@string/full_name"
+            tools:layout_editor_absoluteY="74dp">
+
+            <com.google.android.material.textfield.TextInputEditText style="@style/genericMaterialTextInputEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_username"
+            style="@style/genericEditText"
+            android:hint="@string/username"
+            tools:layout_editor_absoluteY="142dp">
+
+            <com.google.android.material.textfield.TextInputEditText style="@style/genericMaterialTextInputEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/genericEditText"
+            android:hint="@string/email"
+            tools:layout_editor_absoluteY="211dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            style="@style/genericEditText"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_baseline_lock_24"
+            tools:layout_editor_absoluteY="280dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_phone_number"
+            style="@style/genericEditText"
+            android:hint="@string/phone_number"
+            tools:layout_editor_absoluteY="349dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:id="@+id/view_gym"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/rounded_filled_bg"
+            android:backgroundTint="@color/light_grey"
+            app:layout_constraintBottom_toTopOf="@id/view_nutrients"
+            app:layout_constraintEnd_toStartOf="@id/view_nutrients"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_phone_number"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_gym"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gym"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/view_gym"
+            app:layout_constraintEnd_toEndOf="@id/view_gym"
+            app:layout_constraintStart_toStartOf="@id/view_gym"
+            app:layout_constraintTop_toTopOf="@id/view_gym" />
+
+        <View
+            android:id="@+id/view_nutrients"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/rounded_filled_bg"
+            android:backgroundTint="@color/light_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_gym"
+            app:layout_constraintTop_toTopOf="@id/view_gym" />
+
+        <TextView
+            android:id="@+id/tv_nutrients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nutritionist"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/view_nutrients"
+            app:layout_constraintEnd_toEndOf="@id/view_nutrients"
+            app:layout_constraintStart_toStartOf="@id/view_nutrients"
+            app:layout_constraintTop_toTopOf="@id/view_nutrients" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
