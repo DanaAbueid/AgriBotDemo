@@ -25,6 +25,8 @@
             android:id="@+id/action_becomePartnerFragment_to_signupUpNutrientsFragment"
             app:destination="@id/signupUpNutrientsFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/signupUpGymFragment"
         android:name="com.icare.icare.screens.SignupUpGymFragment"
@@ -53,7 +55,25 @@
     <fragment
         android:id="@+id/signupUppayment"
         android:name="com.icare.icare.screens.UserPaymentFragment"
-        android:label="subscription plan" />
+        android:label="subscription plan" >
+    <action
+        android:id="@+id/action_payment_to_confirm"
+        app:destination="@id/cofirmUser" />
+</fragment>
+
+    <fragment
+        android:id="@+id/cofirmUser"
+        android:name="com.icare.icare.screens.UserConfirmFragment"
+        android:label="Confirm subscription" >
+        <action
+            android:id="@+id/action_confirm_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+
+
+
+
 
     <fragment
         android:id="@+id/signupUpSubscribtion"

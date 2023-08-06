@@ -35,7 +35,7 @@ class UserPaymentFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.let { bindingNotNull ->
             bindingNotNull.tvButtonNextDone.setOnClickListener {
-                findNavController().navigate(UserSignUpFragmentDirections.actionSignupToSubPlan())
+                findNavController().navigate(UserPaymentFragmentDirections.actionPaymentToConfirm())
             }
         }
 
