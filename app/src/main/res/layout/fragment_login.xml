@@ -42,6 +42,20 @@
         app:layout_constraintTop_toBottomOf="@+id/til_password"
         tools:enabled="true" />
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="439dp"
+        android:layout_height="430dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="446dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
         style="@style/genericEditText"
@@ -109,9 +123,15 @@
         android:id="@+id/tv_admin_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="808dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="38dp"
         android:text="Admin Login"
         android:textSize="@dimen/_13ssp"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="808dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
