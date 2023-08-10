@@ -84,7 +84,14 @@
     </fragment>
 
 
-
+    <fragment
+        android:id="@+id/User_Reports_List"
+        android:name="com.icare.icare.screens.UserReportListFragment"
+        android:label="reporting list" >
+        <action
+            android:id="@+id/action_signup_to_payment"
+            app:destination="@id/signupUppayment" />
+    </fragment>
 
 
     <fragment
@@ -121,6 +128,9 @@
         <action
             android:id="@+id/action_loginFragment_to_userNutritionCentersFragment"
             app:destination="@id/userNutritionCentersFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_test"
+            app:destination="@id/User_Reports_List" />
         <action
             android:id="@+id/action_loginFragment_to_userMyActivityFragment"
             app:destination="@id/userMyActivityFragment" />

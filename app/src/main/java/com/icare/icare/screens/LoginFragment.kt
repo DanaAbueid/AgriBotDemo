@@ -31,6 +31,9 @@ class LoginFragment : BaseFragment() {
             bindingNotNull.tvForgotPassword.setOnClickListener {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToForgotpassword())
             }
+            bindingNotNull.tvAdminLogin.setOnClickListener {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToTest())
+            }
 
             bindingNotNull.buttonLogin.setOnClickListener {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserNutritionCentersFragment())

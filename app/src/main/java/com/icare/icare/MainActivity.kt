@@ -16,6 +16,8 @@ import android.view.Menu
 import android.view.MenuItem
 
 
+
+
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
     private var selectedItemId = R.id.nav_bar_item_nutrient
@@ -42,10 +44,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     val bottomNavItems = listOf(
-        Triple(R.id.userNutritionCentersFragment, R.drawable.round_dashboard__1_, "Home"),
-        Triple(R.id.userNutritionCentersFragment, R.drawable.cloud_circle, "Weather"),
-        Triple(R.id.userNutritionCentersFragment, R.drawable.plant_bold, "Soil"),
-        Triple(R.id.userNutritionCentersFragment, R.drawable.setting__2_, "Settings"),
+        Triple(R.id.User_Reports_List, R.drawable.round_dashboard__1_, "Home"),
+        Triple(R.id.User_Reports_List, R.drawable.cloud_circle, "Weather"),
+        Triple(R.id.User_Reports_List, R.drawable.plant_bold, "Soil"),
+        Triple(R.id.User_Reports_List, R.drawable.setting__2_, "Settings"),
     )
     private fun setBottomNav() {
         binding?.bottomNavigation?.let { bottomNavView ->
@@ -75,13 +77,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val sideMenuItems = listOf(
-        Triple(R.id.userHealthFoodFragment, R.drawable.user_4_fill__4_, "My Profile"),
-        Triple(R.id.userHealthFoodFragment, R.drawable.round_dashboard__1_, "Dashboard"),
-        Triple(R.id.userHealthFoodFragment, R.drawable.cloud_circle, "Weather"),
-        Triple(R.id.userHealthFoodFragment, R.drawable.plant_bold, "Soil"),
-        Triple(R.id.userHealthFoodFragment, R.drawable.progress__2_, "Progress"),
-        Triple(R.id.userHealthFoodFragment, R.drawable.robot_2__1_, "Robot"),
-        Triple(R.id.userHealthFoodFragment, R.drawable.round_report, "Reports"),
+        Triple(R.id.User_Reports_List, R.drawable.user_4_fill__4_, "My Profile"),
+        Triple(R.id.User_Reports_List, R.drawable.round_dashboard__1_, "Dashboard"),
+        Triple(R.id.User_Reports_List, R.drawable.cloud_circle, "Weather"),
+        Triple(R.id.User_Reports_List, R.drawable.plant_bold, "Soil"),
+        Triple(R.id.User_Reports_List, R.drawable.progress__2_, "Progress"),
+        Triple(R.id.User_Reports_List, R.drawable.robot_2__1_, "Robot"),
+        Triple(R.id.User_Reports_List, R.drawable.round_report, "Reports"),
     )
     private fun setMenu() {
         binding?.clMenu?.llItems?.removeAllViews()
@@ -125,19 +127,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun matchIdToFragment(id: Int): Int? {
         if (id == R.id.nav_bar_item_myprofile)
-            return R.id.userHealthFoodFragment
+            return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_dashboard)
-            return R.id.userHealthFoodFragment
+            return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_my_weather)
-            return R.id.userHealthFoodFragment
+            return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_soil)
-            return R.id.userHealthFoodFragment
+            return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_reports)
-            return R.id.userHealthFoodFragment
+            return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_robot)
-            return R.id.userHealthFoodFragment
+            return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_progress)
-            return R.id.userHealthFoodFragment
+            return R.id.User_Reports_List
 
         return null
     }
