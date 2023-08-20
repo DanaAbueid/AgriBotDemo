@@ -11,6 +11,7 @@
     <color name="light_green">#83c47c</color>
     <color name="semi_transparent_light_green">#4D55efc4</color>
     <color name="light_grey">#b2bec3</color>
+    <color name="gray_for_spin">#b2bec3</color>
     <color name="green">#3f753e</color>
     <color name="light_gray">#EEEEEE</color>
     <color name="lighter2_gray">#B7B7B7</color>

@@ -65,7 +65,19 @@
     <string name="Progress">Progress</string>
     <string name="Robot">Robot</string>
     <string name="Report">Reports</string>
-
+    <string name="update" />
+    <string name="myinfolabel" />
+    <string name="Reort">Reort</string>
+    <string name="report_Title">Report Title</string>
+    <string name="Reported">Reported</string>
+    <string name="send">Send</string>
+    <string name="avalibaletime">avalibaletime</string>
+    <string name="pricing_and_avaliability">pricing_and_avaliability</string>
+    <string name="sessionprice">sessionprice</string>
+    <string name="contactinfo">contactinfo</string>
+    <string name="general">General</string>
+    <string name="location">Location</string>
+    <string name="pricingdetail">pricingdetail</string>
 
 
 </resources>

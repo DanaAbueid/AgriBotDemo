@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray">
+
+    <TextView
+        android:id="@+id/tv_welcome5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
+        android:text="Dashboard"
+        android:textAlignment="viewStart"
+        android:textColor="@color/dark_green1"
+        android:textSize="48sp"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <include
+        android:id="@+id/view_toolbar"
+        layout="@layout/view_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="87dp"
+        android:layout_height="38dp"
+        app:srcCompat="@drawable/backforadmin"
+        tools:layout_editor_absoluteX="299dp"
+        tools:layout_editor_absoluteY="98dp" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="24dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/power_off"
+        tools:layout_editor_absoluteX="344dp"
+        tools:layout_editor_absoluteY="106dp" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/outline_notifications"
+        tools:layout_editor_absoluteX="314dp"
+        tools:layout_editor_absoluteY="101dp" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/genericButton"
+        android:layout_width="96dp"
+        android:layout_height="47dp"
+        android:text="@string/Weather"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="187dp" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/genericButton"
+        android:layout_width="96dp"
+        android:layout_height="47dp"
+        android:text="Soil"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="187dp" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/genericButton"
+        android:layout_width="96dp"
+        android:layout_height="47dp"
+        android:text="Robot"
+        tools:layout_editor_absoluteX="272dp"
+        tools:layout_editor_absoluteY="187dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="338dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/backforadmin"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="273dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray">
+
+        <ImageView
+            android:id="@+id/tv_back_info"
+            android:layout_width="410dp"
+            android:layout_height="354dp"
+            app:srcCompat="@drawable/back3"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <include
+            android:id="@+id/view_toolbar"
+            layout="@layout/view_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_my_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bree_serif"
+            android:text="My Profile"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="48sp"
+            tools:layout_editor_absoluteX="27dp"
+            tools:layout_editor_absoluteY="78dp" />
+
+        <TextView
+            android:id="@+id/general_headlin_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bree_serif"
+            android:text="General Information"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="222dp" />
+
+        <ImageView
+            android:id="@+id/cv_general_info"
+            android:layout_width="359dp"
+            android:layout_height="278dp"
+            app:srcCompat="@drawable/rounded_corner_background2"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="260dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_first_name_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:enabled="false"
+            android:hint="First Name"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="290dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textWebEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/last_name_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="Last Name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="348dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_last_name_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:enabled="false"
+            android:hint="Last Name"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="348dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textWebEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/email_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="404dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:enabled="false"
+            android:hint="Email"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="404dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textWebEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/phone_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="@string/phone_number"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="466dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:hint="@string/phone_number"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="465dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:editable="true"
+                android:inputType="textWebEditText|phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/cv_general_info2"
+            android:layout_width="359dp"
+            android:layout_height="278dp"
+            app:srcCompat="@drawable/rounded_corner_background2"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="612dp" />
+
+        <TextView
+            android:id="@+id/tv_welcome9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bree_serif"
+            android:text="Subscription Information "
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="573dp" />
+
+        <TextView
+            android:id="@+id/subs_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="Subscription ID"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="641dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_subs_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:enabled="false"
+            android:hint="Subscription ID"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="639dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textWebEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/starting_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="Starting Date "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="697dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_start_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:enabled="false"
+            android:hint="Starting Date "
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="697dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textWebEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/ending_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="Ending  Date "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="753dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_end_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:enabled="false"
+            android:hint="Ending Date "
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="753dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textWebEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/price_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="Price"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="815dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_price_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:hint="Price"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="814dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:editable="false"
+                android:inputType="textWebEditText|phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/tv_Update_nfo"
+            style="@style/genericButton"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="@color/green3"
+            android:text="Update"
+            tools:enabled="true"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="937dp" />
+
+        <TextView
+            android:id="@+id/Fname_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="First Name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="292dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
