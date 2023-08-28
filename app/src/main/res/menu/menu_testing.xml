@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/test"
+            android:enabled="true"
+            android:icon="@drawable/user_4_fill__4_"
+            android:title="@string/myprofile" />
+        <item
+            android:id="@+id/test2"
+            android:enabled="true"
+            android:icon="@drawable/round_dashboard__1_"
+            android:title="@string/Dashboard" />
+
+        <item
+            android:id="@+id/test3"
+            android:enabled="true"
+            android:icon="@drawable/cloud_circle"
+            android:title="@string/Weather" />
+
+
+    </group>
+</menu>
