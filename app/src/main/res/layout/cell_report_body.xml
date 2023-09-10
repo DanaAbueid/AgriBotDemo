@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_20sdp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="30dp"
+            android:drawableStart="@drawable/list_alt"
+            android:textColor="@color/light_green"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Report 1" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="60dp"
+            android:layout_height="33dp"
+            app:srcCompat="@drawable/cell_back"
+            tools:layout_editor_absoluteX="190dp"
+            tools:layout_editor_absoluteY="30dp" />
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="60dp"
+            android:layout_height="33dp"
+            app:srcCompat="@drawable/cell_back"
+            tools:layout_editor_absoluteX="265dp"
+            tools:layout_editor_absoluteY="30dp" />
+
+        <ImageView
+            android:id="@+id/imageView26"
+            android:layout_width="60dp"
+            android:layout_height="33dp"
+            app:srcCompat="@drawable/cell_back"
+            tools:layout_editor_absoluteX="335dp"
+            tools:layout_editor_absoluteY="30dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
