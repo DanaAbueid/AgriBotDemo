@@ -1,63 +1,483 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/light_gray">
 
-    <include
-        android:id="@+id/view_toolbar"
-        layout="@layout/view_toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/light_gray"
+tools:context=".screens.SoilFragment"
+    >
 
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/green1_background"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="321dp" />
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/green2_background"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="430dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray">
 
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/green2_background"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="321dp" />
+        <include
+            android:id="@+id/view_toolbar"
+            layout="@layout/view_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/green3_background"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="430dp" />
+        <ImageView
+            android:id="@+id/cv_status_back"
+            android:layout_width="149dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="192dp"
+            android:layout_marginEnd="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back_for_spinners" />
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/green3_background"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="321dp" />
+        <TextView
+            android:id="@+id/tv_soil_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="193dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Current Task"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/cv_status_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/green1_background"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="430dp" />
+        <TextView
+            android:id="@+id/tv_status_soil1"
+            android:layout_width="50dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Status"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_status_back"
+            app:layout_constraintStart_toStartOf="@+id/cv_status_back"
+            app:layout_constraintTop_toTopOf="@+id/cv_status_back" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_runing"
+            android:layout_width="71dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="5dp"
+            android:drawableEnd="@drawable/refresh__1_"
+            android:fontFamily="@font/bree_serif"
+            android:text="Running"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_status_back"
+            app:layout_constraintEnd_toEndOf="@+id/cv_status_back"
+            app:layout_constraintTop_toTopOf="@+id/cv_status_back" />
+
+        <TextView
+            android:id="@+id/tv_Soil_sensor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="265dp"
+            android:layout_marginEnd="291dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Sensors"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cv_temp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="324dp"
+            android:layout_marginEnd="271dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/green1_background" />
+
+        <ImageView
+            android:id="@+id/cv_humdity"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="324dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/cv_health"
+            app:layout_constraintStart_toEndOf="@+id/cv_temp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/green2_background" />
+
+        <TextView
+            android:id="@+id/tv_hum_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Soil Humidity"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_humdity"
+            app:layout_constraintEnd_toEndOf="@+id/cv_humdity"
+            app:layout_constraintHorizontal_bias="0.387"
+            app:layout_constraintStart_toStartOf="@+id/cv_humdity" />
+
+        <TextView
+            android:id="@+id/tv_soil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginEnd="107dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Soil Analysiz"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_hum_value"
+            style="@style/genericEditText"
+            android:layout_width="103dp"
+            android:layout_height="79dp"
+            android:text="60%"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cv_humdity"
+            app:layout_constraintStart_toStartOf="@+id/cv_humdity"
+            app:layout_constraintTop_toTopOf="@+id/cv_humdity" />
+
+        <TextView
+            android:id="@+id/tv_temp_value"
+            style="@style/genericEditText"
+            android:layout_width="89dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="8dp"
+            android:text="20°"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cv_temp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/cv_temp"
+            app:layout_constraintTop_toTopOf="@+id/cv_temp" />
+
+        <ImageView
+            android:id="@+id/cv_health"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="271dp"
+            android:layout_marginTop="324dp"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/green3_background" />
+
+        <TextView
+            android:id="@+id/tv_soil_H"
+            style="@style/genericEditText"
+            android:layout_width="118dp"
+            android:layout_height="84dp"
+            android:text="Good"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_health"
+            app:layout_constraintEnd_toEndOf="@+id/cv_health"
+            app:layout_constraintStart_toStartOf="@+id/cv_health"
+            app:layout_constraintTop_toTopOf="@+id/cv_health"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_soil_cond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Soil Health"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_health"
+            app:layout_constraintEnd_toEndOf="@+id/cv_health"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="@+id/cv_health" />
+
+        <TextView
+            android:id="@+id/tv_temp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Soil Tempreture"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_temp"
+            app:layout_constraintEnd_toEndOf="@+id/cv_temp"
+            app:layout_constraintHorizontal_bias="0.578"
+            app:layout_constraintStart_toStartOf="@+id/cv_temp" />
+
+        <ImageView
+            android:id="@+id/cv_progress"
+            android:layout_width="374dp"
+            android:layout_height="161dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="457dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="468dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/backforadmin" />
+
+        <TextView
+            android:id="@+id/tv_label_soilH"
+            style="@style/genericEditText"
+            android:layout_width="68dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="5dp"
+            android:text="100%"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_label_soilT"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar1" />
+
+        <TextView
+            android:id="@+id/tv_label_soilT"
+            style="@style/genericEditText"
+            android:layout_width="68dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="5dp"
+            android:text="100%"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_label_soilC"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar2" />
+
+        <TextView
+            android:id="@+id/tv_label_soilC"
+            style="@style/genericEditText"
+            android:layout_width="68dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="16dp"
+            android:text="100%"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar3" />
+
+        <TextView
+            android:id="@+id/tv_soilH_title"
+            style="@style/genericEditText"
+            android:layout_width="224dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="10dp"
+            android:text="Soil Humidity"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.193"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="265dp"
+            android:layout_height="18dp"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress"
+            app:layout_constraintTop_toBottomOf="@+id/tv_soilH_title" />
+
+        <TextView
+            android:id="@+id/tv_soilT_title"
+            style="@style/genericEditText"
+            android:layout_width="222dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="58dp"
+            android:text="Soil Temperature "
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.203"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="265dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="62dp"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress" />
+
+        <TextView
+            android:id="@+id/tv_soilC_title"
+            style="@style/genericEditText"
+            android:layout_width="222dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="36dp"
+            android:text="Soil Check Counter"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.19"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="265dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="18dp"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
+            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress" />
+
+        <TextView
+            android:id="@+id/tv_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="151dp"
+            android:layout_marginTop="649dp"
+            android:layout_marginEnd="153dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Summary"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="376dp"
+            android:layout_height="255dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="800dp"
+            android:layout_marginEnd="21dp"
+            android:src="@drawable/whity_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/whity_background"
+            tools:srcCompat="@drawable/whity_background" />
+
+        <com.db.williamchart.view.BarChartView
+            android:id="@+id/barChart"
+            android:layout_width="332dp"
+            android:layout_height="204dp"
+            android:layout_marginTop="26dp"
+            app:chart_axis="x"
+            app:chart_barsColor="@color/green2"
+            app:chart_barsRadius="4dp"
+            app:chart_labelsColor="#FF70977F"
+            app:chart_labelsFont="@font/open_sans_bold"
+            app:chart_labelsSize="10sp"
+            app:chart_spacing="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView11"
+            app:layout_constraintStart_toStartOf="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+        <Button
+            android:id="@+id/btn_month"
+            style="@style/genericButton"
+            android:layout_width="98dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="700dp"
+            android:layout_marginEnd="7dp"
+            android:text="This Month"
+            app:layout_constraintEnd_toStartOf="@+id/btn_year"
+            app:layout_constraintStart_toEndOf="@+id/bt_today"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/bt_today"
+            style="@style/genericButton"
+            android:layout_width="98dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="700dp"
+            android:layout_marginEnd="263dp"
+            android:text="Today"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_year"
+            style="@style/genericButton"
+            android:layout_width="98dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="263dp"
+            android:layout_marginTop="700dp"
+            android:layout_marginEnd="50dp"
+            android:text="This Year"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView27"
+            android:layout_width="89dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="277dp"
+            android:layout_marginEnd="45dp"
+            android:background="@drawable/gray4_background"
+            android:src="@drawable/gray4_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+

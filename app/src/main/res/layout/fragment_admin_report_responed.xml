@@ -5,17 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
+    android:visibility="gone"
     tools:ignore="ExtraText">
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:visibility="gone"
             tools:layout_conversion_absoluteHeight="0dp"
             tools:layout_conversion_absoluteWidth="411dp"
             tools:layout_editor_absoluteX="0dp"
@@ -72,7 +75,7 @@
         tools:layout_editor_absoluteY="727dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/report_title_nutri"
+        android:id="@+id/report_title_nutmri"
         style="@style/genericEditText"
         android:layout_width="402dp"
         android:layout_height="65dp"
@@ -121,7 +124,7 @@
         tools:layout_editor_absoluteY="367dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/report_title_nutri"
+        android:id="@+id/report_title_nutrpi"
         style="@style/genericEditText"
         android:layout_width="402dp"
         android:layout_height="65dp"

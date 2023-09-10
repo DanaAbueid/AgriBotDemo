@@ -36,8 +36,8 @@ class UserReportsAdapter(
     ) {
         with(viewHolder.binding) {
 
-            //</check-fold>
             tvUser.text = item.title
+
         }
     }
 

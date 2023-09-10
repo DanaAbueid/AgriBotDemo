@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.databinding.ViewCellHealthFoodBinding
-import com.icare.icare.databinding.ViewCellReportsListBinding
 import com.icare.icare.generics.BaseRecyclerViewAdapter
 import com.icare.icare.models.HealthFood
 
@@ -22,7 +21,7 @@ class HealthFoodAdapter(
         layoutInflater: LayoutInflater
     ): ViewHolder {
         return ViewHolder(
-            ViewCellReportsListBinding.inflate(
+            ViewCellHealthFoodBinding.inflate(
                 layoutInflater,
                 viewGroup,
                 false
@@ -36,17 +35,19 @@ class HealthFoodAdapter(
         item: HealthFood
     ) {
         with(viewHolder.binding) {
-            ivBag.background = item.imageUrl?.let {
+
+
+            ivBg.background = item.imageUrl?.let {
                 ContextCompat.getDrawable(
                     context,
                     it
                 )
             }
-            tvUser.text = item.name
+            tvName.text = item.name
 
         }
     }
 
-    class ViewHolder(val binding: ViewCellReportsListBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ViewCellHealthFoodBinding) : RecyclerView.ViewHolder(binding.root)
 
 }

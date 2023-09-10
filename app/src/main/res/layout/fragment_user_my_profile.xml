@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
+    tools:context=".screens.UserMyProfileFragment"
     >
 
 
@@ -17,9 +18,11 @@
             android:id="@+id/tv_back_info"
             android:layout_width="410dp"
             android:layout_height="354dp"
-            app:srcCompat="@drawable/back3"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:layout_marginEnd="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back3" />
 
         <include
             android:id="@+id/view_toolbar"
@@ -31,44 +34,137 @@
             android:id="@+id/tv_my_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="78dp"
+            android:layout_marginEnd="162dp"
             android:fontFamily="@font/bree_serif"
             android:text="My Profile"
             android:textAlignment="viewStart"
             android:textColor="@color/dark_green1"
             android:textSize="48sp"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="78dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/general_headlin_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="222dp"
+            android:layout_marginEnd="211dp"
             android:fontFamily="@font/bree_serif"
             android:text="General Information"
             android:textAlignment="viewStart"
             android:textColor="@color/dark_green1"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="222dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/cv_general_info"
             android:layout_width="359dp"
-            android:layout_height="278dp"
-            app:srcCompat="@drawable/rounded_corner_background2"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="260dp" />
+            android:layout_height="395dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="265dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="451dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/rounded_corner_background2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ger_location"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="589dp"
+            android:layout_marginBottom="474dp"
+            android:hint="@string/location"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:editable="true"
+                android:inputType="textWebEditText|phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/location_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="590dp"
+            android:layout_marginBottom="481dp"
+            android:gravity="center|left"
+            android:text="Location"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/psw_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="529dp"
+            android:layout_marginEnd="279dp"
+            android:gravity="center|left"
+            android:text="@string/password"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_psw_update"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="528dp"
+            android:layout_marginBottom="535dp"
+            app:endIconMode="password_toggle"
+            android:hint="@string/password"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:editable="true"
+                android:inputType="text|textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_first_name_get"
             style="@style/genericEditText"
             android:layout_width="258dp"
             android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="290dp"
+            android:layout_marginBottom="773dp"
             android:enabled="false"
             android:hint="First Name"
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="290dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
@@ -80,24 +176,32 @@
             android:id="@+id/last_name_headline"
             android:layout_width="89dp"
             android:layout_height="40dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="348dp"
+            android:layout_marginBottom="723dp"
             android:gravity="center|left"
             android:text="Last Name"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
-            tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="348dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tv_last_name_get"
             style="@style/genericEditText"
             android:layout_width="258dp"
             android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="348dp"
+            android:layout_marginEnd="36dp"
             android:enabled="false"
             android:hint="Last Name"
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="348dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
@@ -109,24 +213,32 @@
             android:id="@+id/email_headline"
             android:layout_width="89dp"
             android:layout_height="40dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="404dp"
+            android:layout_marginBottom="667dp"
             android:gravity="center|left"
             android:text="@string/email"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
-            tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="404dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_get"
             style="@style/genericEditText"
             android:layout_width="258dp"
             android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="404dp"
+            android:layout_marginBottom="659dp"
             android:enabled="false"
             android:hint="Email"
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="404dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
@@ -138,23 +250,31 @@
             android:id="@+id/phone_headline"
             android:layout_width="89dp"
             android:layout_height="40dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginEnd="279dp"
+            android:layout_marginBottom="605dp"
             android:gravity="center|left"
             android:text="@string/phone_number"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="466dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/phone_get"
             style="@style/genericEditText"
             android:layout_width="258dp"
             android:layout_height="48dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="465dp"
+            android:layout_marginBottom="598dp"
             android:hint="@string/phone_number"
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="116dp"
-            tools:layout_editor_absoluteY="465dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
@@ -167,73 +287,76 @@
             android:id="@+id/cv_general_info2"
             android:layout_width="359dp"
             android:layout_height="278dp"
-            app:srcCompat="@drawable/rounded_corner_background2"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="612dp" />
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="74dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/rounded_corner_background2" />
 
         <TextView
             android:id="@+id/tv_welcome9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="164dp"
+            android:layout_marginBottom="365dp"
             android:fontFamily="@font/bree_serif"
             android:text="Subscription Information "
             android:textAlignment="viewStart"
             android:textColor="@color/dark_green1"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="573dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/subs_headline"
             android:layout_width="89dp"
             android:layout_height="40dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginEnd="278dp"
+            android:layout_marginBottom="284dp"
             android:gravity="center|left"
             android:text="Subscription ID"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="normal"
-            tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="641dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tv_subs_get"
-            style="@style/genericEditText"
-            android:layout_width="258dp"
-            android:layout_height="48dp"
-            android:enabled="false"
-            android:hint="Subscription ID"
-            app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="639dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/genericMaterialTextInputEditText"
-                android:inputType="textWebEditText" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/starting_headline"
             android:layout_width="89dp"
             android:layout_height="40dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="843dp"
+            android:layout_marginEnd="278dp"
             android:gravity="center|left"
             android:text="Starting Date "
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
-            tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="697dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tv_start_get"
             style="@style/genericEditText"
             android:layout_width="258dp"
             android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="843dp"
+            android:layout_marginBottom="219dp"
             android:enabled="false"
             android:hint="Starting Date "
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="697dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
@@ -245,24 +368,32 @@
             android:id="@+id/ending_headline"
             android:layout_width="89dp"
             android:layout_height="40dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="899dp"
+            android:layout_marginBottom="171dp"
             android:gravity="center|left"
             android:text="Ending  Date "
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
-            tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="753dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tv_end_get"
             style="@style/genericEditText"
             android:layout_width="258dp"
             android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="164dp"
             android:enabled="false"
             android:hint="Ending Date "
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="753dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
@@ -274,30 +405,80 @@
             android:id="@+id/price_headline"
             android:layout_width="89dp"
             android:layout_height="40dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="961dp"
+            android:layout_marginBottom="109dp"
             android:gravity="center|left"
             android:text="Price"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="815dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tv_price_get"
             style="@style/genericEditText"
             android:layout_width="258dp"
             android:layout_height="48dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="961dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="101dp"
             android:hint="Price"
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
-            tools:layout_editor_absoluteX="116dp"
-            tools:layout_editor_absoluteY="814dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
+                android:layout_width="245dp"
+                android:layout_height="match_parent"
                 android:editable="false"
-                android:inputType="textWebEditText|phone" />
+                android:inputType="number"
+                tools:ignore="Deprecated" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_subs_get"
+            style="@style/genericEditText"
+            android:layout_width="258dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="785dp"
+            android:layout_marginEnd="36dp"
+            android:enabled="false"
+            android:hint="Subscription ID"
+            app:boxBackgroundColor="@color/cardview_shadow_start_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/genericMaterialTextInputEditText"
+                android:inputType="textWebEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/Fname_headline"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="292dp"
+            android:layout_marginBottom="779dp"
+            android:gravity="center|left"
+            android:text="First Name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/tv_Update_nfo"
@@ -305,23 +486,31 @@
             android:layout_width="339dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/green3"
             android:text="Update"
-            tools:enabled="true"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="937dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:enabled="true" />
 
-        <TextView
-            android:id="@+id/Fname_headline"
-            android:layout_width="89dp"
-            android:layout_height="40dp"
-            android:gravity="center|left"
-            android:text="First Name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="292dp" />
+        <Button
+            android:id="@+id/tv_Update_nfo2"
+            style="@style/genericButton"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/green3"
+            android:text="Update"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:enabled="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

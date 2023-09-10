@@ -5,41 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:adjustViewBounds="true"
-    android:background="@color/dark_green1"
+    android:background="@color/light_gray"
     android:fitsSystemWindows="true"
     android:scaleType="fitXY"
     tools:context=".SplashActivity">
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="320dp"
-        android:layout_height="611dp"
-        android:layout_marginHorizontal="@dimen/_40sdp"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="120dp"
+        android:layout_width="384dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="359dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="412dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/splash_logo"
-        android:src="@drawable/subscreption"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="466dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="240dp"
-        android:fontFamily="@font/bree_serif"
-        android:text="AgriBot"
-        android:textColor="@color/light_gray"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/agrilogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

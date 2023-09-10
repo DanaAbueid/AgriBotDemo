@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray">
+
+    <Button
+        android:id="@+id/button6"
+        style="@style/genericButton"
+        android:layout_width="98dp"
+        android:layout_height="76dp"
+        android:text="This Year"
+        tools:layout_editor_absoluteX="265dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <Button
+        android:id="@+id/button4"
+        style="@style/genericButton"
+        android:layout_width="98dp"
+        android:layout_height="76dp"
+        android:text="Today"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <Button
+        android:id="@+id/button5"
+        style="@style/genericButton"
+        android:layout_width="98dp"
+        android:layout_height="76dp"
+        android:text="This Month"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="387dp"
+        android:layout_height="261dp"
+        android:src="@drawable/bottom_navitem_back"
+        app:srcCompat="@drawable/whity_background"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="355dp"
+        tools:srcCompat="@drawable/whity_background" />
+
+    <com.db.williamchart.view.BarChartView
+        android:id="@+id/barChart"
+        android:layout_width="332dp"
+        android:layout_height="204dp"
+        app:chart_axis="x"
+        app:chart_barsColor="@color/green2"
+        app:chart_barsRadius="4dp"
+        app:chart_labelsColor="#FF70977F"
+        app:chart_labelsFont="@font/open_sans_bold"
+        app:chart_labelsSize="10sp"
+        app:chart_spacing="15dp"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="392dp" />
 
     <include
         android:id="@+id/view_toolbar"
@@ -17,4 +69,5 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="785dp"
         tools:menu="@menu/menu_user"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

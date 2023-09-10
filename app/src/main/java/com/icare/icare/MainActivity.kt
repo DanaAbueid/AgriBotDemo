@@ -17,10 +17,9 @@ import android.view.MenuItem
 
 
 
-
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
-    private var selectedItemId = R.id.nav_bar_item_nutrient
+    private var selectedItemId = R.id.user_main_dashboard
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -43,32 +42,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    val bottomNavItems = listOf(
-        Triple(R.id.User_Reports_List, R.drawable.round_dashboard__1_, "Home"),
-        Triple(R.id.User_Reports_List, R.drawable.cloud_circle, "Weather"),
-        Triple(R.id.User_Reports_List, R.drawable.plant_bold, "Soil"),
-        Triple(R.id.User_Reports_List, R.drawable.setting__2_, "Settings"),
-    )
     private fun setBottomNav() {
-        binding?.bottomNavigation?.let { bottomNavView ->
-            if (bottomNavView.menu.isEmpty()) {
-                // Clear existing items if any
-                bottomNavView.menu.clear()
-
-                // Add menu items from bottomNavItems
-                for (item in bottomNavItems) {
-                    bottomNavView.menu.add(Menu.NONE, item.first, Menu.NONE, item.third)
-                        .setIcon(item.second)
-                }
+        UserSession.defaultMenu?.let {
+            if (binding?.bottomNavigation?.menu?.isEmpty() == true) {
+                binding?.bottomNavigation?.menu?.clear()
+                binding?.bottomNavigation?.inflateMenu(it)
             }
-
-            // Set the selected item based on the selectedItemId
-            bottomNavView.selectedItemId = selectedItemId
-
-            // Set the item selection listener
-            bottomNavView.setOnItemSelectedListener { menuItem ->
-                matchIdToFragment(menuItem.itemId)?.let { idNotNull ->
-                    selectedItemId = menuItem.itemId
+            binding?.bottomNavigation?.setSelectedItemId(selectedItemId)
+            binding?.bottomNavigation?.setOnItemSelectedListener {
+                matchIdToFragment(it.itemId)?.let { idNotNull ->
+                    selectedItemId = it.itemId
                     navigate(idNotNull)
                 }
                 true
@@ -76,70 +59,61 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private val sideMenuItems = listOf(
-        Triple(R.id.User_Reports_List, R.drawable.user_4_fill__4_, "My Profile"),
-        Triple(R.id.User_Reports_List, R.drawable.round_dashboard__1_, "Dashboard"),
-        Triple(R.id.User_Reports_List, R.drawable.cloud_circle, "Weather"),
-        Triple(R.id.User_Reports_List, R.drawable.plant_bold, "Soil"),
-        Triple(R.id.User_Reports_List, R.drawable.progress__2_, "Progress"),
-        Triple(R.id.User_Reports_List, R.drawable.robot_2__1_, "Robot"),
-        Triple(R.id.User_Reports_List, R.drawable.round_report, "Reports"),
-    )
     private fun setMenu() {
-        binding?.clMenu?.llItems?.removeAllViews()
+        binding?.bottomNavigation?.menu?.let { menu ->
+            binding?.clMenu?.llItems?.removeAllViews()
+            menu.forEach {
+                val itemBinding = ViewMenuItemBinding.inflate(layoutInflater)
+                itemBinding.ivLogo.setImageDrawable(it.icon)
+                itemBinding.tvTitle.text = it.title
 
-        for (item in sideMenuItems) {
-            val itemBinding = ViewMenuItemBinding.inflate(layoutInflater)
-            itemBinding.ivLogo.setImageDrawable(ContextCompat.getDrawable(this, item.second))
-            itemBinding.tvTitle.text = item.third
-
-            itemBinding.root.setOnClickListener { view ->
-                toggleSideMenu(false)
-                matchIdToFragment(item.first)?.let { idNotNull ->
-                    selectedItemId = item.first
-                    navigate(idNotNull)
+                itemBinding.root.setOnClickListener { view ->
+                    toggleSideMenu(false)
+                    matchIdToFragment(it.itemId)?.let { idNotNull ->
+                        selectedItemId = it.itemId
+                        navigate(idNotNull)
+                    }
                 }
+                if (it.itemId == selectedItemId) {
+                    itemBinding.tvTitle.setTextColor(
+                        ContextCompat.getColor(
+                            this,
+                            R.color.light_green
+                        )
+                    )
+                    itemBinding.ivLogo.setColorFilter(
+                        ContextCompat.getColor(
+                            this,
+                            R.color.light_green
+                        )
+                    )
+                    itemBinding.root.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this,
+                            R.color.semi_transparent_light_green
+                        )
+                    )
+                }
+                binding?.clMenu?.llItems?.addView(itemBinding.root)
             }
-            if (item.first == selectedItemId) {
-                itemBinding.tvTitle.setTextColor(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.dark_green1
-                    )
-                )
-                itemBinding.ivLogo.setColorFilter(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.dark_green1
-                    )
-                )
-                itemBinding.root.setBackgroundColor(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.semi_transparent_light_green
-                    )
-                )
-            }
-            binding?.clMenu?.llItems?.addView(itemBinding.root)
+
+
         }
     }
 
-
     private fun matchIdToFragment(id: Int): Int? {
         if (id == R.id.nav_bar_item_myprofile)
-            return R.id.User_Reports_List
+            return R.id.Usermyprofile
         else if (id == R.id.nav_bar_item_dashboard)
-            return R.id.User_Reports_List
-        else if (id == R.id.nav_bar_item_my_weather)
-            return R.id.User_Reports_List
+            return R.id.user_main_dashboard
         else if (id == R.id.nav_bar_item_soil)
-            return R.id.User_Reports_List
-        else if (id == R.id.nav_bar_item_reports)
-            return R.id.User_Reports_List
-        else if (id == R.id.nav_bar_item_robot)
-            return R.id.User_Reports_List
+            return R.id.User_soil
+       // else if (id == R.id.nav_bar_item_reports)
+         //   return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_progress)
-            return R.id.User_Reports_List
+            return R.id.User_progress
+        else if (id == R.id.nav_bar_item_crop)
+            return R.id.user_crop
 
         return null
     }

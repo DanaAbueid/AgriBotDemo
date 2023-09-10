@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/WelcomePage">
 
     <fragment
         android:id="@+id/userNutritionCentersFragment"
@@ -62,7 +62,11 @@
         android:label="subscription plan" >
     <action
         android:id="@+id/action_payment_to_confirm"
-        app:destination="@id/cofirmUser" />
+        app:destination="@id/cofirmUser"
+        app:enterAnim="@anim/slide_in"
+        app:exitAnim="@anim/slide_out"
+        app:popEnterAnim="@anim/slide_in"
+        app:popExitAnim="@anim/slide_out"/>
 </fragment>
 
     <fragment
@@ -71,7 +75,11 @@
         android:label="Confirm subscription" >
         <action
             android:id="@+id/action_confirm_to_login"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/LOGPage"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
 
     <fragment
@@ -80,7 +88,11 @@
         android:label="Confirm subscription" >
         <action
             android:id="@+id/action_confirm_to_login"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/LOGPage"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
 
 
@@ -90,8 +102,75 @@
         android:label="reporting list" >
         <action
             android:id="@+id/action_signup_to_payment"
-            app:destination="@id/signupUppayment" />
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
     </fragment>
+
+
+
+    <fragment
+        android:id="@+id/User_soil"
+        android:name="com.icare.icare.screens.SoilFragment"
+        android:label="soil list" >
+        <action
+            android:id="@+id/action_signup_to_payment"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/User_progress"
+        android:name="com.icare.icare.screens.ProgressFragment"
+        android:label="progress list" >
+        <action
+            android:id="@+id/action_signup_to_payment"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/user_crop"
+        android:name="com.icare.icare.screens.CropHealthFragment"
+        android:label="crop health" >
+        <action
+            android:id="@+id/action_signup_to_payment"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_main_dashboard"
+        android:name="com.icare.icare.screens.MainDashboardFragment"
+        android:label="main dashboard" >
+        <action
+            android:id="@+id/action_signup_to_payment"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+
+
+
 
 
     <fragment
@@ -100,15 +179,100 @@
         android:label="subscription plan" >
         <action
         android:id="@+id/action_signup_to_payment"
-        app:destination="@id/signupUppayment" />
+        app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
+
+
+    <fragment
+        android:id="@+id/WelcomePage"
+        android:name="com.icare.icare.screens.WelcomePageFragment"
+        android:label="subscription plan" >
+        <action
+            android:id="@+id/action_welcome_to_login"
+            app:destination="@id/LOGPage"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+        <action
+            android:id="@+id/action_welcome_to_signup"
+            app:destination="@id/signupUpFarmer"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/LOGPage"
+        android:name="com.icare.icare.screens.LoginNewFragment"
+        android:label="subscription plan" >
+        <action
+            android:id="@+id/action_welcome_to_login"
+            app:destination="@id/signupUppayment" />
+
+        <action
+            android:id="@+id/action_login_to_forpsw"
+            app:destination="@id/User_progress"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+
+        <action
+            android:id="@+id/action_welcome_to_signup"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+
+        <action
+            android:id="@+id/action_login_to_dashboard"
+            app:destination="@id/user_main_dashboard"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+    </fragment>
+
+
+
+
+
+
+    <fragment
+        android:id="@+id/Usermyprofile"
+        android:name="com.icare.icare.screens.UserMyProfileFragment"
+        android:label="user profile" >
+        <action
+            android:id="@+id/action_signup_to_payment"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+    </fragment>
+
+
+
+
+
+
+
 
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.icare.icare.screens.LoginFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_user_nutrition_centers" >
+        tools:layout="@layout/fragment_main_dashboard" >
         <action
             android:id="@+id/action_loginFragment_to_signupUpUserFragment"
             app:destination="@id/signupUpFarmer" />
