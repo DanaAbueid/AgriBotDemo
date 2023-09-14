@@ -262,12 +262,14 @@
             style="@style/genericButton"
             android:layout_width="98dp"
             android:layout_height="76dp"
+            android:layout_marginStart="261dp"
             android:layout_marginTop="481dp"
             android:layout_marginEnd="52dp"
             android:layout_marginBottom="322dp"
             android:text="This Year"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -276,25 +278,29 @@
             android:layout_width="98dp"
             android:layout_height="76dp"
             android:layout_marginStart="155dp"
-            android:layout_marginEnd="158dp"
+            android:layout_marginTop="481dp"
+            android:layout_marginEnd="155dp"
             android:layout_marginBottom="322dp"
             android:text="This Month"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/bt_today"
             style="@style/genericButton"
             android:layout_width="98dp"
             android:layout_height="76dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="265dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="481dp"
+            android:layout_marginEnd="261dp"
             android:layout_marginBottom="322dp"
             android:text="Today"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/cv_bar_back"

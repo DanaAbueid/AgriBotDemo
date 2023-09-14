@@ -32,6 +32,9 @@ class WelcomePageFragment : BaseFragment() {
             bindingNotNull.tvSignupBtn.setOnClickListener {
                 findNavController().navigate(WelcomePageFragmentDirections.actionWelcomeToSignup())
             }
+            bindingNotNull.btnAdminLogin.setOnClickListener {
+                findNavController().navigate(WelcomePageFragmentDirections.actionWelcomeToAdmin())
+            }
 
         }
     }

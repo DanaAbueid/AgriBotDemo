@@ -23,13 +23,8 @@
         <item
             android:id="@+id/nav_bar_item_myprofile_bottom"
             android:enabled="true"
-            android:icon="@drawable/user_4_fill__4_"
-            android:title="@string/myprofile" />
-        <item
-            android:id="@+id/nav_bar_item_reports_bottom"
-            android:enabled="true"
-            android:icon="@drawable/user_4_fill__4_"
-            android:title="@string/Report" />
+            android:icon="@drawable/plant_bold"
+            android:title="Crops" />
 
 
     </group>

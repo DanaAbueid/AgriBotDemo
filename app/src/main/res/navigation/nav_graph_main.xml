@@ -191,6 +191,14 @@
         android:id="@+id/WelcomePage"
         android:name="com.icare.icare.screens.WelcomePageFragment"
         android:label="subscription plan" >
+
+        <action
+            android:id="@+id/action_welcome_to_admin"
+            app:destination="@id/admin_reporting_list"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_welcome_to_login"
             app:destination="@id/LOGPage"
@@ -206,6 +214,78 @@
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/admin_main_login"
+        android:name="com.icare.icare.screens.AdminLoginFragment"
+        android:label="admin login" >
+        <action
+            android:id="@+id/action_login_to_admindashboard"
+            app:destination="@id/admin_dashboard"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/admin_dashboard"
+        android:name="com.icare.icare.screens.AdminDashboardFragment"
+        android:label="admin dashboard" >
+        <action
+            android:id="@+id/action_dashboard_to_reportList"
+            app:destination="@id/admin_reporting_list"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/admin_reporting_list"
+        android:name="com.icare.icare.screens.AdminReportsListFragment"
+        android:label="admin reporting " >
+        <action
+            android:id="@+id/action_reportList_to_toReport"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/admin_repots"
+        android:name="com.icare.icare.screens.AdminViewReportFragment"
+        android:label="admin reporting " >
+        <action
+            android:id="@+id/action_reportList_to_toReport"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/admin_repots_replay"
+        android:name="com.icare.icare.screens.AdminReportResponedFragment"
+        android:label="admin reporting " >
+        <action
+            android:id="@+id/action_replay_to_reportlist"
+            app:destination="@id/admin_reporting_list"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
     </fragment>
 
 

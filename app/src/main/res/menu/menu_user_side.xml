@@ -1,8 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- menu_user_side.xml -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-
-
+        <!-- Your extra items for the side menu -->
+        <item
+            android:id="@+id/nav_bar_item_myprofile"
+            android:enabled="true"
+            android:icon="@drawable/user_4_fill__4_"
+            android:title="@string/myprofile"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_bar_item_reports"
+            android:enabled="true"
+            android:icon="@drawable/round_report"
+            android:title="Report List" />
+        <!-- Include the common items from menu_user -->
         <item
             android:id="@+id/nav_bar_item_dashboard"
             android:enabled="true"
@@ -32,14 +43,6 @@
             android:icon="@drawable/plant_bold"
             android:title="Crop Health"
             android:visible="true"/>
-
-        <item
-            android:id="@+id/nav_bar_item_myprofile"
-            android:enabled="true"
-            android:icon="@drawable/user_4_fill__4_"
-            android:title="@string/myprofile"
-            android:visible="false"/>
-
 
 
 

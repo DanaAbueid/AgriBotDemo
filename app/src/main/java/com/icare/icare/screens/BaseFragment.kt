@@ -6,6 +6,7 @@ import com.icare.icare.MainActivity
 abstract class BaseFragment : Fragment() {
     abstract fun isLoggedin(): Boolean
 
+
     override fun onResume() {
         super.onResume()
         activity?.let {

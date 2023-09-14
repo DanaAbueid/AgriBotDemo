@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background for the checkbox -->
+    <item android:drawable="@drawable/green2_background" />
+
+    <!-- Add extra padding around the checkbox (adjust padding as needed) -->
+    <item android:left="8dp" android:right="8dp" android:top="8dp" android:bottom="8dp">
+        <selector>
+            <item android:state_checked="true" android:drawable="@drawable/ic_checkbox_checked" />
+            <item android:state_checked="false" android:drawable="@drawable/ic_checkbox_unchecked" />
+        </selector>
+    </item>
+</layer-list>

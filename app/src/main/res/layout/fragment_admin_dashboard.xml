@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".screens.MainDashboardFragment"
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray">
+
+        <TextView
+            android:id="@+id/tv_summary2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="460dp"
+            android:layout_marginEnd="133dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Notifications Center"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="87dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="288dp"
+            android:layout_marginTop="460dp"
+            android:layout_marginEnd="33dp"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/backforadmin" />
+
+        <TextView
+            android:id="@+id/tv_image_condition"
+            android:layout_width="74dp"
+            android:layout_height="27dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Clear"
+            android:textAlignment="center"
+            android:textColor="@color/dark_green1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintEnd_toEndOf="@+id/imageView8"
+            app:layout_constraintStart_toStartOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+        <TextView
+            android:id="@+id/tv_welcome5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="82dp"
+            android:layout_marginEnd="146dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Dashboard"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/view_toolbar"
+            layout="@layout/view_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="87dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="299dp"
+            android:layout_marginTop="98dp"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/backforadmin" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="48dp"
+            android:layout_height="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toStartOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
+            app:srcCompat="@drawable/power_off" />
+
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="341dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="194dp"
+            android:layout_marginEnd="34dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/backforadmin" />
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="341dp"
+            android:layout_height="121dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="313dp"
+            android:layout_marginEnd="35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/backforadmin" />
+
+        <TextView
+            android:id="@+id/tv_condition_label"
+            android:layout_width="159dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="68dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Hello!"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10"
+            app:layout_constraintVertical_bias="0.283" />
+
+        <TextView
+            android:id="@+id/tv_condition_label2"
+            android:layout_width="163dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="44dp"
+            android:backgroundTint="@color/green3"
+            android:fontFamily="@font/bree_serif"
+            android:text="Users Reports"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+            app:layout_constraintStart_toStartOf="@+id/imageView15"
+            app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+        <TextView
+            android:id="@+id/tv_condition_text"
+            android:layout_width="139dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="68dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Admin name"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10"
+            app:layout_constraintVertical_bias="0.682" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_user_notifications"
+            android:layout_width="390dp"
+            android:layout_height="286dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="528dp"
+            android:layout_marginEnd="11dp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/iv_condition"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10"
+            app:srcCompat="@drawable/admin_vector" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="164dp"
+            android:layout_height="118dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:src="@drawable/analysis_amico"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+            app:layout_constraintEnd_toEndOf="@+id/imageView15"
+            app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+        <Button
+            android:id="@+id/btn_to_report_list"
+            style="@style/genericButton"
+            android:layout_width="138dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="55dp"
+            android:backgroundTint="@color/green3"
+            android:text="View Reports"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+            app:layout_constraintStart_toStartOf="@+id/imageView15"
+            app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

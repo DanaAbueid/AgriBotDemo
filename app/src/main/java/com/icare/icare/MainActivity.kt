@@ -108,8 +108,8 @@ class MainActivity : AppCompatActivity() {
             return R.id.user_main_dashboard
         else if (id == R.id.nav_bar_item_soil)
             return R.id.User_soil
-       // else if (id == R.id.nav_bar_item_reports)
-         //   return R.id.User_Reports_List
+        // else if (id == R.id.nav_bar_item_reports)
+        //   return R.id.User_Reports_List
         else if (id == R.id.nav_bar_item_progress)
             return R.id.User_progress
         else if (id == R.id.nav_bar_item_crop)
