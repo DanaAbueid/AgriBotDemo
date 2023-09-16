@@ -34,11 +34,11 @@
             android:visible="true"/>
 
         <item
-            android:id="@+id/nav_bar_item_myprofile"
+            android:id="@+id/nav_bar_item_Settings"
             android:enabled="true"
-            android:icon="@drawable/user_4_fill__4_"
-            android:title="@string/myprofile"
-            android:visible="false"/>
+            android:icon="@drawable/setting__2_"
+            android:title="Settings"
+            android:visible="true"/>
 
 
 

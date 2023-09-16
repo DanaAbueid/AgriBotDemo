@@ -14,6 +14,15 @@
         android:layout_height="wrap_content"
         android:background="@color/light_gray">
 
+        <ImageView
+            android:id="@+id/imageView18"
+            android:layout_width="416dp"
+            android:layout_height="166dp"
+            android:src="@drawable/green7_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <include
             android:id="@+id/view_toolbar"
             layout="@layout/view_toolbar"
@@ -179,7 +188,7 @@
             android:fontFamily="@font/bree_serif"
             android:text="Progress"
             android:textAlignment="viewStart"
-            android:textColor="@color/dark_green1"
+            android:textColor="@color/light_gray"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -9,22 +9,23 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.R
 import com.icare.icare.databinding.FragmentAdminReportsListBinding
 import com.icare.icare.models.AdminReports
 import com.icare.icare.screens.BaseFragment
+
 class AdminReportsListFragment : BaseFragment() {
     private var binding: FragmentAdminReportsListBinding? = null
-    private lateinit var adminReportListAdapter: AdminReportListAdapter
-    private val adminReports = mutableListOf<AdminReports>()
 
     private lateinit var checkboxResolved: CheckBox
     private lateinit var checkboxUnresolved: CheckBox
     private lateinit var searchView: SearchView
 
     override fun isLoggedin(): Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -43,17 +44,26 @@ class AdminReportsListFragment : BaseFragment() {
         checkboxUnresolved = view.findViewById(R.id.checkboxUnresolved)
         searchView = view.findViewById(R.id.searchView)
 
-        adminReportListAdapter = AdminReportListAdapter(binding?.rvAdminReportList!!, requireContext())
+        val adminReportListAdapter = activity?.let {
+            binding?.rvAdminReportList?.let { it1 ->
+                AdminReportListAdapter(
+                    it1, it
+                ) { position ->
+                    // Button click listener for each item
+                    val action = AdminReportsListFragmentDirections.actionReportListToToReport()
+                    findNavController().navigate(action)
+                }
+            }
+        }
+
 
         // Add your admin reports to the list
-        adminReports.addAll(
-            listOf(
-                AdminReports("Test 1",true),
-                AdminReports("Test 2",true),
-                AdminReports("Test 3",true),
-                AdminReports("Test 4",false),
-                AdminReports("Test 5",false)
-            )
+        val adminReportsList = listOf(
+            AdminReports("Test 1", true),
+            AdminReports("Test 2", true),
+            AdminReports("Test 3", true),
+            AdminReports("Test 4", false),
+            AdminReports("Test 5", false)
         )
 
         val dividerItemDecoration = DividerItemDecoration(
@@ -64,57 +74,13 @@ class AdminReportsListFragment : BaseFragment() {
             ContextCompat.getDrawable(it, R.drawable.divider)
                 ?.let { dividerItemDecoration.setDrawable(it) }
         }
-        binding?.rvAdminReportList?.addItemDecoration(dividerItemDecoration)
-        adminReportListAdapter.addAll(adminReports).refresh()
 
         // Set initial state and listeners for CheckBoxes
         checkboxResolved.isChecked = true
         checkboxUnresolved.isChecked = true
 
-        checkboxResolved.setOnCheckedChangeListener { _, _ ->
-            updateFilter()
-        }
-
-        checkboxUnresolved.setOnCheckedChangeListener { _, _ ->
-            updateFilter()
-        }
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // Handle search query submission if needed
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                updateFilter()
-                return true
-            }
-        })
-
-        // Initialize the filter
-        updateFilter()
-
-    }
-
-    private fun updateFilter() {
-        val query = searchView.query.toString()
-        val resolvedFilter = checkboxResolved.isChecked
-        val unresolvedFilter = checkboxUnresolved.isChecked
-
-        val filteredList = adminReports.filter { report ->
-            val matchesQuery = report.title.contains(query, true)
-            if (resolvedFilter && unresolvedFilter) {
-                // Both CheckBoxes are checked, no filtering
-                return@filter matchesQuery
-            } else if (resolvedFilter) {
-                return@filter matchesQuery && report.isResolved
-            } else if (unresolvedFilter) {
-                return@filter matchesQuery && !report.isResolved
-            }
-            return@filter false
-        }
-
-        adminReportListAdapter.filter(query, resolvedFilter)
+        adminReportListAdapter?.addItemDecoration(dividerItemDecoration)
+        adminReportListAdapter?.addAll(adminReportsList)?.refresh()
     }
 
     override fun onDestroyView() {
@@ -122,3 +88,4 @@ class AdminReportsListFragment : BaseFragment() {
         binding = null
     }
 }
+

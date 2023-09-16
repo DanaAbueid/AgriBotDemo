@@ -126,6 +126,134 @@
             />
     </fragment>
 
+    <fragment
+        android:id="@+id/User_settings"
+        android:name="com.icare.icare.screens.UsersSettingsFragment"
+        android:label="progress list" >
+
+        <action
+            android:id="@+id/action_settings_to_subinfo"
+            app:destination="@id/user_my_sub_info"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+
+        <action
+            android:id="@+id/action_settings_to_changepsw"
+            app:destination="@id/user_new_psw"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+
+        <action
+            android:id="@+id/action_settings_to_report"
+            app:destination="@id/User_Reports_List"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+
+        <action
+            android:id="@+id/action_settings_to_info"
+            app:destination="@id/Usermyprofile"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+        <action
+            android:id="@+id/action_settings_to_myinfo"
+            app:destination="@id/Usermyprofile"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_my_sub_info"
+        android:name="com.icare.icare.screens.UpgradeSubscriptionFragment"
+        android:label="sub list" >
+        <action
+            android:id="@+id/action_mySub_to_subList"
+            app:destination="@id/user_new_subscribtion"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_new_subscribtion"
+        android:name="com.icare.icare.screens.UserSubcrebtionFragment"
+        android:label="sub list" >
+        <action
+            android:id="@+id/action_signup_to_payment"
+            app:destination="@id/user_new_payment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/user_new_payment"
+        android:name="com.icare.icare.screens.UserNewPaymentFragment"
+        android:label="sub list" >
+        <action
+            android:id="@+id/user_new_confirm_payment"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/user_new_confirm_payment"
+        android:name="com.icare.icare.screens.ConfirmNewPaymentFragment"
+        android:label="sub list" >
+        <action
+            android:id="@+id/action_new_confirm_to_sublist"
+            app:destination="@id/user_my_sub_info"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_new_psw"
+        android:name="com.icare.icare.screens.NewPasswordFragment"
+        android:label="sub list" >
+        <action
+            android:id="@+id/action_new_confirm_to_settings"
+            app:destination="@id/User_settings"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+    </fragment>
+
+
+
+
+
+
+
 
     <fragment
         android:id="@+id/User_progress"
@@ -194,7 +322,7 @@
 
         <action
             android:id="@+id/action_welcome_to_admin"
-            app:destination="@id/admin_reporting_list"
+            app:destination="@id/admin_dashboard"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
@@ -327,6 +455,9 @@
 
 
 
+
+
+
     <fragment
         android:id="@+id/Usermyprofile"
         android:name="com.icare.icare.screens.UserMyProfileFragment"
@@ -339,9 +470,6 @@
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
     </fragment>
-
-
-
 
 
 

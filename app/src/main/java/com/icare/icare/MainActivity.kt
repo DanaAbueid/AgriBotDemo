@@ -102,8 +102,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun matchIdToFragment(id: Int): Int? {
-        if (id == R.id.nav_bar_item_myprofile)
-            return R.id.Usermyprofile
+        if (id == R.id.nav_bar_item_Settings)
+            return R.id.User_settings
         else if (id == R.id.nav_bar_item_dashboard)
             return R.id.user_main_dashboard
         else if (id == R.id.nav_bar_item_soil)

@@ -10,8 +10,11 @@ import com.icare.icare.models.AdminReports
 
 class AdminReportListAdapter(
     recyclerView: RecyclerView,
-    private val context: Context
-) : BaseRecyclerViewAdapter<AdminReports, AdminReportListAdapter.ViewHolder>(recyclerView) {
+    val context: Context,
+    val onItemClick: (position: Int) -> Unit // Callback function for item click
+) : BaseRecyclerViewAdapter<AdminReports, AdminReportListAdapter.ViewHolder>(
+    recyclerView
+) {
 
     private val originalItems: MutableList<AdminReports> = mutableListOf()
 
@@ -36,6 +39,9 @@ class AdminReportListAdapter(
     ) {
         with(viewHolder.binding) {
             tvUser.text = item.title
+            resolveReport2.setOnClickListener {
+                onItemClick(position) // Invoke the callback when the button is clicked
+            }
         }
     }
 

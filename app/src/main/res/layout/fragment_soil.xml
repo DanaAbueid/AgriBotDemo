@@ -30,6 +30,22 @@ tools:context=".screens.SoilFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/tv_soil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginEnd="107dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Soil Analysiz"
+            android:textAlignment="viewStart"
+            android:textColor="@color/light_gray"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/cv_status_back"
             android:layout_width="149dp"
@@ -141,22 +157,6 @@ tools:context=".screens.SoilFragment"
             app:layout_constraintEnd_toEndOf="@+id/cv_humdity"
             app:layout_constraintHorizontal_bias="0.387"
             app:layout_constraintStart_toStartOf="@+id/cv_humdity" />
-
-        <TextView
-            android:id="@+id/tv_soil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="95dp"
-            android:layout_marginEnd="107dp"
-            android:fontFamily="@font/bree_serif"
-            android:text="Soil Analysiz"
-            android:textAlignment="viewStart"
-            android:textColor="@color/light_gray"
-            android:textSize="48sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_hum_value"

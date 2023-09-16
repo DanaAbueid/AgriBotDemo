@@ -31,10 +31,7 @@ class AdminDashboardFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.viewToolbar?.ivMenu?.visibility = View.VISIBLE
-        binding?.viewToolbar?.ivMenu?.setOnClickListener {
-            toggleSideMenu(true)
-        }
+
 
         val UserNotificationsAdapter = activity?.let {
             binding?.rvUserNotifications?.let { it1 ->
