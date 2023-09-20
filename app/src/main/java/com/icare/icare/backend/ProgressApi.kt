@@ -10,7 +10,7 @@ interface ProgressApi {
     @GET("api/progress/{progress_id}/battery")
     fun getBatteryLevel(@Path("progress_id") progressId: Long): Call<Int>
 
-    @GET("api/progress/{progress_id}/soilTemperature")
+    @GET("/api/progress/{progress_id}/soilTemperature")
     fun getSoilTemperature(@Path("progress_id") progressId: Long): Call<Double>
 
     @GET("api/progress/{progress_id}/soilHumidity")
@@ -42,6 +42,7 @@ interface ProgressApi {
 
     @GET("api/progress/{progress_id}/cropEarlyBlight")
     fun getCropEarlyBlight(@Path("progress_id") progressId: Long): Call<Int>
+
 }
 
 

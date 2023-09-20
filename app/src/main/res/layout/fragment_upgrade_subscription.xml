@@ -192,9 +192,13 @@
         android:id="@+id/imageView20"
         android:layout_width="367dp"
         android:layout_height="116dp"
-        app:srcCompat="@drawable/rounded_corner_background2"
-        tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="561dp" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_general_info2"
+        app:srcCompat="@drawable/rounded_corner_background2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tv_subs_get"

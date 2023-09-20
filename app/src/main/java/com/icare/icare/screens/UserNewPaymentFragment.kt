@@ -15,7 +15,7 @@ class UserNewPaymentFragment : BaseFragment() {
 
     private var binding: FragmentUserNewPaymentBinding? = null
 
-    override fun isLoggedin(): Boolean = true
+    override fun isLoggedin(): Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +35,7 @@ class UserNewPaymentFragment : BaseFragment() {
 
         binding?.let { bindingNotNull ->
             bindingNotNull.tvButtonNextDone.setOnClickListener {
-                findNavController().navigate(UserNewPaymentFragmentDirections.userNewConfirmPayment())
+                findNavController().navigate(UserNewPaymentFragmentDirections.userPaynewConfirmPayment())
             }
 
         }

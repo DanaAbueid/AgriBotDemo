@@ -15,7 +15,7 @@ class UpgradeSubscriptionFragment : BaseFragment() {
 
     private var binding: FragmentUpgradeSubscriptionBinding? = null
 
-    override fun isLoggedin(): Boolean = true
+    override fun isLoggedin(): Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,

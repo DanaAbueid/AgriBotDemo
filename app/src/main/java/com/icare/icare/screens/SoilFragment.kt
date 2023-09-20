@@ -12,6 +12,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.icare.icare.R
+import com.icare.icare.databinding.FragmentProgressBinding
 import com.icare.icare.databinding.FragmentSoilBinding
 import kotlinx.android.synthetic.main.fragment_crop_health.barChart
 
@@ -22,9 +23,7 @@ class SoilFragment : BaseFragment() {
     private lateinit var btnMonth: Button
     private lateinit var btnYear: Button
     private val animationDuration = 3000L
-
     override fun isLoggedin() = true
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,23 +36,18 @@ class SoilFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val progressValue1 = 77 // Set progress value for ProgressBar 1
-        val progressValue2 = 50 // Set progress value for ProgressBar 2
-        val progressValue3 = 25 // Set progress value for ProgressBar 3
-
-        binding?.progressBar1?.progress = progressValue1
-        binding?.progressBar2?.progress = progressValue2
-        binding?.progressBar3?.progress = progressValue3
+        val progressValue1 = 61 // Set progress value for ProgressBar 1
+        val progressValue2 = 23 // Set progress value for ProgressBar 2
+        val progressValue3 = 5 // Set progress value for ProgressBar 3
 
         binding?.tvLabelSoilH?.text = "$progressValue1%"
-        binding?.tvLabelSoilT?.text = "$progressValue2%"
+        binding?.tvLabelSoilT?.text = "$progressValue2°"
         binding?.tvLabelSoilC?.text = "$progressValue3%"
 
-        // Define your animationDuration and barSet here
         val barSet = listOf(
-            "Soil Humidity\nAverage" to 4F,  // Combine "Item 1A" and "Item 1B" into one label
-            "Soil Temperature\nAverage" to 7F,
-            "Soil Counter\nAverage" to 2F,
+            "Soil Humidity" to 4F,  // Combine "Item 1A" and "Item 1B" into one label
+            "Soil Temperature " to 7F,
+            "Soil Health Counter" to 2F,
         )
 
         barChart.animation.duration = animationDuration
@@ -114,7 +108,7 @@ class SoilFragment : BaseFragment() {
     }
 
     private fun animateProgressBar(progressBar: ProgressBar, targetProgress: Int, duration: Long) {
-        val animator = ObjectAnimator.ofInt(progressBar, "progress", targetProgress)
+        val animator = ValueAnimator.ofInt(0, targetProgress)
         animator.duration = duration
         animator.interpolator = DecelerateInterpolator()
         animator.addUpdateListener { animation ->

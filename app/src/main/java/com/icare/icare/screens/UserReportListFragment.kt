@@ -16,7 +16,7 @@ import com.icare.icare.screens.BaseFragment
 
 class UserReportListFragment : BaseFragment() {
     private var binding: FragmentUserReportListBinding? = null
-    override fun isLoggedin(): Boolean = true
+    override fun isLoggedin(): Boolean = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {

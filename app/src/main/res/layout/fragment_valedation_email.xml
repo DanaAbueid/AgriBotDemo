@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="344dp"
-        android:layout_height="505dp"
+        android:layout_width="341dp"
+        android:layout_height="520dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="101dp"
         android:layout_marginEnd="34dp"
@@ -62,11 +62,11 @@
         android:id="@+id/til_username"
         style="@style/genericEditText"
         android:layout_width="285dp"
-        android:layout_height="48dp"
+        android:layout_height="55dp"
         android:layout_marginStart="63dp"
         android:layout_marginTop="514dp"
         android:layout_marginEnd="63dp"
-        android:layout_marginBottom="169dp"
+        android:layout_marginBottom="195dp"
         android:hint="Code"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginTop="622dp"
         android:layout_marginEnd="70dp"
-        android:layout_marginBottom="61dp"
+        android:layout_marginBottom="55dp"
         android:backgroundTint="@color/green2"
         android:enabled="true"
         android:text="Send"
@@ -100,5 +100,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:enabled="true" />
+
+    <TextView
+        android:id="@+id/tv_resend_code"
+        android:layout_width="102dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:text="Resend Code"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="@+id/imageView4" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="85dp"
+        android:layout_height="35dp"
+        android:textAlignment="center"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/tv_resend_code"
+        app:layout_constraintTop_toBottomOf="@+id/til_username"
+        app:layout_constraintVertical_bias="0.23" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

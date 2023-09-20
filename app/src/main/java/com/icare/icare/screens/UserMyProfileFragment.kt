@@ -14,7 +14,7 @@ class UserMyProfileFragment : BaseFragment() {
 
     private var binding: FragmentUserMyProfileBinding? = null
 
-    override fun isLoggedin() = true
+    override fun isLoggedin() = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +35,7 @@ class UserMyProfileFragment : BaseFragment() {
         }
         binding?.let { bindingNotNull ->
             bindingNotNull.tvMyProfile.setOnClickListener {
-                findNavController().navigate(UserConfirmFragmentDirections.actionConfirmToLogin())
+                findNavController().navigate(UserMyProfileFragmentDirections.actionSignupToPayment())
             }
         }
     }

@@ -50,7 +50,7 @@ class AdminReportsListFragment : BaseFragment() {
                     it1, it
                 ) { position ->
                     // Button click listener for each item
-                    val action = AdminReportsListFragmentDirections.actionReportListToToReport()
+                    val action = AdminReportsListFragmentDirections.listToBook()
                     findNavController().navigate(action)
                 }
             }
@@ -59,11 +59,11 @@ class AdminReportsListFragment : BaseFragment() {
 
         // Add your admin reports to the list
         val adminReportsList = listOf(
-            AdminReports("Test 1", true),
-            AdminReports("Test 2", true),
-            AdminReports("Test 3", true),
-            AdminReports("Test 4", false),
-            AdminReports("Test 5", false)
+            AdminReports("Test 1", "Resolved"),
+            AdminReports("Test 2", "Pending"),
+            AdminReports("Test 3", "Pending"),
+            AdminReports("Test 4", "Resolved"),
+            AdminReports("Test 5", "Resolved")
         )
 
         val dividerItemDecoration = DividerItemDecoration(

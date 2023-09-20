@@ -34,6 +34,9 @@ class LoginNewFragment : BaseFragment() {
             bindingNotNull.tvLoginBtn2.setOnClickListener {
                 findNavController().navigate(LoginNewFragmentDirections.actionLoginToDashboard())
             }
+            bindingNotNull.tvForgotPassword2.setOnClickListener {
+                findNavController().navigate(LoginNewFragmentDirections.actionLoginToForpsw())
+            }
         }
     }
 }

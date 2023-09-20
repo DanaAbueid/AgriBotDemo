@@ -29,7 +29,7 @@ class UserSignUpFragment : BaseFragment() {
             bindingNotNull.buttonLogin2.setOnClickListener {
                 if (validateFields()) {
                     // All fields are filled, proceed to the next step
-                    findNavController().navigate(UserSignUpFragmentDirections.actionSignupToSubPlan())
+                    findNavController().navigate(UserSignUpFragmentDirections.actionSignupToCode())
                 }
             }
         }

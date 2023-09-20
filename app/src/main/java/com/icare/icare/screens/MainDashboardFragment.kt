@@ -59,8 +59,8 @@ class MainDashboardFragment : BaseFragment() {
         }
         val NotificationsList = listOf<Notifications>(
             Notifications("The Robot task is now finished check the available analysis for this task!",R.drawable.correct),
-            Notifications("please Stop robot due to weather condition ",R.drawable.cloud_error_24_regular__1_),
-            Notifications("Test 3",R.drawable.cloud_error_24_regular__2_),
+            Notifications("Humidity is low watering the soil started ",R.drawable.cloud_error_24_regular__1_),
+            Notifications("Humidity is low watering the soil started",R.drawable.cloud_error_24_regular__2_),
             Notifications("Test 4",R.drawable.correct),
             Notifications("Test 5",R.drawable.correct),
         )

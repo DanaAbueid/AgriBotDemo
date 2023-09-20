@@ -15,6 +15,15 @@
         android:layout_height="wrap_content"
         android:background="@color/light_gray">
 
+        <ImageView
+            android:id="@+id/imageView38"
+            android:layout_width="416dp"
+            android:layout_height="166dp"
+            android:src="@drawable/green7_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <include
             android:id="@+id/view_toolbar"
             layout="@layout/view_toolbar"
@@ -73,9 +82,9 @@
             android:layout_marginTop="95dp"
             android:layout_marginEnd="107dp"
             android:fontFamily="@font/bree_serif"
-            android:text="Crops Analysiz"
+            android:text="Crops Analysis"
             android:textAlignment="viewStart"
-            android:textColor="@color/dark_green1"
+            android:textColor="@color/light_gray"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,11 +106,11 @@
 
         <ImageView
             android:id="@+id/cv_progress"
-            android:layout_width="374dp"
+            android:layout_width="340dp"
             android:layout_height="161dp"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="37dp"
             android:layout_marginTop="250dp"
-            android:layout_marginEnd="19dp"
+            android:layout_marginEnd="37dp"
             android:layout_marginBottom="468dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +127,7 @@
             android:layout_height="36dp"
             android:layout_marginBottom="5dp"
             android:text="100%"
-            android:textAlignment="viewStart"
+            android:textAlignment="textStart"
             android:textColor="@color/green3"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_label_soilT"
@@ -179,7 +188,7 @@
             android:layout_height="18dp"
             android:progressDrawable="@drawable/custom_progress_bar"
             app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="@+id/cv_progress"
             app:layout_constraintTop_toBottomOf="@+id/tv_soilH_title" />
 
@@ -204,11 +213,11 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="265dp"
             android:layout_height="18dp"
-            android:layout_marginBottom="62dp"
+            android:layout_marginBottom="60dp"
             android:progressDrawable="@drawable/custom_progress_bar"
             app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
             app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintHorizontal_bias="0.213"
             app:layout_constraintStart_toStartOf="@+id/cv_progress" />
 
         <TextView
@@ -232,11 +241,11 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="265dp"
             android:layout_height="18dp"
-            android:layout_marginBottom="18dp"
+            android:layout_marginBottom="16dp"
             android:progressDrawable="@drawable/custom_progress_bar"
             app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
             app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintHorizontal_bias="0.213"
             app:layout_constraintStart_toStartOf="@+id/cv_progress" />
 
         <TextView
@@ -304,7 +313,7 @@
 
         <ImageView
             android:id="@+id/cv_bar_back"
-            android:layout_width="376dp"
+            android:layout_width="336dp"
             android:layout_height="255dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="23dp"

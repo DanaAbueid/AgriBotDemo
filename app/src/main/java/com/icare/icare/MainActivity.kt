@@ -25,11 +25,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-
         binding?.dlMain?.openDrawer(Gravity.LEFT)
         binding?.dlMain?.closeDrawer(Gravity.LEFT)
         UserSession.defaultMenu = R.menu.menu_user
-
 
     }
 
@@ -78,13 +76,13 @@ class MainActivity : AppCompatActivity() {
                     itemBinding.tvTitle.setTextColor(
                         ContextCompat.getColor(
                             this,
-                            R.color.light_green
+                            R.color.dark_green1
                         )
                     )
                     itemBinding.ivLogo.setColorFilter(
                         ContextCompat.getColor(
                             this,
-                            R.color.light_green
+                            R.color.dark_green1
                         )
                     )
                     itemBinding.root.setBackgroundColor(
