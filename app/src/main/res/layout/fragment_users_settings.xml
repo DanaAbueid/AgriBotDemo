@@ -168,6 +168,23 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView28"
         app:srcCompat="@drawable/rounded_corner_background2" />
 
+        <TextView
+            android:id="@+id/tv_condition_label5"
+            android:layout_width="205dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/green3"
+            android:fontFamily="@font/bree_serif"
+            android:text="Change Password"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+            app:layout_constraintStart_toStartOf="@+id/imageView30"
+            app:layout_constraintTop_toTopOf="@+id/imageView30"
+            app:layout_constraintVertical_bias="0.238" />
+
         <Button
             android:id="@+id/button3"
             style="@style/genericButton"
@@ -181,7 +198,18 @@
             app:layout_constraintTop_toTopOf="@+id/imageView30"
             app:layout_constraintVertical_bias="0.716" />
 
-    <ImageView
+        <ImageView
+            android:id="@+id/imageView29"
+            android:layout_width="153dp"
+            android:layout_height="113dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+            app:layout_constraintEnd_toEndOf="@+id/imageView30"
+            app:layout_constraintTop_toBottomOf="@+id/imageView28"
+            app:srcCompat="@drawable/mobile_login_bro" />
+
+        <ImageView
         android:id="@+id/imageView32"
         android:layout_width="366dp"
         android:layout_height="127dp"
@@ -203,34 +231,6 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView32"
         app:layout_constraintTop_toTopOf="@+id/imageView32"
         app:srcCompat="@drawable/exams_rafiki" />
-
-        <TextView
-            android:id="@+id/tv_condition_label5"
-            android:layout_width="205dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="35dp"
-            android:backgroundTint="@color/green3"
-            android:fontFamily="@font/bree_serif"
-            android:text="Change Password"
-            android:textAlignment="viewStart"
-            android:textColor="@color/green3"
-            android:textSize="23sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
-            app:layout_constraintStart_toStartOf="@+id/imageView30"
-            app:layout_constraintTop_toTopOf="@+id/imageView30"
-            app:layout_constraintVertical_bias="0.238" />
-
-        <ImageView
-        android:id="@+id/imageView29"
-        android:layout_width="153dp"
-        android:layout_height="113dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView30"
-        app:layout_constraintEnd_toEndOf="@+id/imageView30"
-        app:layout_constraintTop_toBottomOf="@+id/imageView28"
-        app:srcCompat="@drawable/mobile_login_bro" />
 
         <TextView
             android:id="@+id/tv_condition_label6"

@@ -29,50 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_toolbar" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="135dp"
-        android:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkboxUnresolved"
-        app:layout_constraintTop_toBottomOf="@+id/view_toolbar" />
-
-    <CheckBox
-        android:id="@+id/checkboxResolved"
-        android:layout_width="145dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/custom_checkbox"
-    android:fontFamily="@font/bree_serif"
-    android:text="Resolved"
-    android:textAlignment="textStart"
-    android:textColor="@color/light_gray"
-    android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/checkboxUnresolved"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome3" />
-
-    <CheckBox
-        android:id="@+id/checkboxUnresolved"
-        android:layout_width="145dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/custom_checkbox"
-        android:fontFamily="@font/bree_serif"
-        android:text="Unresolved"
-        android:textAlignment="textStart"
-        android:textColor="@color/light_gray"
-        android:textSize="16sp"
-        android:drawablePadding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkboxResolved"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome3" />
-
     <TextView
         android:id="@+id/tv_welcome4"
         android:layout_width="236dp"
@@ -102,6 +58,19 @@
         app:layout_constraintStart_toStartOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="322dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="667dp"
+        android:background="@drawable/rounded_corner_background3"
+        android:entries="@array/reports"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

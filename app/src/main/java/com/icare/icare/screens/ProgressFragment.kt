@@ -57,7 +57,7 @@ class ProgressFragment : BaseFragment() {
             }
 
             override fun onFailure(call: Call<Double>, t: Throwable) {
-                binding?.tvSensorST?.text = "23°"
+                binding?.tvSensorST?.text = "2°"
             }
         })
 

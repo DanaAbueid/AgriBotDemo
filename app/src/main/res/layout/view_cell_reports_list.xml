@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/resolve_report2"
+            android:id="@+id/tv_view_report2"
             style="@style/genericButton"
             android:layout_width="90dp"
             android:layout_height="48dp"
@@ -55,7 +55,7 @@
             android:text="replay"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/resolve_report2"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_report2"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

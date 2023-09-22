@@ -11,7 +11,8 @@ import com.icare.icare.models.UserReports
 
 class UserReportsAdapter(
     val recyclerView: RecyclerView,
-    val context: Context
+    val context: Context,
+    val onItemClick: (position: Int) -> Unit
 ) : BaseRecyclerViewAdapter<UserReports, UserReportsAdapter.ViewHolder>(
     recyclerView
 ) {
@@ -37,6 +38,11 @@ class UserReportsAdapter(
         with(viewHolder.binding) {
 
             tvUser.text = item.title
+            tvViewReport2.setOnClickListener {
+                onItemClick(position)
+
+            // Invoke the callback when the button is clicked
+            }
 
         }
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.R
@@ -30,12 +31,20 @@ class UserReportListFragment : BaseFragment() {
         binding?.viewToolbar?.ivMenu?.setOnClickListener {
             toggleSideMenu(true)
         }
+        binding?.let { bindingNotNull ->
+            bindingNotNull.button10.setOnClickListener {
+                findNavController().navigate(UserReportListFragmentDirections.makeToReport())
+            }
+        }
 
         val UserReportsAdapter = activity?.let {
             binding?.rvUserReportList?.let { it1 ->
                 UserReportsAdapter(
                     it1, it
-                )
+                ){ position ->
+                    val action = UserReportListFragmentDirections.listToReport(position)
+                    findNavController().navigate(action)
+                }
             }
         }
         val ReportsList = listOf<UserReports>(

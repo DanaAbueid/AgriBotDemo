@@ -20,10 +20,6 @@ import com.icare.icare.screens.BaseFragment
 class AdminReportsListFragment : BaseFragment() {
     private var binding: FragmentAdminReportsListBinding? = null
 
-    private lateinit var checkboxResolved: CheckBox
-    private lateinit var checkboxUnresolved: CheckBox
-    private lateinit var searchView: SearchView
-
     override fun isLoggedin(): Boolean = false
 
     override fun onCreateView(
@@ -40,9 +36,6 @@ class AdminReportsListFragment : BaseFragment() {
             toggleSideMenu(true)
         }
 
-        checkboxResolved = view.findViewById(R.id.checkboxResolved)
-        checkboxUnresolved = view.findViewById(R.id.checkboxUnresolved)
-        searchView = view.findViewById(R.id.searchView)
 
         val adminReportListAdapter = activity?.let {
             binding?.rvAdminReportList?.let { it1 ->
@@ -50,7 +43,7 @@ class AdminReportsListFragment : BaseFragment() {
                     it1, it
                 ) { position ->
                     // Button click listener for each item
-                    val action = AdminReportsListFragmentDirections.listToBook()
+                    val action = AdminReportsListFragmentDirections.listToBook(position)
                     findNavController().navigate(action)
                 }
             }
@@ -74,10 +67,6 @@ class AdminReportsListFragment : BaseFragment() {
             ContextCompat.getDrawable(it, R.drawable.divider)
                 ?.let { dividerItemDecoration.setDrawable(it) }
         }
-
-        // Set initial state and listeners for CheckBoxes
-        checkboxResolved.isChecked = true
-        checkboxUnresolved.isChecked = true
 
         adminReportListAdapter?.addItemDecoration(dividerItemDecoration)
         adminReportListAdapter?.addAll(adminReportsList)?.refresh()

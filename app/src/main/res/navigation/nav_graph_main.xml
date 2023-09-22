@@ -123,15 +123,34 @@
         android:label="reporting list" >
 
         <action
-
-            android:id="@+id/action_signup_to_payment"
-            app:destination="@id/signupUppayment"
+            android:id="@+id/list_to_report"
+            app:destination="@id/User_Reports_essay"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"
+            app:popExitAnim="@anim/slide_out">
+            <argument
+                android:name="position"
+                app:argType="integer" />
+        </action>
 
-            />
+
+        <action
+            android:id="@+id/make_to_report"
+            app:destination="@id/User_Reports_essay"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out">
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/User_Reports_essay"
+        android:name="com.icare.icare.screens.ReportEssayFragment"
+        android:label="reporting list" >
+
     </fragment>
 
 
@@ -396,7 +415,7 @@
         android:label="admin dashboard" >
         <action
             android:id="@+id/action_dashboard_to_reportList"
-            app:destination="@id/admin_reporting_list"
+            app:destination="@id/admin_reportList_to_toReport"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
@@ -405,30 +424,26 @@
     </fragment>
 
 
-    <fragment
-        android:id="@+id/admin_reporting_list"
-        android:name="com.icare.icare.screens.AdminReportsListFragment"
-        android:label="admin reporting " >
-        <action
-            android:id="@+id/action_reportList_to_toReport"
-            app:destination="@id/admin_repots"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"
-            />
-    </fragment>
+
 
     <fragment
         android:id="@+id/admin_reportList_to_toReport"
         android:name="com.icare.icare.screens.AdminReportsListFragment"
         android:label="HomeFragment" >
-        
 
         <action
             android:id="@+id/list_to_book"
-            app:destination="@id/admin_repots" />
+            app:destination="@id/admin_repots"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out">
+            <argument
+                android:name="position"
+                app:argType="integer" />
+        </action>
     </fragment>
+
 
 
     <fragment
@@ -437,7 +452,7 @@
         android:label="admin reporting " >
         <action
             android:id="@+id/action_reportList_to_toReport"
-            app:destination="@id/signupUppayment"
+            app:destination="@id/admin_repots_replay"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
@@ -450,7 +465,7 @@
         android:label="admin reporting " >
         <action
             android:id="@+id/action_replay_to_reportlist"
-            app:destination="@id/admin_reporting_list"
+            app:destination="@id/admin_reportList_to_toReport"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"

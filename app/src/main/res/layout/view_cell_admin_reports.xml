@@ -53,6 +53,7 @@
             android:layout_marginBottom="30dp"
             android:backgroundTint="@color/light_green"
             android:text="Resolve"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/resolve_report2"

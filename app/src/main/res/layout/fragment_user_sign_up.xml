@@ -10,6 +10,15 @@
     app:layout_scrollFlags="scroll"
     tools:context=".screens.UserSignUpFragment">
 
+    <ImageView
+        android:id="@+id/imageView39"
+        android:layout_width="416dp"
+        android:layout_height="166dp"
+        android:src="@drawable/green7_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/view_toolbar"
@@ -91,7 +100,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="@string/username"
+        android:hint="Last Name"
         app:layout_constraintBottom_toTopOf="@+id/til_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
