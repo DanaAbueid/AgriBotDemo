@@ -47,12 +47,10 @@ class UserSubscribtionFragment : BaseFragment() {
             }
         }
         val UserSubcrebtion = listOf<Subscription>(
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
+            Subscription("1 Day","Essential:  Experience a weed-free future on your farm and more, Tap for more info! ","From 15$"),
+            Subscription("1 Day","Standard: Striving for a weed-free, sustainable farm with soil management? Tap for more info! ","From 25$"),
+            Subscription("1 Day","Premium: Working towards a weed-free, sustainable farm and advanced soil and crop health management? Tap for more info!","From 40$"),
+
         )
         val dividerItemDecoration = DividerItemDecoration(
             binding?.rvSubscriptionPlans?.context,

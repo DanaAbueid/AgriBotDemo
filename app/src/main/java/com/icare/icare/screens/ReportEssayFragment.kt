@@ -25,4 +25,25 @@ class ReportEssayFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
+    private fun validateFields(): Boolean {
+        var isValid = true
+
+        val title = binding?.reportTitleNutri?.editText?.text.toString().trim()
+        val spinner = binding?.reportReasonNutri?.isSelected.toString().trim()
+        val essay = binding?.reportTextNutri?.editText?.text.toString().trim()
+
+        if (title.isEmpty()) {
+            binding?.reportTitleNutri?.error = "Please Fill the Title"
+            isValid = false
+        }
+
+        if (essay.isEmpty()) {
+            binding?.reportTextNutri?.error = "Please fill the essay"
+            isValid = false
+        }
+
+
+
+        return isValid
+    }
 }

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/light_gray"
-    tools:context=".screens.UserReportListFragment">
+    tools:context=".screens.UserMyProfileFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray">
 
     <include
         android:id="@+id/view_toolbar"
@@ -20,11 +26,13 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="128dp"
+        android:layout_marginBottom="752dp"
         android:fontFamily="@font/bree_serif"
         android:text="Reports List"
         android:textAlignment="viewStart"
         android:textColor="@color/dark_green1"
         android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_toolbar" />
@@ -34,6 +42,7 @@
         android:layout_width="236dp"
         android:layout_height="27dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="275dp"
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/bree_serif"
@@ -43,34 +52,40 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/rv_admin_report_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_admin_report_list"
         android:layout_width="394dp"
         android:layout_height="481dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="312dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="98dp"
         android:paddingHorizontal="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="322dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="667dp"
-        android:background="@drawable/rounded_corner_background3"
-        android:entries="@array/reports"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="322dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="178dp"
+            android:layout_marginEnd="43dp"
+            android:layout_marginBottom="667dp"
+            android:background="@drawable/spinnerforadminback"
+            android:entries="@array/reports"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

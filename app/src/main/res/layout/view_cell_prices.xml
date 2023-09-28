@@ -13,56 +13,34 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_plan_describtion"
-            android:layout_width="159dp"
-            android:layout_height="81dp"
-            android:layout_marginStart="204dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="75dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/bree_serif"
-            android:text="Premium: Working towards a weed-free, sustainable farm and advanced soil and crop health management? Tap for more info!"
-            android:textAlignment="center"
-            android:textColor="@color/green3"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/tv_price"
-            android:layout_width="122dp"
-            android:layout_height="43dp"
+            android:layout_width="147dp"
+            android:layout_height="66dp"
             android:layout_marginStart="65dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="224dp"
-            android:layout_marginBottom="36dp"
             android:fontFamily="@font/bree_serif"
-            android:text="From 15$"
+            android:text="15$ Only!"
             android:textAlignment="center"
             android:textColor="@color/green5"
-            android:textSize="24sp"
+            android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_plan_year"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_plan_year"
-            android:layout_width="91dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="81dp"
-            android:layout_marginTop="49dp"
-            android:layout_marginEnd="239dp"
+            android:layout_width="94dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="13dp"
             android:fontFamily="@font/bree_serif"
             android:text="1 Day"
             android:textAlignment="center"
             android:textColor="@color/LIGHTER_gray"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="212dp" />
 
         <ImageView
             android:id="@+id/imageView43"
@@ -71,7 +49,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_plan_describtion"
+            app:layout_constraintStart_toEndOf="@+id/tv_plan_year"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/next_ltr__1_" />

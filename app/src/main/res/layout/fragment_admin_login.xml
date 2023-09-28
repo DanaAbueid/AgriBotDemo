@@ -4,21 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
+    android:background="@drawable/admin2"
     tools:context=".screens.AdminLoginFragment">
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="433dp"
-        android:layout_height="423dp"
-        android:layout_marginTop="446dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/back2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login_back" />
 
     <include
         android:id="@+id/toolbar"
@@ -29,39 +16,24 @@
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="106dp"
-        android:layout_marginBottom="698dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="452dp"
+        android:layout_marginEnd="112dp"
         android:fontFamily="@font/bree_serif"
         android:text="Admin Login"
         android:textAlignment="viewStart"
         android:textColor="@color/dark_green1"
         android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_login"
-        style="@style/genericButton"
-        android:layout_width="260dp"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        android:layout_marginTop="18dp"
-        android:backgroundTint="@color/green3"
-        android:enabled="true"
-        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_password"
-        tools:enabled="true" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
         style="@style/genericEditText"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,12 +53,12 @@
         style="@style/genericEditText"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="95dp"
         android:hint="@string/password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -95,5 +67,23 @@
             android:inputType="textPassword"
             tools:layout_editor_absoluteX="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_login"
+        style="@style/genericButton"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/green3"
+        android:enabled="true"
+        android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_password"
+        app:layout_constraintVertical_bias="0.208"
+        tools:enabled="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
