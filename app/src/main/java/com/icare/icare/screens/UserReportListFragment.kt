@@ -48,11 +48,9 @@ class UserReportListFragment : BaseFragment() {
             }
         }
         val ReportsList = listOf<UserReports>(
-            UserReports("Test 1"),
-            UserReports("Test 2"),
-            UserReports("Test 3"),
-            UserReports("Test 4"),
-            UserReports("Test 5"),
+            UserReports("Report 1"),
+            UserReports("Report 2"),
+
         )
         val dividerItemDecoration = DividerItemDecoration(
             binding?.rvUserReportList?.context,

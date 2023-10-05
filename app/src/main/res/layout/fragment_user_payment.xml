@@ -19,7 +19,6 @@
             android:layout_width="412dp"
             android:layout_height="209dp"
             android:layout_marginBottom="19dp"
-            app:layout_constraintBottom_toTopOf="@+id/general_headlin_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +33,7 @@
             android:layout_marginStart="45dp"
             android:layout_marginTop="800dp"
             android:layout_marginEnd="46dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:backgroundTint="@color/green3"
             android:enabled="true"
             android:text="@string/next"
@@ -83,11 +82,11 @@
             android:layout_width="333dp"
             android:layout_height="57dp"
             android:layout_marginBottom="60dp"
-            android:hint="Search For Location"
+            android:hint="Card Holder Name"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
             app:layout_constraintEnd_toEndOf="@+id/imageView5"
             app:layout_constraintStart_toStartOf="@+id/imageView5"
-            app:startIconDrawable="@drawable/location">
+            app:startIconDrawable="@drawable/user_4_fill__3_">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/til_farm_card"

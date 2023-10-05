@@ -10,26 +10,42 @@ object RetrofitInstance {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+
+
+    fun UserSubscriptionApi(): UserSubscriptionApi {
+        return retrofit.create(UserSubscriptionApi::class.java)
+    }
     fun createProgressApi(): ProgressApi {
         return retrofit.create(ProgressApi::class.java)
     }
+
     fun createUserApi(): UserApi {
         return retrofit.create(UserApi::class.java)
+    }
+
+    fun createAuthService(): AuthService {
+        return retrofit.create(AuthService::class.java)
     }
 
     fun ReportApi(): ReportApi {
         return retrofit.create(ReportApi::class.java)
     }
+
     fun SubscriptionPlanApi(): SubscriptionPlanApi {
         return retrofit.create(SubscriptionPlanApi::class.java)
     }
-    fun SummaryApi(): SummaryApi {
+
+    fun createSummaryApi(): SummaryApi {
         return retrofit.create(SummaryApi::class.java)
     }
-    fun UserSubscriptionApi(): UserSubscriptionApi {
-        return retrofit.create(UserSubscriptionApi::class.java)
+
+
+
+    fun UserInfoApi(): UserInfoApi {
+        return retrofit.create(UserInfoApi::class.java)
     }
-
-
-
+    fun createReportApi(): ReportApiService {
+        return retrofit.create(ReportApiService::class.java)
+    }
 }
+

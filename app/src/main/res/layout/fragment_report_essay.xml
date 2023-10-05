@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".screens.UserMyProfileFragment"
+    tools:context=".screens.ReportEssayFragment"
     >
 
 
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/send_report_nutri"
+            android:id="@+id/btn_send_report"
             style="@style/genericButton"
             android:layout_width="339dp"
             android:layout_height="50dp"

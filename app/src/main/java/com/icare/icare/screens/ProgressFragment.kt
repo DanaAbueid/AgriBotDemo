@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.icare.icare.R
+import com.icare.icare.ViewModel.AuthViewModel
 import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response
@@ -19,7 +21,10 @@ import com.icare.icare.databinding.FragmentProgressBinding
 
 class ProgressFragment : BaseFragment() {
 
-    private val animationDuration = 3000L
+    private val authViewModel: AuthViewModel by viewModels()
+
+
+    private val animationDuration = 2000L
 
     private var binding: FragmentProgressBinding? = null
 
@@ -32,6 +37,8 @@ class ProgressFragment : BaseFragment() {
     ): View? {
         binding = FragmentProgressBinding.inflate(inflater, container, false)
         return binding?.root
+        val accessToken = authViewModel.accessToken
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,90 +50,6 @@ class ProgressFragment : BaseFragment() {
 
         // Create a Retrofit instance for your ProgressController
         val progressApi = RetrofitInstance.createProgressApi()
-
-        // Fetch data from the API for each TextView and update them
-        progressApi.getSoilTemperature(progressId.toLong()).enqueue(object : Callback<Double> {
-            override fun onResponse(call: Call<Double>, response: Response<Double>) {
-                if (response.isSuccessful) {
-                    val temperature = response.body() // Get the temperature from the response
-                    // Update the TextView with the new value
-                    binding?.tvSensorST?.text = "$temperature °"
-                } else {
-                    binding?.tvSensorST?.text = "ERROR"
-                }
-            }
-
-            override fun onFailure(call: Call<Double>, t: Throwable) {
-                binding?.tvSensorST?.text = "2°"
-            }
-        })
-
-        progressApi.getSoilHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
-            override fun onResponse(call: Call<Double>, response: Response<Double>) {
-                if (response.isSuccessful) {
-                    val Humidity = response.body() // Get the temperature from the response
-                    // Update the TextView with the new value
-                    binding?.tvSensorSH?.text = "$Humidity %"
-                } else {
-                    binding?.tvSensorSH?.text = "ERROR"
-                }
-            }
-
-            override fun onFailure(call: Call<Double>, t: Throwable) {
-                binding?.tvSensorSH?.text = "61%"
-            }
-        })
-
-
-        progressApi.getBatteryLevel(progressId.toLong()).enqueue(object : Callback<Int> {
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful) {
-                    val BatteryLevel = response.body() // Get the temperature from the response
-                    // Update the TextView with the new value
-                    binding?.tvBattaryValue?.text = "$BatteryLevel %"
-                } else {
-                    binding?.tvBattaryValue?.text = "ERROR"
-                }
-            }
-
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                binding?.tvBattaryValue?.text = "55%"
-            }
-        })
-
-        progressApi.getSoilHealth(progressId.toLong()).enqueue(object : Callback<Boolean> {
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                if (response.isSuccessful) {
-                    val SoilHealth = response.body() // Get the temperature from the response
-                    // Update the TextView with the new value
-                    binding?.tvSensorWC?.text = "$SoilHealth "
-                } else {
-                    binding?.tvSensorWC?.text = "ERROR"
-                }
-            }
-
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                binding?.tvSensorWC?.text = "Good"
-            }
-        })
-        progressApi.getWeedCounter(progressId.toLong()).enqueue(object : Callback<Int> {
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful) {
-                    val WeedCounter = response.body() // Get the temperature from the response
-                    // Update the TextView with the new value
-                    binding?.tvSensorWeedC?.text = "$WeedCounter"
-                } else {
-                    binding?.tvSensorWeedC?.text = "ERROR"
-                }
-            }
-
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                binding?.tvSensorWeedC?.text = "29"
-            }
-        })
-
-
-
 
 
 
@@ -160,11 +83,146 @@ class ProgressFragment : BaseFragment() {
         binding?.tvLabelSoilC4?.text = "$progressValue2%"
         binding?.tvProgressCounterLabel?.text = "$progressValue3%"
 
+        // Fetch data from the API for each TextView and update them
+        progressApi.getSoilTemperature(progressId.toLong()).enqueue(object : Callback<Double> {
+            override fun onResponse(call: Call<Double>, response: Response<Double>) {
+                if (response.isSuccessful) {
+                    val temperature = response.body() // Get the temperature from the response
+                    // Update the TextView with the new value
+                    binding?.tvSensorST?.text = "$temperature °"
+                } else {
+                    binding?.tvSensorST?.text = "ERROR"
+                }
+            }
+
+            override fun onFailure(call: Call<Double>, t: Throwable) {
+                binding?.tvSensorST?.text = "20°"
+            }
+        })
+
+        progressApi.getSoilHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
+            override fun onResponse(call: Call<Double>, response: Response<Double>) {
+                if (response.isSuccessful) {
+                    val Humidity = response.body() // Get the temperature from the response
+                    // Update the TextView with the new value
+                    binding?.tvSensorSH?.text = "$Humidity %"
+                } else {
+                    binding?.tvSensorSH?.text = "ERROR"
+                }
+            }
+
+            override fun onFailure(call: Call<Double>, t: Throwable) {
+                binding?.tvSensorSH?.text = "61%"
+            }
+        })
+
+        progressApi.getRemainingChemicals(progressId.toLong()).enqueue(object : Callback<Double> {
+            override fun onResponse(call: Call<Double>, response: Response<Double>) {
+                if (response.isSuccessful) {
+                    val temperature = response.body()?.toFloat() ?: 0F
+                    binding?.tvLabelSoilT4?.text = "$temperature %"
+                    animateProgressBar(binding?.progressBar10!!, temperature.toInt(), animationDuration)
+                } else {
+                    binding?.tvLabelSoilT4?.text = "ERROR"
+                }
+            }
+
+            override fun onFailure(call: Call<Double>, t: Throwable) {
+                binding?.tvLabelSoilT4?.text = "34%"
+                val temperature =34
+                animateProgressBar(binding?.progressBar10!!, temperature, animationDuration)
+
+            }
+        })
+
+        progressApi.getBatteryLevel(progressId.toLong()).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val BatteryLevel = response.body() // Get the temperature from the response
+                    // Update the TextView with the new value
+                    binding?.tvBattaryValue?.text = "$BatteryLevel %"
+                } else {
+                    binding?.tvBattaryValue?.text = "ERROR"
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                binding?.tvBattaryValue?.text = "55%"
+            }
+        })
+
+        progressApi.getSoilHealth(progressId.toLong()).enqueue(object : Callback<Boolean> {
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if (response.isSuccessful) {
+                    val CropHealthy = response.body()
+
+                    if (CropHealthy == true) {
+                        binding?.tvSensorWC?.text = "Good "
+                    }else {
+                        binding?.tvSensorWC?.text = "Poor " }
+
+                } else {
+                    binding?.tvSensorWC?.text = "Good!"
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                binding?.tvSensorWC?.text = "Good"
+            }
+        })
+
+        progressApi.getWeedCounter(progressId.toLong()).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val WeedCounter = response.body()?.toFloat() ?: 0F
+                    // Update the TextView with the new value
+                    binding?.tvSensorWeedC?.text = "$WeedCounter"
+                    binding?.tvLabelSoilH4?.text = "$WeedCounter"
+                    animateProgressBar(binding?.progressBar9!!, WeedCounter.toInt(), animationDuration)
+
+                } else {
+                    binding?.tvSensorWeedC?.text = "ERROR"
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                binding?.tvSensorWeedC?.text = "29"
+                binding?.tvLabelSoilH4?.text = "29"
+                val WeedCounter =29
+                animateProgressBar(binding?.progressBar9!!, WeedCounter.toInt(), animationDuration)
+
+            }
+        })
+        progressApi.getCropHealthy(progressId.toLong()).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val WeedCounter = response.body()?.toFloat() ?: 0F
+                    // Update the TextView with the new value
+                    binding?.tvLabelSoilC4?.text = "$WeedCounter"
+                    animateProgressBar(binding?.progressBar11!!, WeedCounter.toInt(), animationDuration)
+
+                } else {
+                    binding?.tvSensorWeedC?.text = "ERROR"
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                binding?.tvLabelSoilC4?.text = "16"
+                val WeedCounter =16
+                animateProgressBar(binding?.progressBar11!!, WeedCounter.toInt(), animationDuration)
+
+            }
+        })
+
         binding?.viewToolbar?.ivMenu?.visibility = View.VISIBLE
         binding?.viewToolbar?.ivMenu?.setOnClickListener {
             toggleSideMenu(true)
         }
+
+
     }
+
+
 
     private fun animateProgressBar(progressBar: ProgressBar, targetProgress: Int, duration: Long) {
         val animator = ObjectAnimator.ofInt(progressBar, "progress", targetProgress)

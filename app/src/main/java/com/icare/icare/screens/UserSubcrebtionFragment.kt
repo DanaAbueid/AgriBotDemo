@@ -1,4 +1,5 @@
 package com.icare.icare.screens
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -6,18 +7,18 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.R
 import com.icare.icare.databinding.FragmentUserSubcrebtionBinding
-
 import com.icare.icare.models.Subscription
-
-import com.icare.icare.screens.BaseFragment
-
+import com.icare.icare.screens.UserSubcrebtionAdapter
 
 class UserSubcrebtionFragment : BaseFragment() {
     private var binding: FragmentUserSubcrebtionBinding? = null
+
     override fun isLoggedin(): Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -32,38 +33,46 @@ class UserSubcrebtionFragment : BaseFragment() {
             toggleSideMenu(true)
         }
 
-        binding?.let { bindingNotNull ->
-            bindingNotNull.tvButtonNextPay.setOnClickListener {
-                findNavController().navigate(UserSubcrebtionFragmentDirections.actionSignupToPayment())
+// Inside UserSubcrebtionFragment onViewCreated
+        val userSubcrebtionList = listOf<Subscription>(
+            Subscription("TypeA", "1 Day", "Essential: Do you want a weed-free farm? Tap for more info!", "From 15$"),
+            Subscription("TypeB", "1 Day", "Standard: Striving for a weed-free, sustainable farm future with soil management? Tap for more info!\n", "From 25$"),
+            Subscription("TypeD", "1 Day", "Premium: Working towards a weed-free, sustainable farm and advanced soil and crop health management. Tap for more info!", "From 40$"),
+        )
+
+// Create the adapter and set the item click callback
+        val userSubcrebtionAdapter = UserSubcrebtionAdapter(requireContext()) { subscription ->
+            // Handle item click and navigate based on the subscription type
+            when (subscription.type) {
+                "TypeA" -> findNavController().navigate(UserSubcrebtionFragmentDirections.actionSignupToPlan1())
+                "TypeB" -> findNavController().navigate(UserSubcrebtionFragmentDirections.actionSignupToPlan3())
+                "TypeD" -> findNavController().navigate(UserSubcrebtionFragmentDirections.actionSignupToPlan2())
             }
         }
 
-        val UserSubcrebtionAdapter = activity?.let {
-            binding?.rvSubscriptionPlans?.let { it1 ->
-                UserSubcrebtionAdapter(
-                    it1, it
-                )
+        binding?.rvSubscriptionPlans?.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = userSubcrebtionAdapter
+
+            val dividerItemDecoration = DividerItemDecoration(
+                context,
+                RecyclerView.VERTICAL
+            )
+            ContextCompat.getDrawable(requireContext(), R.drawable.divider)?.let {
+                dividerItemDecoration.setDrawable(it)
             }
+            addItemDecoration(dividerItemDecoration)
         }
-        val UserSubcrebtion = listOf<Subscription>(
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-            Subscription("1 Year","Test this sub ","66$"),
-        )
-        val dividerItemDecoration = DividerItemDecoration(
-            binding?.rvSubscriptionPlans?.context,
-            RecyclerView.VERTICAL
-        )
-        context?.let {
-            ContextCompat.getDrawable(it, R.drawable.divider)
-                ?.let { dividerItemDecoration.setDrawable(it) }
-        }
-        UserSubcrebtionAdapter?.addItemDecoration(dividerItemDecoration)
-        UserSubcrebtionAdapter?.addAll(UserSubcrebtion)?.refresh()
+
+        userSubcrebtionAdapter.addAll(userSubcrebtionList).refresh()
+  }
+
+
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
-
-
 }

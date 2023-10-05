@@ -14,11 +14,14 @@ import com.icare.icare.databinding.ActivityMainBinding
 import com.icare.icare.databinding.ViewMenuItemBinding
 import android.view.Menu
 import android.view.MenuItem
-
+import androidx.activity.viewModels
+import com.icare.icare.ViewModel.AuthViewModel
 
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
+    private val authViewModel: AuthViewModel by viewModels()
+
     private var selectedItemId = R.id.user_main_dashboard
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

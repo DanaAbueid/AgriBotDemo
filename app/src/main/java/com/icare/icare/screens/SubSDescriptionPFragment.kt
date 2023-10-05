@@ -24,7 +24,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class SubDescriptionPFragment : BaseFragment() {
+
+class SubSDescriptionPFragment : BaseFragment() {
     private var binding: FragmentSubDescriptionPBinding? = null
     private val authViewModel: AuthViewModel by viewModels()
 
@@ -79,7 +80,7 @@ class SubDescriptionPFragment : BaseFragment() {
             if (subscriptionPlanId > 0) {
                 makeApiPostRequest(userId, subscriptionPlanId)
 
-                val action = SubDescriptionPFragmentDirections.actionMyS6ubToPayment(position)
+                val action = SubSDescriptionPFragmentDirections.actionMyS6ubToPayment(position)
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(requireContext(), "Network error. Please try again later", Toast.LENGTH_SHORT).show()
@@ -102,7 +103,7 @@ class SubDescriptionPFragment : BaseFragment() {
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    findNavController().navigate(SubDescriptionPFragmentDirections.actionSubToPaymentB())
+                    findNavController().navigate(SubSDescriptionPFragmentDirections.actionSubToPaymentB2())
                 } else {
 
                     Toast.makeText(requireContext(), "Network error. Please try again later", Toast.LENGTH_SHORT).show()

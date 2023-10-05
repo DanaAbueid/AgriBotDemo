@@ -35,7 +35,7 @@
 
         <ImageView
             android:id="@+id/imageView35"
-            android:layout_width="416dp"
+            android:layout_width="375dp"
             android:layout_height="166dp"
             android:layout_marginTop="28dp"
             android:src="@drawable/green7_background"
@@ -57,9 +57,9 @@
             android:id="@+id/tv_welcome11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="74dp"
-            android:layout_marginEnd="115dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="71dp"
+            android:layout_marginEnd="70dp"
             android:fontFamily="@font/bree_serif"
             android:text="Subscription"
             android:textAlignment="viewStart"
@@ -83,31 +83,34 @@
 
         <TextView
             android:id="@+id/tv_Subscription_Plan"
-            android:layout_width="363dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="352dp"
-            android:layout_marginEnd="24dp"
+            android:layout_width="215dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="359dp"
+            android:layout_marginEnd="98dp"
+            android:layout_marginBottom="499dp"
             android:fontFamily="@font/bree_serif"
             android:text="Subscription Plans"
             android:textAlignment="viewStart"
             android:textColor="@color/dark_green1"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_subscription_plans"
-            android:layout_width="385dp"
-            android:layout_height="376dp"
+            android:layout_width="353dp"
+            android:layout_height="359dp"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="432dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="110dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

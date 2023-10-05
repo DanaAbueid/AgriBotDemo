@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.databinding.ViewCellAdminReportsBinding
 import com.icare.icare.generics.BaseRecyclerViewAdapter
 import com.icare.icare.models.AdminReports
-import kotlinx.android.synthetic.main.view_cell_admin_reports.view.tv_user
 
 class AdminReportListAdapter(
     recyclerView: RecyclerView,

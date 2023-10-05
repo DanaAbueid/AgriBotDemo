@@ -4,17 +4,16 @@ package com.icare.icare.screens
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.databinding.ViewCellPricesBinding
 import com.icare.icare.generics.BaseRecyclerViewAdapter
 import com.icare.icare.models.Prices
-import kotlinx.android.synthetic.main.view_cell_notification.view.tv_notification_text
-import kotlinx.android.synthetic.main.view_cell_prices.view.tv_price
 
 class SubDescriptionAdapter(
     val recyclerView: RecyclerView,
-    val context: Context
+    val context: Context,
+    val onItemClick: (position: Int) -> Unit
+
 ) : BaseRecyclerViewAdapter<Prices, SubDescriptionAdapter.ViewHolder>(
     recyclerView
 ) {
@@ -42,7 +41,11 @@ class SubDescriptionAdapter(
 
             tvPlanYear.text=item.description
             tvPrice.text=item.price
+            btnToPay.setOnClickListener {
+                onItemClick(position)
 
+                // Invoke the callback when the button is clicked
+            }
         }
     }
 

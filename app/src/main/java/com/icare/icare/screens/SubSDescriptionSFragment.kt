@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
 import com.icare.icare.backend.RetrofitInstance
-import com.icare.icare.databinding.FragmentSubDescriptionBinding
 import com.icare.icare.databinding.FragmentSubDescriptionPBinding
+import com.icare.icare.databinding.FragmentSubDescriptionSBinding
 import com.icare.icare.models.Prices
 
 import com.icare.icare.screens.BaseFragment
@@ -24,8 +24,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class SubDescriptionPFragment : BaseFragment() {
-    private var binding: FragmentSubDescriptionPBinding? = null
+class SubSDescriptionSFragment : BaseFragment() {
+    private var binding: FragmentSubDescriptionSBinding? = null
     private val authViewModel: AuthViewModel by viewModels()
 
     private val userId = "304" // Replace with the actual user ID
@@ -35,7 +35,7 @@ class SubDescriptionPFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSubDescriptionPBinding.inflate(inflater, container, false)
+        binding = FragmentSubDescriptionSBinding.inflate(inflater, container, false)
         return binding?.root
         val accessToken = authViewModel.accessToken
 
@@ -70,16 +70,16 @@ class SubDescriptionPFragment : BaseFragment() {
         ) { position ->
             val userId = 304L // Replace with the actual user ID (if not already defined)
             val subscriptionPlanId = when (position) {
-                0 -> 3L
-                1 -> 6L
-                2 -> 9L
+                0 -> 2L
+                1 -> 5L
+                2 -> 8L
                 else -> 0L
             }
 
             if (subscriptionPlanId > 0) {
                 makeApiPostRequest(userId, subscriptionPlanId)
 
-                val action = SubDescriptionPFragmentDirections.actionMyS6ubToPayment(position)
+                val action = SubSDescriptionSFragmentDirections.actionMyS9ubToPayment(position)
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(requireContext(), "Network error. Please try again later", Toast.LENGTH_SHORT).show()
@@ -102,7 +102,7 @@ class SubDescriptionPFragment : BaseFragment() {
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    findNavController().navigate(SubDescriptionPFragmentDirections.actionSubToPaymentB())
+                    findNavController().navigate(SubSDescriptionSFragmentDirections.actionSubToPaymentD2())
                 } else {
 
                     Toast.makeText(requireContext(), "Network error. Please try again later", Toast.LENGTH_SHORT).show()
