@@ -259,9 +259,7 @@ class UserSignUpFragment : BaseFragment() {
                     authViewModel.accessToken = authenticationResponse?.accessToken
                     findNavController().navigate(UserSignUpFragmentDirections.actionSignupToCode())
                 } else {
-                    // Signup failed, handle the error response here
                     val errorMessage = "Signup failed. Please try again."
-                    // Show an error message to the user, e.g., using a Toast
                     Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }

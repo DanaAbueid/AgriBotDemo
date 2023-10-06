@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
+import com.icare.icare.backend.ApiService
+import com.icare.icare.backend.ProgressApi
 import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response
@@ -22,10 +25,12 @@ import com.icare.icare.databinding.FragmentProgressBinding
 class ProgressFragment : BaseFragment() {
 
     private val authViewModel: AuthViewModel by viewModels()
+    private var progressId: Long? = null
+    val userId = authViewModel.userId
+    val accessToken = authViewModel.accessToken
 
 
     private val animationDuration = 2000L
-
     private var binding: FragmentProgressBinding? = null
 
     override fun isLoggedin() = true
@@ -37,19 +42,39 @@ class ProgressFragment : BaseFragment() {
     ): View? {
         binding = FragmentProgressBinding.inflate(inflater, container, false)
         return binding?.root
-        val accessToken = authViewModel.accessToken
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        // Replace with your actual user ID
-        val progressId = 12334
+        // Inside onViewCreated method of ProgressFragment
+        val accessToken = authViewModel.accessToken
+        val apiService = ApiService(accessToken, "BASE_URL")
+        val progressApi = apiService.retrofit.create(ProgressApi::class.java)
 
-        // Create a Retrofit instance for your ProgressController
-        val progressApi = RetrofitInstance.createProgressApi()
+        val userId = authViewModel.userId // Get the user ID from your ViewModel
+
+        if (userId != null) {
+            // Create a Retrofit instance for your ProgressApi
+            val progressApi = RetrofitInstance.createProgressApi()
+
+            // Make the API request
+            progressApi.getProgressIdCurrentTime(userId).enqueue(object : Callback<Long> {
+                override fun onResponse(call: Call<Long>, response: Response<Long>) {
+                    if (response.isSuccessful) {
+                        progressId = response.body() // Assign the value to the class-level property
+                    } else {
+                        val errorMessage = "Retrieving the progress failed. Please try again later."
+                        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()                    }
+                }
+                override fun onFailure(call: Call<Long>, t: Throwable) {
+                    val errorMessage = "Retrieving the progress failed. Please try again."
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()                   }
+            })
+        } else {
+            val errorMessage = "ERROR Please try again later."
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()         }
 
 
 
@@ -84,7 +109,7 @@ class ProgressFragment : BaseFragment() {
         binding?.tvProgressCounterLabel?.text = "$progressValue3%"
 
         // Fetch data from the API for each TextView and update them
-        progressApi.getSoilTemperature(progressId.toLong()).enqueue(object : Callback<Double> {
+        progressApi.getSoilTemperature(progressId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body() // Get the temperature from the response
@@ -100,7 +125,7 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getSoilHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
+        progressApi.getSoilHumidity(progressId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val Humidity = response.body() // Get the temperature from the response
@@ -116,7 +141,7 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getRemainingChemicals(progressId.toLong()).enqueue(object : Callback<Double> {
+        progressApi.getRemainingChemicals(progressId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -135,7 +160,7 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getBatteryLevel(progressId.toLong()).enqueue(object : Callback<Int> {
+        progressApi.getBatteryLevel(progressId).enqueue(object : Callback<Int> {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful) {
                     val BatteryLevel = response.body() // Get the temperature from the response
@@ -151,7 +176,7 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getSoilHealth(progressId.toLong()).enqueue(object : Callback<Boolean> {
+        progressApi.getSoilHealth(progressId).enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 if (response.isSuccessful) {
                     val CropHealthy = response.body()
@@ -171,7 +196,7 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getWeedCounter(progressId.toLong()).enqueue(object : Callback<Int> {
+        progressApi.getWeedCounter(progressId).enqueue(object : Callback<Int> {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful) {
                     val WeedCounter = response.body()?.toFloat() ?: 0F
@@ -193,7 +218,7 @@ class ProgressFragment : BaseFragment() {
 
             }
         })
-        progressApi.getCropHealthy(progressId.toLong()).enqueue(object : Callback<Int> {
+        progressApi.getCropHealthy(progressId).enqueue(object : Callback<Int> {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful) {
                     val WeedCounter = response.body()?.toFloat() ?: 0F

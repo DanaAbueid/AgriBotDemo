@@ -23,6 +23,7 @@ import com.db.williamchart.slidertooltip.SliderTooltip
 import kotlinx.android.synthetic.main.fragment_crop_health.*
 import com.db.williamchart.ExperimentalFeature
 import com.icare.icare.ViewModel.AuthViewModel
+import com.icare.icare.backend.ApiService
 import com.icare.icare.backend.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,14 +33,19 @@ import retrofit2.Response
 class CropHealthFragment : BaseFragment() {
 
     private val authViewModel: AuthViewModel by viewModels()
+    private var progressId: Long? = null
+    val userId = authViewModel.userId
+    val accessToken = authViewModel.accessToken
 
-        private var binding: FragmentCropHealthBinding? = null
+
+    private var binding: FragmentCropHealthBinding? = null
         private lateinit var btnToday: Button
         private lateinit var btnMonth: Button
         private lateinit var btnYear: Button
         private val animationDuration = 3000L
 
-        override fun isLoggedin() = true
+
+    override fun isLoggedin() = true
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -48,12 +54,42 @@ class CropHealthFragment : BaseFragment() {
         ): View? {
             binding = FragmentCropHealthBinding.inflate(inflater, container, false)
             return binding?.root
-            val accessToken = authViewModel.accessToken
 
         }
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+
+            val progressApi = RetrofitInstance.createProgressApi()
+            val summaryApi = RetrofitInstance.createSummaryApi()
+
+            val apiService = ApiService(accessToken, "BASE_URL")
+
+            val userId = authViewModel.userId // Get the user ID from your ViewModel
+
+            if (userId != null) {
+                // Create a Retrofit instance for your ProgressApi
+                val progressApi = RetrofitInstance.createProgressApi()
+
+                // Make the API request
+                progressApi.getProgressIdCurrentTime(userId).enqueue(object : Callback<Long> {
+                    override fun onResponse(call: Call<Long>, response: Response<Long>) {
+                        if (response.isSuccessful) {
+                            progressId = response.body() // Assign the value to the class-level property
+                        } else {
+                            // Handle the error response...
+                        }
+                    }
+                    override fun onFailure(call: Call<Long>, t: Throwable) {
+                        // Handle the failure...
+                    }
+                })
+            } else {
+                // Handle the case where user ID is not available
+            }
+
+
 
             val progressValue1 = 77 // Set progress value for ProgressBar 1
             val progressValue2 = 50 // Set progress value for ProgressBar 2
@@ -66,14 +102,11 @@ class CropHealthFragment : BaseFragment() {
             binding?.tvLabelSoilH3?.text = "$progressValue1%"
             binding?.tvLabelSoilT3?.text = "$progressValue2%"
             binding?.tvLabelSoilC3?.text = "$progressValue3%"
-            val progressId = 12334
-
-            // Create a Retrofit instance for your ProgressController
-            val progressApi = RetrofitInstance.createProgressApi()
-            val summaryApi = RetrofitInstance.createSummaryApi()
 
 
-            progressApi.getCropHealthy(progressId.toLong()).enqueue(object : Callback<Int> {
+
+
+            progressApi.getCropHealthy(progressId).enqueue(object : Callback<Int> {
                 override fun onResponse(call: Call<Int>, response: Response<Int>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
@@ -93,7 +126,7 @@ class CropHealthFragment : BaseFragment() {
                 }
             })
 
-            progressApi.getCropEarlyBlight(progressId.toLong()).enqueue(object : Callback<Int> {
+            progressApi.getCropEarlyBlight(progressId).enqueue(object : Callback<Int> {
                 override fun onResponse(call: Call<Int>, response: Response<Int>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
@@ -113,7 +146,7 @@ class CropHealthFragment : BaseFragment() {
                 }
             })
 
-            progressApi.getCropLight(progressId.toLong()).enqueue(object : Callback<Int> {
+            progressApi.getCropLight(progressId).enqueue(object : Callback<Int> {
                 override fun onResponse(call: Call<Int>, response: Response<Int>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
@@ -140,9 +173,9 @@ class CropHealthFragment : BaseFragment() {
 
             // Set click listeners for the buttons
 
-                btnToday.setOnClickListener { onTodayButtonClicked() }
-                btnMonth.setOnClickListener { onMonthButtonClicked() }
-                btnYear.setOnClickListener { onYearButtonClicked() }
+            btnToday.setOnClickListener { onTodayButtonClicked(apiService, progressId) }
+            btnMonth.setOnClickListener { onMonthButtonClicked(apiService, progressId) }
+            btnYear.setOnClickListener { onYearButtonClicked(apiService, progressId) }
 
 
                 binding?.viewToolbar?.ivMenu?.visibility = View.VISIBLE
@@ -160,15 +193,13 @@ class CropHealthFragment : BaseFragment() {
             super.onDestroyView()
             binding = null
         }
-    private fun onTodayButtonClicked() {
-
-        val progressId = 12334
+    private fun onTodayButtonClicked(apiService: ApiService, progressId: Long?) {
 
         // Create a Retrofit instance for your ProgressController
         val progressApi = RetrofitInstance.createProgressApi()
         val summaryApi = RetrofitInstance.createSummaryApi()
 
-        summaryApi.getAverageTodayCropHealthy(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageTodayCropHealthy(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -188,7 +219,7 @@ class CropHealthFragment : BaseFragment() {
         })
 
 
-        summaryApi.getAverageTodayLightCrop(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageTodayLightCrop(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -207,7 +238,7 @@ class CropHealthFragment : BaseFragment() {
             }
         })
 
-        summaryApi.getAverageTodayCropEarlyBlight(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageTodayCropEarlyBlight(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -228,15 +259,13 @@ class CropHealthFragment : BaseFragment() {
 
     }
 
-    private fun onMonthButtonClicked() {
-
-        val progressId = 12334
+    private fun onMonthButtonClicked(apiService: ApiService, progressId: Long?) {
 
         // Create a Retrofit instance for your ProgressController
         val progressApi = RetrofitInstance.createProgressApi()
         val summaryApi = RetrofitInstance.createSummaryApi()
 
-        summaryApi.getMonthCropHealthy(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getMonthCropHealthy(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -256,7 +285,7 @@ class CropHealthFragment : BaseFragment() {
         })
 
 
-        summaryApi.getAverageThisMonthLightCrop(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisMonthLightCrop(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -275,7 +304,7 @@ class CropHealthFragment : BaseFragment() {
             }
         })
 
-        summaryApi.getAverageThisMonthCropEarlyBlight(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisMonthCropEarlyBlight(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -296,15 +325,13 @@ class CropHealthFragment : BaseFragment() {
 
     }
 
-    private fun onYearButtonClicked() {
-
-        val progressId = 12334
+    private fun onYearButtonClicked(apiService: ApiService, progressId: Long?) {
 
         // Create a Retrofit instance for your ProgressController
         val progressApi = RetrofitInstance.createProgressApi()
         val summaryApi = RetrofitInstance.createSummaryApi()
 
-        summaryApi.getAverageYearCropHealthy(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageYearCropHealthy(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -324,7 +351,7 @@ class CropHealthFragment : BaseFragment() {
         })
 
 
-        summaryApi.getAverageThisYearLightCrop(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisYearLightCrop(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -343,7 +370,7 @@ class CropHealthFragment : BaseFragment() {
             }
         })
 
-        summaryApi.getAverageThisYearCropEarlyBlight(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisYearCropEarlyBlight(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body()?.toFloat() ?: 0F
@@ -373,26 +400,6 @@ class CropHealthFragment : BaseFragment() {
         animator.start()
     }
 
-        private fun onButtonClicked(clickedButton: Button) {
-            // Reset the background color (tint) for all buttons
-            resetButtonBackgroundColors()
-
-            // Set a different background color (tint) for the clicked button
-            clickedButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green3))
-
-            // Handle the button's click action here
-            when (clickedButton.id) {
-                R.id.bt_today -> {
-                    // Handle click for "Today" button
-                }
-                R.id.btn_month -> {
-                    // Handle click for "This Month" button
-                }
-                R.id.btn_year -> {
-                    // Handle click for "This Year" button
-                }
-            }
-        }
 
         private fun resetButtonBackgroundColors() {
             // Reset the background color (tint) for all buttons to the original color
