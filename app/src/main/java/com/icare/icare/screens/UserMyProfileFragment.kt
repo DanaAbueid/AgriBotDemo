@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
+import com.icare.icare.backend.ApiService
+import com.icare.icare.backend.ProgressApi
 import com.icare.icare.backend.RetrofitInstance
 import com.icare.icare.backend.UserInfoApi
 import com.icare.icare.databinding.FragmentUserMyProfileBinding
@@ -18,8 +20,12 @@ import kotlinx.coroutines.launch
 class UserMyProfileFragment : BaseFragment() {
 
     private var binding: FragmentUserMyProfileBinding? = null
-    private lateinit var userInfoApi: UserInfoApi // Step 1: Create an instance
+  //  private lateinit var userInfoApi: UserInfoApi // Step 1: Create an instance
     private val authViewModel: AuthViewModel by viewModels()
+    val userId = authViewModel.userId
+    private lateinit var userInfoApi: UserInfoApi // Declare it at the class level
+
+
 
 
     override fun isLoggedin() = false
@@ -37,6 +43,14 @@ class UserMyProfileFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Inside onViewCreated method of ProgressFragment
+        val accessToken = authViewModel.accessToken
+        val apiService = ApiService(accessToken, "BASE_URL")
+        userInfoApi = apiService.retrofit.create(UserInfoApi::class.java) // Initialize it here
+
+        val userId = authViewModel.userId // Get the user ID from your ViewModel
+
         binding?.let { bindingNotNull ->
             bindingNotNull.viewToolbar.ivMenu.visibility = View.VISIBLE
             bindingNotNull.viewToolbar.ivMenu.setOnClickListener {
@@ -49,10 +63,6 @@ class UserMyProfileFragment : BaseFragment() {
             }
         }
 
-        // Step 2: Initialize the UserInfoApi instance
-        userInfoApi = RetrofitInstance.retrofit.create(UserInfoApi::class.java)
-
-        // Call API functions and update UI elements
         updateUserProfile()
     }
 
@@ -63,7 +73,6 @@ class UserMyProfileFragment : BaseFragment() {
 
     private fun updateUserProfile() {
         // Assume you have the user ID from somewhere (e.g., user authentication)
-        val userId = 123L // Replace with the actual user ID
 
         // Use coroutines to make API calls
         lifecycleScope.launch {
@@ -81,7 +90,12 @@ class UserMyProfileFragment : BaseFragment() {
                 binding?.tvLastNameGet?.editText?.setText(lastName)
                 binding?.gerLocation?.editText?.setText(location)
                 binding?.phoneGet?.editText?.setText(phoneNumber)
-             //   binding?.emailGet?.editText?.text=email
+                val emailEditText = binding?.emailGet?.editText
+                val emailgeter = email.toString() // Replace with your desired text
+                emailEditText?.setText(emailgeter)
+                emailEditText?.isFocusable = false
+                emailEditText?.isClickable = false
+                emailEditText?.background = null
 
 
             } catch (e: Exception) {

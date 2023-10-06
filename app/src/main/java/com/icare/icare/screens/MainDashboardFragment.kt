@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
+import com.icare.icare.backend.ApiService
+import com.icare.icare.backend.ProgressApi
 import com.icare.icare.backend.RetrofitInstance
 import com.icare.icare.databinding.FragmentMainDashboardBinding
 
@@ -32,6 +35,9 @@ import retrofit2.Response
 class MainDashboardFragment : BaseFragment() {
     private var binding: FragmentMainDashboardBinding? = null
     private val authViewModel: AuthViewModel by viewModels()
+
+    private var progressId: Long? = null
+    val userId = authViewModel.userId
 
     private lateinit var btncrops: Button
     private lateinit var btnsoil: Button
@@ -53,6 +59,31 @@ class MainDashboardFragment : BaseFragment() {
         binding?.viewToolbar?.ivMenu?.setOnClickListener {
             toggleSideMenu(true)
         }
+
+        val accessToken = authViewModel.accessToken
+        val apiService = ApiService(accessToken, "BASE_URL")
+        val progressApi = apiService.retrofit.create(ProgressApi::class.java)
+
+        val userId = authViewModel.userId // Get the user ID from your ViewModel
+
+        if (userId != null) {
+            progressApi.getProgressIdCurrentTime(userId).enqueue(object : Callback<Long> {
+                override fun onResponse(call: Call<Long>, response: Response<Long>) {
+                    if (response.isSuccessful) {
+                        progressId = response.body() // Assign the value to the class-level property
+                    } else {
+                        val errorMessage = "Retrieving the progress failed. Please try again later."
+                        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()                    }
+                }
+                override fun onFailure(call: Call<Long>, t: Throwable) {
+                    val errorMessage = "Retrieving the progress failed. Please try again."
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()                   }
+            })
+        } else {
+            val errorMessage = "ERROR Please try again later."
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()         }
+
+
 
         btncrops = view.findViewById(R.id.btn_crops)
         btnsoil = view.findViewById(R.id.btn_soil)
@@ -104,15 +135,14 @@ class MainDashboardFragment : BaseFragment() {
         // Handle the button's click action here
         when (clickedButton.id) {
             R.id.btn_crops -> {
-                val progressId = 12334
 
                 // Create a Retrofit instance for your ProgressController
                 val progressApi = RetrofitInstance.createProgressApi()
 
                 // Fetch data from the API for each TextView and update them
-                progressApi.getCropHealthy(progressId.toLong()).enqueue(object :
-                    Callback<Int> {
-                    override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                progressApi.getCropHealthy(progressId).enqueue(object :
+                    Callback<Int?> {
+                    override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                         if (response.isSuccessful) {
                             val CropHealthy = response.body() // Get the temperature from the response
                             // Update the TextView with the new value
@@ -122,7 +152,7 @@ class MainDashboardFragment : BaseFragment() {
                         }
                     }
 
-                    override fun onFailure(call: Call<Int>, t: Throwable) {
+                    override fun onFailure(call: Call<Int?>, t: Throwable) {
                         binding?.tvConditionText?.text = "16"
                     }
                 })
@@ -135,11 +165,10 @@ class MainDashboardFragment : BaseFragment() {
 
             }
             R.id.btn_soil -> {
-                val progressId = 12334
                 val progressApi = RetrofitInstance.createProgressApi()
 
                 // Fetch data from the API for each TextView and update them
-                progressApi.getSoilHealth(progressId.toLong()).enqueue(object :
+                progressApi.getSoilHealth(progressId).enqueue(object :
                     Callback<Boolean> {
                     override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                         if (response.isSuccessful) {
@@ -164,7 +193,7 @@ class MainDashboardFragment : BaseFragment() {
                 tv_condition_label.text = "Soil Health"
 
 
-                progressApi.getSoilHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
+                progressApi.getSoilHumidity(progressId).enqueue(object : Callback<Double> {
                     override fun onResponse(call: Call<Double>, response: Response<Double>) {
                         if (response.isSuccessful) {
                             val Humidity = response.body() // Get the temperature from the response
@@ -180,7 +209,6 @@ class MainDashboardFragment : BaseFragment() {
                     }
                 })
 
-               // tv_image_condition.text="33%"
                 val newDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.humidity__1_)
                 tv_image_condition.setCompoundDrawablesWithIntrinsicBounds(newDrawable, null, null, null)
             }

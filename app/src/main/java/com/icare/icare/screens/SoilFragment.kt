@@ -9,11 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
+import com.icare.icare.backend.ApiService
+import com.icare.icare.backend.ProgressApi
 import com.icare.icare.backend.RetrofitInstance
 import com.icare.icare.databinding.FragmentProgressBinding
 import com.icare.icare.databinding.FragmentSoilBinding
@@ -22,12 +25,20 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SoilFragment : BaseFragment() {
-    private val authViewModel: AuthViewModel by viewModels()
 
+    private val authViewModel: AuthViewModel by viewModels()
     private var binding: FragmentSoilBinding? = null
+
+    private var progressId: Long? = null
+    val userId = authViewModel.userId
+
+    private var Averagetemperature: Double? = null
+    private var AverageHumidity: Double? = null
+
     private lateinit var btnToday: Button
     private lateinit var btnMonth: Button
     private lateinit var btnYear: Button
+
     private val animationDuration = 2000L
     override fun isLoggedin() = true
     override fun onCreateView(
@@ -43,14 +54,47 @@ class SoilFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val progressId = 12334
 
-        // Create a Retrofit instance for your ProgressController
-        val progressApi = RetrofitInstance.createProgressApi()
+
+
+        binding?.viewToolbar?.ivMenu?.visibility = View.VISIBLE
+        binding?.viewToolbar?.ivMenu?.setOnClickListener {
+            toggleSideMenu(true)
+        }
+
+
         val summaryApi = RetrofitInstance.createSummaryApi()
 
+        // Inside onViewCreated method of ProgressFragment
+        val accessToken = authViewModel.accessToken
+        val apiService = ApiService(accessToken, "BASE_URL")
+        val progressApi = apiService.retrofit.create(ProgressApi::class.java)
 
-        progressApi.getSoilHealth(progressId.toLong()).enqueue(object : Callback<Boolean> {
+        val userId = authViewModel.userId // Get the user ID from your ViewModel
+
+        if (userId != null) {
+
+            // Make the API request
+            progressApi.getProgressIdCurrentTime(userId).enqueue(object : Callback<Long> {
+                override fun onResponse(call: Call<Long>, response: Response<Long>) {
+                    if (response.isSuccessful) {
+                        progressId = response.body() // Assign the value to the class-level property
+                    } else {
+                        val errorMessage = "Retrieving the progress failed. Please try again later."
+                        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()                    }
+                }
+                override fun onFailure(call: Call<Long>, t: Throwable) {
+                    val errorMessage = "Retrieving the progress failed. Please try again."
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()                   }
+            })
+        } else {
+            val errorMessage = "ERROR Please try again later."
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()         }
+
+
+
+
+        progressApi.getSoilHealth(progressId).enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 if (response.isSuccessful) {
                     val CropHealthy = response.body()
@@ -62,18 +106,16 @@ class SoilFragment : BaseFragment() {
 
                 } else {
                     binding?.tvSoilH?.text = "Good!"
+                    val errorMessage = "ERROR Please try again later."
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<Boolean>, t: Throwable) {
                 binding?.tvSoilH?.text = "Good"
+                val errorMessage = "ERROR Please try again later."
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
-
-
-
-
-
-
 
 
         val progressValue1 = 61 // Set progress value for ProgressBar 1
@@ -85,7 +127,7 @@ class SoilFragment : BaseFragment() {
 
 
         // Fetch data from the API for each TextView and update them
-        progressApi.getSoilTemperature(progressId.toLong()).enqueue(object : Callback<Double> {
+        progressApi.getSoilTemperature(progressId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body() // Get the temperature from the response
@@ -99,11 +141,14 @@ class SoilFragment : BaseFragment() {
 
             override fun onFailure(call: Call<Double>, t: Throwable) {
                 binding?.tvTempValue?.text = "20°"
+                val errorMessage = "ERROR Please try again later."
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
 
             }
         })
 
-        progressApi.getSoilHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
+
+        progressApi.getSoilHumidity(progressId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val Humidity = response.body() // Get the temperature from the response
@@ -114,11 +159,15 @@ class SoilFragment : BaseFragment() {
 
                 } else {
                     binding?.tvHumValue?.text = "ERROR"
+                    val errorMessage = "ERROR Please try again later."
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Double>, t: Throwable) {
                 binding?.tvHumValue?.text = "61%"
+                val errorMessage = "ERROR Please try again later."
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
 
             }
         })
@@ -135,11 +184,6 @@ class SoilFragment : BaseFragment() {
         btnYear.setOnClickListener { onYearButtonClicked() }
 
 
-        binding?.viewToolbar?.ivMenu?.visibility = View.VISIBLE
-        binding?.viewToolbar?.ivMenu?.setOnClickListener {
-            toggleSideMenu(true)
-        }
-
         // Animate progress bars after defining animationDuration
 
         animateProgressBar(binding?.progressBar18!!, progressValue1, animationDuration)
@@ -147,29 +191,18 @@ class SoilFragment : BaseFragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
 
     private fun onButtonClicked(clickedButton: Button) {
-        // Reset the background color (tint) for all buttons
         resetButtonBackgroundColors()
 
-        // Set a different background color (tint) for the clicked button
         clickedButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green3))
-
-        // Handle the button's click action here
         when (clickedButton.id) {
             R.id.bt_today -> {
-                // Handle click for "Today" button
-            }
+                resetButtonBackgroundColors()            }
             R.id.btn_month -> {
-                // Handle click for "This Month" button
-            }
+                resetButtonBackgroundColors()            }
             R.id.btn_year -> {
-                // Handle click for "This Year" button
-            }
+                resetButtonBackgroundColors()            }
         }
     }
 
@@ -181,24 +214,23 @@ class SoilFragment : BaseFragment() {
     }
     private fun onTodayButtonClicked() {
 
-        val progressId = 12334
-
-        // Create a Retrofit instance for your ProgressController
         val progressApi = RetrofitInstance.createProgressApi()
         val summaryApi = RetrofitInstance.createSummaryApi()
 
-        summaryApi.getAverageTodayTemperature(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageTodayTemperature(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
-                    val temperature = response.body()?.toFloat() ?: 0F
-                    binding?.tvLabelSoilT7?.text = "$temperature °"
-                    animateProgressBar(binding?.progressBar19!!, temperature.toInt(), animationDuration)
+                    Averagetemperature = response.body()
+                    binding?.tvLabelSoilT7?.text = "$Averagetemperature °"
+                    Averagetemperature?.let { animateProgressBar(binding?.progressBar19!!, it.toInt(), animationDuration) }
                 } else {
                     binding?.tvLabelSoilT7?.text = "ERROR"
                 }
             }
 
             override fun onFailure(call: Call<Double>, t: Throwable) {
+                val errorMessage = "ERROR Please try again later."
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 binding?.tvLabelSoilT7?.text = "23°"
                 val temperature =23
                 animateProgressBar(binding?.progressBar19!!, temperature, animationDuration)
@@ -207,18 +239,20 @@ class SoilFragment : BaseFragment() {
         })
 
 
-        summaryApi.getAverageTodayHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageTodayHumidity(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
-                    val temperature = response.body()?.toFloat() ?: 0F
-                    binding?.tvLabelSoilH7?.text = "$temperature "
-                    animateProgressBar(binding?.progressBar18!!, temperature.toInt(), animationDuration)
+                    AverageHumidity = response.body()
+                    binding?.tvLabelSoilH7?.text = "$AverageHumidity "
+                    AverageHumidity?.let { animateProgressBar(binding?.progressBar18!!, it.toInt(), animationDuration) }
                 } else {
                     binding?.tvLabelSoilH7?.text = "ERROR"
                 }
             }
 
             override fun onFailure(call: Call<Double>, t: Throwable) {
+                val errorMessage = "ERROR Please try again later."
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 binding?.tvLabelSoilH7?.text = "66%"
                 val temperature =66
                 animateProgressBar(binding?.progressBar18!!, temperature, animationDuration)
@@ -230,18 +264,17 @@ class SoilFragment : BaseFragment() {
 
     private fun onMonthButtonClicked() {
 
-        val progressId = 12334
 
         // Create a Retrofit instance for your ProgressController
         val progressApi = RetrofitInstance.createProgressApi()
         val summaryApi = RetrofitInstance.createSummaryApi()
 
-        summaryApi.getAverageThisMonthTemperature(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisMonthTemperature(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
-                    val temperature = response.body()?.toFloat() ?: 0F
-                    binding?.tvLabelSoilT7?.text = "$temperature °"
-                    animateProgressBar(binding?.progressBar19!!, temperature.toInt(), animationDuration)
+                    Averagetemperature = response.body()
+                    binding?.tvLabelSoilT7?.text = "$Averagetemperature °"
+                    Averagetemperature?.let { animateProgressBar(binding?.progressBar19!!, it.toInt(), animationDuration) }
                 } else {
                     binding?.tvLabelSoilT7?.text = "ERROR"
                 }
@@ -256,12 +289,12 @@ class SoilFragment : BaseFragment() {
         })
 
 
-        summaryApi.getAverageThisMonthHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisMonthHumidity(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
-                    val temperature = response.body()?.toFloat() ?: 0F
-                    binding?.tvLabelSoilH7?.text = "$temperature %"
-                    animateProgressBar(binding?.progressBar18!!, temperature.toInt(), animationDuration)
+                     AverageHumidity = response.body()
+                    binding?.tvLabelSoilH7?.text = "$AverageHumidity %"
+                    AverageHumidity?.let { animateProgressBar(binding?.progressBar18!!, it.toInt(), animationDuration) }
                 } else {
                     binding?.tvLabelSoilH7?.text = "ERROR"
                 }
@@ -279,18 +312,15 @@ class SoilFragment : BaseFragment() {
 
     private fun onYearButtonClicked() {
 
-        val progressId = 12334
-
-        // Create a Retrofit instance for your ProgressController
         val progressApi = RetrofitInstance.createProgressApi()
         val summaryApi = RetrofitInstance.createSummaryApi()
 
-        summaryApi.getAverageThisYearTemperature(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisYearTemperature(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
-                    val temperature = response.body()?.toFloat() ?: 0F
-                    binding?.tvLabelSoilT7?.text = "$temperature °"
-                    animateProgressBar(binding?.progressBar19!!, temperature.toInt(), animationDuration)
+                    Averagetemperature = response.body()
+                    binding?.tvLabelSoilT7?.text = "$Averagetemperature °"
+                    Averagetemperature?.let { animateProgressBar(binding?.progressBar19!!, it.toInt(), animationDuration) }
                 } else {
                     binding?.tvLabelSoilT7?.text = "ERROR"
                 }
@@ -304,12 +334,12 @@ class SoilFragment : BaseFragment() {
         })
 
 
-        summaryApi.getAverageThisYearHumidity(progressId.toLong()).enqueue(object : Callback<Double> {
+        summaryApi.getAverageThisYearHumidity(userId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
-                    val temperature = response.body()?.toFloat() ?: 0F
-                    binding?.tvLabelSoilH7?.text = "$temperature %"
-                    animateProgressBar(binding?.progressBar18!!, temperature.toInt(), animationDuration)
+                    AverageHumidity = response.body()
+                    binding?.tvLabelSoilH7?.text = "$AverageHumidity %"
+                    AverageHumidity?.let { animateProgressBar(binding?.progressBar18!!, it.toInt(), animationDuration) }
                 } else {
                     binding?.tvLabelSoilH7?.text = "ERROR"
                 }
@@ -332,5 +362,10 @@ class SoilFragment : BaseFragment() {
             progressBar.progress = progress
         }
         animator.start()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

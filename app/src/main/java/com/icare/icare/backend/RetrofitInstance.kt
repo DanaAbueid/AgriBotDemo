@@ -27,7 +27,7 @@ object RetrofitInstance {
         return retrofit.create(AuthService::class.java)
     }
 
-    fun ReportApi(): ReportApi {
+    fun CreateReportApi(): ReportApi {
         return retrofit.create(ReportApi::class.java)
     }
 

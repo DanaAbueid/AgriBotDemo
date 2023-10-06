@@ -14,6 +14,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.icare.icare.Request.ReportRequestBody
 import com.icare.icare.ViewModel.AuthViewModel
+import com.icare.icare.backend.ApiService
+import com.icare.icare.backend.ProgressApi
+import com.icare.icare.backend.ReportApi
 import com.icare.icare.backend.ReportApiService
 import com.icare.icare.backend.RetrofitInstance
 import com.icare.icare.databinding.FragmentReportEssayBinding
@@ -22,7 +25,10 @@ class ReportEssayFragment : BaseFragment() {
     private var binding: FragmentReportEssayBinding? = null
     private val authViewModel: AuthViewModel by viewModels()
 
-    private val authService = RetrofitInstance.createReportApi() // Replace with your authentication service
+    private val ReportApi = RetrofitInstance.CreateReportApi()
+    val userId = authViewModel.userId
+
+    // Replace with your authentication service
 
     override fun isLoggedin(): Boolean = false
 
@@ -39,6 +45,9 @@ class ReportEssayFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val accessToken = authViewModel.accessToken
+        val apiService = ApiService(accessToken, "BASE_URL")
+        val ReportApi = apiService.retrofit.create(ReportApi::class.java)
 
         binding?.let { bindingNotNull ->
 
@@ -72,7 +81,6 @@ class ReportEssayFragment : BaseFragment() {
     }
 
     private fun submitReport() {
-        val userId = getUserIdFromToken() // Replace with your method to obtain User ID from token
         val title = binding?.reportTitleNutri?.editText?.text.toString().trim()
         val spinner = binding?.reportReasonNutri?.selectedItem.toString().trim()
         val essay = binding?.reportTextNutri?.editText?.text.toString().trim()
@@ -86,22 +94,19 @@ class ReportEssayFragment : BaseFragment() {
             reportStatus = true
         )
 
-        authService.submitReport(reportRequestBody).enqueue(object : Callback<Void> {
+        ReportApi.saveReport(reportRequestBody).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    // Report submission successful
-                    // You can handle success, e.g., show a success message
+
                     Toast.makeText(requireContext(), "Report submitted successfully", Toast.LENGTH_SHORT).show()
                 } else {
-                    // Report submission failed
-                    // You can handle the failure, e.g., show an error message
+
                     Toast.makeText(requireContext(), "Failed to submit report", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                // Handle network failure here
-                // Show an error message to the user
+
                 Toast.makeText(requireContext(), "Network error. Please try again later", Toast.LENGTH_SHORT).show()
             }
         })

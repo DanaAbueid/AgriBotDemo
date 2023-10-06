@@ -28,7 +28,9 @@ class ProgressFragment : BaseFragment() {
     private var progressId: Long? = null
     val userId = authViewModel.userId
     val accessToken = authViewModel.accessToken
-
+    private var ProgressWeedCounter: Int? = null
+    private var ProgressRemainingchemicals: Double? = null
+    private var Progressealthycrop: Int? = null
 
     private val animationDuration = 2000L
     private var binding: FragmentProgressBinding? = null
@@ -47,6 +49,11 @@ class ProgressFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        binding?.viewToolbar?.ivMenu?.visibility = View.VISIBLE
+        binding?.viewToolbar?.ivMenu?.setOnClickListener {
+            toggleSideMenu(true)
+        }
 
         // Inside onViewCreated method of ProgressFragment
         val accessToken = authViewModel.accessToken
@@ -78,37 +85,8 @@ class ProgressFragment : BaseFragment() {
 
 
 
-        // Similar calls for other TextViews using their respective API endpoints...
 
-        val progressValue1 = 29 // Set progress value for ProgressBar 1
-        val progressValue2 = 57 // Set progress value for ProgressBar 2
-        val progressValue3 = 66 // Set progress value for ProgressBar 3
-        val progressValue4 = 78 // Set progress value for ProgressBar 4
 
-        binding?.progressBar9?.progress = 0
-        binding?.progressBar10?.progress = 0
-        binding?.progressBar11?.progress = 0
-        binding?.progressTaskPeriod?.progress = 0
-
-        // Delay the animation until the view is properly measured and laid out
-        binding?.root?.viewTreeObserver?.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                // Animate progress bars after defining animationDuration
-                animateProgressBar(binding?.progressBar9!!, progressValue1, animationDuration)
-                animateProgressBar(binding?.progressBar10!!, progressValue2, animationDuration)
-                animateProgressBar(binding?.progressBar11!!, progressValue3, animationDuration)
-                animateProgressBar(binding?.progressTaskPeriod!!, progressValue4, animationDuration)
-
-                // Remove the listener to prevent multiple calls
-                binding?.root?.viewTreeObserver?.removeOnGlobalLayoutListener(this)
-            }
-        })
-
-        binding?.tvLabelSoilH4?.text = "$progressValue1%"
-        binding?.tvLabelSoilC4?.text = "$progressValue2%"
-        binding?.tvProgressCounterLabel?.text = "$progressValue3%"
-
-        // Fetch data from the API for each TextView and update them
         progressApi.getSoilTemperature(progressId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
@@ -124,6 +102,13 @@ class ProgressFragment : BaseFragment() {
                 binding?.tvSensorST?.text = "20°"
             }
         })
+
+
+
+
+
+
+
 
         progressApi.getSoilHumidity(progressId).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
@@ -141,18 +126,23 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getRemainingChemicals(progressId).enqueue(object : Callback<Double> {
-            override fun onResponse(call: Call<Double>, response: Response<Double>) {
+
+
+
+
+
+        progressApi.getRemainingChemicals(progressId).enqueue(object : Callback<Double?> {
+            override fun onResponse(call: Call<Double?>, response: Response<Double?>) {
                 if (response.isSuccessful) {
-                    val temperature = response.body()?.toFloat() ?: 0F
-                    binding?.tvLabelSoilT4?.text = "$temperature %"
-                    animateProgressBar(binding?.progressBar10!!, temperature.toInt(), animationDuration)
+                    ProgressRemainingchemicals = response.body()
+                    binding?.tvLabelSoilT4?.text = "$ProgressRemainingchemicals %"
+                    ProgressRemainingchemicals?.let { animateProgressBar(binding?.progressBar10!!, it.toInt(), animationDuration) }
                 } else {
                     binding?.tvLabelSoilT4?.text = "ERROR"
                 }
             }
 
-            override fun onFailure(call: Call<Double>, t: Throwable) {
+            override fun onFailure(call: Call<Double?>, t: Throwable) {
                 binding?.tvLabelSoilT4?.text = "34%"
                 val temperature =34
                 animateProgressBar(binding?.progressBar10!!, temperature, animationDuration)
@@ -160,8 +150,12 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getBatteryLevel(progressId).enqueue(object : Callback<Int> {
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+
+
+
+
+        progressApi.getBatteryLevel(progressId).enqueue(object : Callback<Int?> {
+            override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                 if (response.isSuccessful) {
                     val BatteryLevel = response.body() // Get the temperature from the response
                     // Update the TextView with the new value
@@ -171,10 +165,13 @@ class ProgressFragment : BaseFragment() {
                 }
             }
 
-            override fun onFailure(call: Call<Int>, t: Throwable) {
+            override fun onFailure(call: Call<Int?>, t: Throwable) {
                 binding?.tvBattaryValue?.text = "55%"
             }
         })
+
+
+
 
         progressApi.getSoilHealth(progressId).enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
@@ -196,42 +193,53 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        progressApi.getWeedCounter(progressId).enqueue(object : Callback<Int> {
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+
+
+
+        progressApi.getCropHealthy(progressId).enqueue(object : Callback<Int?> {
+            override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                 if (response.isSuccessful) {
-                    val WeedCounter = response.body()?.toFloat() ?: 0F
+                    Progressealthycrop = response.body()
                     // Update the TextView with the new value
-                    binding?.tvSensorWeedC?.text = "$WeedCounter"
-                    binding?.tvLabelSoilH4?.text = "$WeedCounter"
-                    animateProgressBar(binding?.progressBar9!!, WeedCounter.toInt(), animationDuration)
+                    binding?.tvSensorWeedC?.text = "$Progressealthycrop"
+                    binding?.tvLabelSoilH4?.text = "$Progressealthycrop"
+                    Progressealthycrop?.let { animateProgressBar(binding?.progressBar9!!, it.toInt(), animationDuration) }
 
                 } else {
                     binding?.tvSensorWeedC?.text = "ERROR"
                 }
             }
 
-            override fun onFailure(call: Call<Int>, t: Throwable) {
+            override fun onFailure(call: Call<Int?>, t: Throwable) {
                 binding?.tvSensorWeedC?.text = "29"
                 binding?.tvLabelSoilH4?.text = "29"
-                val WeedCounter =29
-                animateProgressBar(binding?.progressBar9!!, WeedCounter.toInt(), animationDuration)
+                 val WeedCounter =29
+                animateProgressBar(binding?.progressBar9!!, WeedCounter, animationDuration)
 
             }
         })
-        progressApi.getCropHealthy(progressId).enqueue(object : Callback<Int> {
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+
+
+
+
+
+        progressApi.getWeedCounter(progressId).enqueue(object : Callback<Int?> {
+            override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                 if (response.isSuccessful) {
-                    val WeedCounter = response.body()?.toFloat() ?: 0F
+                    ProgressWeedCounter = response.body()
                     // Update the TextView with the new value
-                    binding?.tvLabelSoilC4?.text = "$WeedCounter"
-                    animateProgressBar(binding?.progressBar11!!, WeedCounter.toInt(), animationDuration)
+                    binding?.tvLabelSoilC4?.text = "$ProgressWeedCounter"
+                    ProgressWeedCounter?.let {
+                        animateProgressBar(binding?.progressBar11!!,
+                            it, animationDuration)
+                    }
 
                 } else {
                     binding?.tvSensorWeedC?.text = "ERROR"
                 }
             }
 
-            override fun onFailure(call: Call<Int>, t: Throwable) {
+            override fun onFailure(call: Call<Int?>, t: Throwable) {
                 binding?.tvLabelSoilC4?.text = "16"
                 val WeedCounter =16
                 animateProgressBar(binding?.progressBar11!!, WeedCounter.toInt(), animationDuration)
@@ -239,10 +247,43 @@ class ProgressFragment : BaseFragment() {
             }
         })
 
-        binding?.viewToolbar?.ivMenu?.visibility = View.VISIBLE
-        binding?.viewToolbar?.ivMenu?.setOnClickListener {
-            toggleSideMenu(true)
-        }
+
+
+
+
+
+
+        val progressValue1 = 29 // Set progress value for ProgressBar 1
+        val progressValue2 = 57 // Set progress value for ProgressBar 2
+        val progressValue3 = 66 // Set progress value for ProgressBar 3
+        val progressValue4 = 78 // Set progress value for ProgressBar 4
+
+        binding?.progressBar9?.progress = 0
+        binding?.progressBar10?.progress = 0
+        binding?.progressBar11?.progress = 0
+        binding?.progressTaskPeriod?.progress = 0
+
+        // Delay the animation until the view is properly measured and laid out
+        binding?.root?.viewTreeObserver?.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                // Animate progress bars after defining animationDuration
+                ProgressWeedCounter?.let {
+                    animateProgressBar(binding?.progressBar9!!,
+                        it, animationDuration)
+                }
+
+                ProgressRemainingchemicals?.let { animateProgressBar(binding?.progressBar10!!, it.toInt(), animationDuration) }
+                animateProgressBar(binding?.progressBar11!!, progressValue3, animationDuration)
+                animateProgressBar(binding?.progressTaskPeriod!!, progressValue4, animationDuration)
+
+                // Remove the listener to prevent multiple calls
+                binding?.root?.viewTreeObserver?.removeOnGlobalLayoutListener(this)
+            }
+        })
+
+        binding?.tvLabelSoilH4?.text = "$progressValue1%"
+        binding?.tvLabelSoilC4?.text = "$progressValue2%"
+        binding?.tvProgressCounterLabel?.text = "$progressValue3%"
 
 
     }
