@@ -34,6 +34,7 @@ class CropHealthFragment : BaseFragment() {
 
     private val authViewModel: AuthViewModel by viewModels()
     private var progressId: Long? = null
+
     val userId = authViewModel.userId
     val accessToken = authViewModel.accessToken
 
@@ -106,8 +107,8 @@ class CropHealthFragment : BaseFragment() {
 
 
 
-            progressApi.getCropHealthy(progressId).enqueue(object : Callback<Int> {
-                override fun onResponse(call: Call<Int>, response: Response<Int>) {
+            progressApi.getCropHealthy(progressId).enqueue(object : Callback<Int?> {
+                override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
                         // Update the TextView with the new value
@@ -120,14 +121,14 @@ class CropHealthFragment : BaseFragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<Int>, t: Throwable) {
+                override fun onFailure(call: Call<Int?>, t: Throwable) {
                     binding?.tvHealthCValue2?.text = "16"
 
                 }
             })
 
-            progressApi.getCropEarlyBlight(progressId).enqueue(object : Callback<Int> {
-                override fun onResponse(call: Call<Int>, response: Response<Int>) {
+            progressApi.getCropEarlyBlight(progressId).enqueue(object : Callback<Int?> {
+                override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
                         // Update the TextView with the new value
@@ -140,14 +141,14 @@ class CropHealthFragment : BaseFragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<Int>, t: Throwable) {
+                override fun onFailure(call: Call<Int?>, t: Throwable) {
                     binding?.tvEarlyCValue?.text = "9"
 
                 }
             })
 
-            progressApi.getCropLight(progressId).enqueue(object : Callback<Int> {
-                override fun onResponse(call: Call<Int>, response: Response<Int>) {
+            progressApi.getCropLight(progressId).enqueue(object : Callback<Int?> {
+                override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
                         // Update the TextView with the new value
@@ -160,7 +161,7 @@ class CropHealthFragment : BaseFragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<Int>, t: Throwable) {
+                override fun onFailure(call: Call<Int?>, t: Throwable) {
                     binding?.tvLateCValue2?.text = "7"
 
                 }

@@ -241,14 +241,12 @@ class UserSignUpFragment : BaseFragment() {
         val registerRequest = RegisterRequest(
             firstname = firstName,
             lastname = lastname,
-            robot = robot,
             email = email,
             password = password,
             phoneNumber = phoneNumber,
             location = location,
             accountStatus = true,
             role = Role.USER,
-            otp = ""
         )
 
         authService.register(registerRequest).enqueue(object : Callback<AuthenticationResponse> {
@@ -256,7 +254,7 @@ class UserSignUpFragment : BaseFragment() {
                 if (response.isSuccessful) {
                     // Signup successful, handle the response here
                     val authenticationResponse = response.body()
-                    authViewModel.accessToken = authenticationResponse?.accessToken
+                //    authViewModel.accessToken = authenticationResponse?.accessToken
                     findNavController().navigate(UserSignUpFragmentDirections.actionSignupToCode())
                 } else {
                     val errorMessage = "Signup failed. Please try again."

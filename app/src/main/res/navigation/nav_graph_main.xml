@@ -11,6 +11,40 @@
         android:label="HomeFragment" />
 
     <fragment
+        android:id="@+id/LOGPage"
+        android:name="com.icare.icare.screens.LoginNewFragment"
+        android:label="subscription plan" >
+        <action
+            android:id="@+id/action_welcome_to_login"
+            app:destination="@id/action_settings_to_myinfo" />
+
+        <action
+            android:id="@+id/action_login_to_forpsw"
+            app:destination="@id/forgotpassword"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+
+        <action
+            android:id="@+id/action_welcome_to_signup"
+            app:destination="@id/signupUppayment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+
+        <action
+            android:id="@+id/action_login_to_dashboard"
+            app:destination="@id/user_main_dashboard"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+    </fragment>
+
+
+    <fragment
         android:id="@+id/forgotpassword"
         android:name="com.icare.icare.screens.ForgotPasswordFragment"
         android:label="forgot password fragment">
@@ -684,38 +718,6 @@
     </fragment>
 
 
-    <fragment
-        android:id="@+id/LOGPage"
-        android:name="com.icare.icare.screens.LoginNewFragment"
-        android:label="subscription plan" >
-        <action
-            android:id="@+id/action_welcome_to_login"
-            app:destination="@id/signupUppayment" />
-
-        <action
-            android:id="@+id/action_login_to_forpsw"
-            app:destination="@id/forgotpassword"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
-
-        <action
-            android:id="@+id/action_welcome_to_signup"
-            app:destination="@id/signupUppayment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
-
-        <action
-            android:id="@+id/action_login_to_dashboard"
-            app:destination="@id/user_main_dashboard"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
-    </fragment>
 
 
 

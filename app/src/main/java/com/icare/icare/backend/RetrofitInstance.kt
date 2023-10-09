@@ -3,12 +3,21 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://10.0.2.2:8081"
+    const val BASE_URL = "http://18.234.66.152:8080"
 
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+    fun createAuthService(): AuthService {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(AuthService::class.java)
+    }
 
 
 
@@ -23,9 +32,6 @@ object RetrofitInstance {
         return retrofit.create(UserApi::class.java)
     }
 
-    fun createAuthService(): AuthService {
-        return retrofit.create(AuthService::class.java)
-    }
 
     fun CreateReportApi(): ReportApi {
         return retrofit.create(ReportApi::class.java)
@@ -47,5 +53,6 @@ object RetrofitInstance {
     fun createReportApi(): ReportApiService {
         return retrofit.create(ReportApiService::class.java)
     }
+
 }
 

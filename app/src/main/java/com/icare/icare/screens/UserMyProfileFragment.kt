@@ -22,7 +22,7 @@ class UserMyProfileFragment : BaseFragment() {
     private var binding: FragmentUserMyProfileBinding? = null
   //  private lateinit var userInfoApi: UserInfoApi // Step 1: Create an instance
     private val authViewModel: AuthViewModel by viewModels()
-    val userId = authViewModel.userId
+    val userId = 4853
     private lateinit var userInfoApi: UserInfoApi // Declare it at the class level
 
 
@@ -45,7 +45,7 @@ class UserMyProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Inside onViewCreated method of ProgressFragment
-        val accessToken = authViewModel.accessToken
+        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYW5hMjAwMUBnbWFpbC5jb20iLCJpYXQiOjE2OTY4Mjc2NDQsImV4cCI6MTY5NjkxNDA0NH0.l-fGB3QBvA6Fb8_6q0UnbM_I5Rs2bqocExaGGYHY1_I"
         val apiService = ApiService(accessToken, "BASE_URL")
         userInfoApi = apiService.retrofit.create(UserInfoApi::class.java) // Initialize it here
 
@@ -78,12 +78,12 @@ class UserMyProfileFragment : BaseFragment() {
         lifecycleScope.launch {
             try {
                 // Make API calls to retrieve user data
-                val firstName = userInfoApi.getUserFirstname(userId)
-                val lastName = userInfoApi.getUserLastName(userId)
-                val location = userInfoApi.getUserLocation(userId)
-                val email = userInfoApi.getUserId(userId)
-                val phoneNumber = userInfoApi.getPhoneNumber(userId)
-                val accountStatus = userInfoApi.getAccountStatus(userId)
+                val firstName = userInfoApi.getUserFirstname(userId.toLong())
+                val lastName = userInfoApi.getUserLastName(userId.toLong())
+                val location = userInfoApi.getUserLocation(userId.toLong())
+                val email = userInfoApi.getUserId(userId.toLong())
+                val phoneNumber = userInfoApi.getPhoneNumber(userId.toLong())
+                val accountStatus = userInfoApi.getAccountStatus(userId.toLong())
 
                 // Update UI elements with retrieved data
                 binding?.tlFirstNameGet?.editText?.setText(firstName)

@@ -47,7 +47,7 @@ class ReportEssayFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val accessToken = authViewModel.accessToken
         val apiService = ApiService(accessToken, "BASE_URL")
-        val ReportApi = apiService.retrofit.create(ReportApi::class.java)
+        val ReportsApi = apiService.retrofit.create(ReportApi::class.java)
 
         binding?.let { bindingNotNull ->
 
