@@ -86,18 +86,17 @@
         android:id="@+id/signupUpFarmer"
         android:name="com.icare.icare.screens.UserSignUpFragment"
         android:label="SignupUp" >
-        <action
-            android:id="@+id/action_signup_to_subPlan"
-            app:destination="@id/signup_new_subscribtion" />
+
         <action
             android:id="@+id/action_signup_to_code"
-            app:destination="@id/signup_new_subscribtion"
+            app:destination="@id/cofirmUser"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
 
     </fragment>
+
     <fragment
         android:id="@+id/signupUppayment"
         android:name="com.icare.icare.screens.UserPaymentFragment"

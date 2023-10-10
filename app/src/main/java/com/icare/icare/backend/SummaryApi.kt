@@ -3,7 +3,6 @@ package com.icare.icare.backend
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
-import com.icare.icare.models.SummaryData
 
 interface SummaryApi {
     @GET("api/summary/{user_id}/healthyCrop/today")

@@ -9,15 +9,10 @@ import android.widget.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.icare.icare.Request.ReportRequestBody
 import com.icare.icare.ViewModel.AuthViewModel
 import com.icare.icare.backend.ApiService
-import com.icare.icare.backend.ProgressApi
-import com.icare.icare.backend.ReportApi
-import com.icare.icare.backend.ReportApiService
 import com.icare.icare.backend.RetrofitInstance
 import com.icare.icare.databinding.FragmentReportEssayBinding
 

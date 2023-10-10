@@ -1,13 +1,16 @@
 
 package com.icare.icare.screens
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.icare.icare.MainActivity
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
 import com.icare.icare.backend.ApiService
@@ -21,9 +24,10 @@ class UserMyProfileFragment : BaseFragment() {
 
     private var binding: FragmentUserMyProfileBinding? = null
   //  private lateinit var userInfoApi: UserInfoApi // Step 1: Create an instance
-    private val authViewModel: AuthViewModel by viewModels()
-    val userId = 4853
-    private lateinit var userInfoApi: UserInfoApi // Declare it at the class level
+  private lateinit var authViewModel: AuthViewModel
+    private var userId: Long = -1 // Initialize it with a default value
+
+var authService: UserInfoApi? = null
 
 
 
@@ -37,7 +41,6 @@ class UserMyProfileFragment : BaseFragment() {
     ): View? {
         binding = FragmentUserMyProfileBinding.inflate(inflater, container, false)
         return binding?.root
-        val accessToken = authViewModel.accessToken
 
     }
 
@@ -45,11 +48,11 @@ class UserMyProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Inside onViewCreated method of ProgressFragment
-        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYW5hMjAwMUBnbWFpbC5jb20iLCJpYXQiOjE2OTY4Mjc2NDQsImV4cCI6MTY5NjkxNDA0NH0.l-fGB3QBvA6Fb8_6q0UnbM_I5Rs2bqocExaGGYHY1_I"
-        val apiService = ApiService(accessToken, "BASE_URL")
-        userInfoApi = apiService.retrofit.create(UserInfoApi::class.java) // Initialize it here
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+         authService = RetrofitInstance.createinfoService()
 
-        val userId = authViewModel.userId // Get the user ID from your ViewModel
+        val sharedPrefs = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        userId = sharedPrefs.getLong("userId", -1)
 
         binding?.let { bindingNotNull ->
             bindingNotNull.viewToolbar.ivMenu.visibility = View.VISIBLE
@@ -78,12 +81,13 @@ class UserMyProfileFragment : BaseFragment() {
         lifecycleScope.launch {
             try {
                 // Make API calls to retrieve user data
-                val firstName = userInfoApi.getUserFirstname(userId.toLong())
-                val lastName = userInfoApi.getUserLastName(userId.toLong())
-                val location = userInfoApi.getUserLocation(userId.toLong())
-                val email = userInfoApi.getUserId(userId.toLong())
-                val phoneNumber = userInfoApi.getPhoneNumber(userId.toLong())
-                val accountStatus = userInfoApi.getAccountStatus(userId.toLong())
+                val firstName = authService?.getUserFirstname(userId)
+                val lastName = authService?.getUserLastName(userId)
+                val location = authService?.getUserLocation(userId)
+                val email = authService?.getUserId(userId)
+                val phoneNumber = authService?.getPhoneNumber(userId)
+
+                val accountStatus = authService?.getAccountStatus(userId)
 
                 // Update UI elements with retrieved data
                 binding?.tlFirstNameGet?.editText?.setText(firstName)

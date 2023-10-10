@@ -2,26 +2,18 @@ package com.icare.icare.screens
 
 import android.animation.ValueAnimator
 
-import androidx.appcompat.app.AppCompatActivity
-
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.icare.icare.R
 import com.icare.icare.databinding.FragmentCropHealthBinding
-import android.graphics.Color
 import android.view.animation.DecelerateInterpolator
 import android.widget.Button
 import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.db.williamchart.slidertooltip.SliderTooltip
-import kotlinx.android.synthetic.main.fragment_crop_health.*
-import com.db.williamchart.ExperimentalFeature
+import androidx.lifecycle.ViewModelProvider
 import com.icare.icare.ViewModel.AuthViewModel
 import com.icare.icare.backend.ApiService
 import com.icare.icare.backend.RetrofitInstance
@@ -32,11 +24,9 @@ import retrofit2.Response
 
 class CropHealthFragment : BaseFragment() {
 
-    private val authViewModel: AuthViewModel by viewModels()
+    private lateinit var authViewModel: AuthViewModel
     private var progressId: Long? = null
-
-    val userId = authViewModel.userId
-    val accessToken = authViewModel.accessToken
+    var userId: Long? =null
 
 
     private var binding: FragmentCropHealthBinding? = null
@@ -61,11 +51,14 @@ class CropHealthFragment : BaseFragment() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
+            authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
+            val accessToken = authViewModel.accessToken
+            val apiService = ApiService(accessToken, "http://18.234.66.152:8080/")
 
             val progressApi = RetrofitInstance.createProgressApi()
             val summaryApi = RetrofitInstance.createSummaryApi()
 
-            val apiService = ApiService(accessToken, "BASE_URL")
 
             val userId = authViewModel.userId // Get the user ID from your ViewModel
 

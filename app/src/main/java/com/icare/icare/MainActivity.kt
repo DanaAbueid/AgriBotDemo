@@ -127,6 +127,9 @@ class MainActivity : AppCompatActivity() {
         else
             findNavController(R.id.nav_host_fragment).navigate(fragId)
     }
+    fun getUserId(): Long? {
+        return authViewModel.userId
+    }
 
     private fun isFragmentInBackStack(destinationId: Int) =
         try {

@@ -55,7 +55,6 @@ class UserSignUpFragment : BaseFragment() {
             bindingNotNull.buttonLogin2.setOnClickListener {
                 if (validateFields()) {
                     signUp()
-                    findNavController().navigate(UserSignUpFragmentDirections.actionSignupToCode())
                 }
             }
         }

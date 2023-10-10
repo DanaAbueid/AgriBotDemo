@@ -19,9 +19,32 @@ object RetrofitInstance {
         return retrofit.create(AuthService::class.java)
     }
 
+    fun createprogService(): ProgressApi {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(ProgressApi::class.java)
+    }
+
+    fun createinfoService(): UserInfoApi {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(UserInfoApi::class.java)
+    }
+
+
 
 
     fun UserSubscriptionApi(): UserSubscriptionApi {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
         return retrofit.create(UserSubscriptionApi::class.java)
     }
     fun createProgressApi(): ProgressApi {

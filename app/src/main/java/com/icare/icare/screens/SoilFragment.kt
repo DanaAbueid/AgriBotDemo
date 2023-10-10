@@ -1,6 +1,5 @@
 package com.icare.icare.screens
 
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
@@ -10,15 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
 import com.icare.icare.backend.ApiService
 import com.icare.icare.backend.ProgressApi
 import com.icare.icare.backend.RetrofitInstance
-import com.icare.icare.databinding.FragmentProgressBinding
 import com.icare.icare.databinding.FragmentSoilBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,11 +24,11 @@ import retrofit2.Response
 
 class SoilFragment : BaseFragment() {
 
-    private val authViewModel: AuthViewModel by viewModels()
     private var binding: FragmentSoilBinding? = null
 
+    private lateinit var authViewModel: AuthViewModel
     private var progressId: Long? = null
-    val userId = authViewModel.userId
+    var userId: Long? =null
 
     private var Averagetemperature: Double? = null
     private var AverageHumidity: Double? = null
@@ -65,9 +63,11 @@ class SoilFragment : BaseFragment() {
 
         val summaryApi = RetrofitInstance.createSummaryApi()
 
-        // Inside onViewCreated method of ProgressFragment
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
         val accessToken = authViewModel.accessToken
-        val apiService = ApiService(accessToken, "BASE_URL")
+        val apiService = ApiService(accessToken, "http://18.234.66.152:8080/")
+
         val progressApi = apiService.retrofit.create(ProgressApi::class.java)
 
         val userId = authViewModel.userId // Get the user ID from your ViewModel

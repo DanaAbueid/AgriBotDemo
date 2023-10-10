@@ -3,9 +3,9 @@ import com.google.gson.annotations.SerializedName
 
 data class AuthenticationResponse(
     @SerializedName("accessToken")
-    var accessToken: String,
+    val accessToken: String,
     @SerializedName("refreshToken")
-    var refreshToken: String,
-    @SerializedName("code")
-        var code: Long
+    val refreshToken: String,
+    @SerializedName("user_id")
+        val userId: Long?
 )

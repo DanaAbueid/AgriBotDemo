@@ -11,8 +11,7 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.icare.icare.R
+import androidx.lifecycle.ViewModelProvider
 import com.icare.icare.ViewModel.AuthViewModel
 import com.icare.icare.backend.ApiService
 import com.icare.icare.backend.ProgressApi
@@ -24,10 +23,9 @@ import com.icare.icare.databinding.FragmentProgressBinding
 
 class ProgressFragment : BaseFragment() {
 
-    private val authViewModel: AuthViewModel by viewModels()
+    private lateinit var authViewModel: AuthViewModel
     private var progressId: Long? = null
-    val userId = authViewModel.userId
-    val accessToken = authViewModel.accessToken
+    var userId: Long? =null
     private var ProgressWeedCounter: Int? = null
     private var ProgressRemainingchemicals: Double? = null
     private var Progressealthycrop: Int? = null
@@ -55,9 +53,10 @@ class ProgressFragment : BaseFragment() {
             toggleSideMenu(true)
         }
 
-        // Inside onViewCreated method of ProgressFragment
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
         val accessToken = authViewModel.accessToken
-        val apiService = ApiService(accessToken, "BASE_URL")
+        val apiService = ApiService(accessToken, "http://18.234.66.152:8080/")
         val progressApi = apiService.retrofit.create(ProgressApi::class.java)
 
         val userId = authViewModel.userId // Get the user ID from your ViewModel

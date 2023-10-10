@@ -1,7 +1,6 @@
 
 package com.icare.icare.screens
 
-import com.icare.icare.screens.UserNotificationsAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,20 +8,21 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.icare.icare.MainActivity
 import com.icare.icare.R
 import com.icare.icare.ViewModel.AuthViewModel
 import com.icare.icare.backend.ApiService
 import com.icare.icare.backend.ProgressApi
 import com.icare.icare.backend.RetrofitInstance
+import com.icare.icare.backend.UserInfoApi
 import com.icare.icare.databinding.FragmentMainDashboardBinding
 
 import com.icare.icare.models.Notifications
 
-import com.icare.icare.screens.BaseFragment
 import kotlinx.android.synthetic.main.fragment_main_dashboard.iv_condition
 import kotlinx.android.synthetic.main.fragment_main_dashboard.tv_condition_label
 import kotlinx.android.synthetic.main.fragment_main_dashboard.tv_condition_text
@@ -34,10 +34,11 @@ import retrofit2.Response
 
 class MainDashboardFragment : BaseFragment() {
     private var binding: FragmentMainDashboardBinding? = null
-    private val authViewModel: AuthViewModel by viewModels()
-
+    private lateinit var authViewModel: AuthViewModel
     private var progressId: Long? = null
-    val userId = authViewModel.userId
+    var userId: Long? =null
+    var authService: ProgressApi? = null
+
 
     private lateinit var btncrops: Button
     private lateinit var btnsoil: Button
@@ -49,7 +50,6 @@ class MainDashboardFragment : BaseFragment() {
     ): View? {
         binding = FragmentMainDashboardBinding.inflate(inflater, container, false)
         return binding?.root
-        val accessToken = authViewModel.accessToken
 
     }
 
@@ -59,15 +59,18 @@ class MainDashboardFragment : BaseFragment() {
         binding?.viewToolbar?.ivMenu?.setOnClickListener {
             toggleSideMenu(true)
         }
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
         val accessToken = authViewModel.accessToken
-        val apiService = ApiService(accessToken, "BASE_URL")
+        val apiService = ApiService(accessToken, "http://18.234.66.152:8080/")
         val progressApi = apiService.retrofit.create(ProgressApi::class.java)
+        authService = RetrofitInstance.createprogService()
 
-        val userId = authViewModel.userId // Get the user ID from your ViewModel
+        val mainActivity = activity as MainActivity
+        userId = mainActivity.getUserId()
 
         if (userId != null) {
-            progressApi.getProgressIdCurrentTime(userId).enqueue(object : Callback<Long> {
+            authService!!.getProgressIdCurrentTime(userId!!).enqueue(object : Callback<Long> {
                 override fun onResponse(call: Call<Long>, response: Response<Long>) {
                     if (response.isSuccessful) {
                         progressId = response.body() // Assign the value to the class-level property
@@ -168,7 +171,7 @@ class MainDashboardFragment : BaseFragment() {
                 val progressApi = RetrofitInstance.createProgressApi()
 
                 // Fetch data from the API for each TextView and update them
-                progressApi.getSoilHealth(progressId).enqueue(object :
+                authService?.getSoilHealth(progressId)?.enqueue(object :
                     Callback<Boolean> {
                     override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                         if (response.isSuccessful) {
@@ -193,7 +196,7 @@ class MainDashboardFragment : BaseFragment() {
                 tv_condition_label.text = "Soil Health"
 
 
-                progressApi.getSoilHumidity(progressId).enqueue(object : Callback<Double> {
+                authService?.getSoilHumidity(progressId)?.enqueue(object : Callback<Double> {
                     override fun onResponse(call: Call<Double>, response: Response<Double>) {
                         if (response.isSuccessful) {
                             val Humidity = response.body() // Get the temperature from the response
