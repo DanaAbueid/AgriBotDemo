@@ -46,6 +46,8 @@ class LoginNewFragment : BaseFragment() {
 
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
+        // Initialize SharedPreferences in the ViewModel
+        authViewModel.initSharedPreferences(requireContext())
 
         binding?.let { bindingNotNull ->
 
@@ -57,8 +59,6 @@ class LoginNewFragment : BaseFragment() {
 
                 // Check if email and password are not empty (add additional validation as needed)
                 if (email.isNotEmpty() && password.isNotEmpty()) {
-
-
                     // ...
                     val authService = RetrofitInstance.createAuthService()
                     val authenticationRequest = AuthenticationRequest(email, password)
@@ -71,21 +71,16 @@ class LoginNewFragment : BaseFragment() {
                             if (response.isSuccessful) {
                                 val authenticationResponse = response.body()
                                 if (authenticationResponse != null) {
-                                    val getter: AuthenticationResponse = response.body() as AuthenticationResponse
-                                    Log.d("UserIdDebug", "UserId received from API: ${authenticationResponse.accessToken}")
+                                    // Retrieve userId from the response
+                                    Log.d("AuthenticationResponseDebug", "AuthenticationResponse: $authenticationResponse")
+                                    val userIdToStore = authenticationResponse.user_id
 
-                                    Log.d("UserIdDebug", "UserId received from API: $authenticationResponse.userId")
-
-                                    val userIdToStore = authenticationResponse.userId
+                                    authViewModel.setUserId(requireContext(), userIdToStore)
                                     Log.d("UserIdDebug", "UserId received from API: $userIdToStore")
+                                    val userId = authViewModel.user_id
 
-                                    val sharedPrefs = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                                    sharedPrefs.edit().putLong("userId", userIdToStore).apply()
+                                    Log.d("UserIdDebug", "UserId received from API: $userId")
 
-                                    authViewModel.userId = userIdToStore
-
-                                    Log.d("UserIdDebug", "UserId stored in SharedPreferences: $userIdToStore")
-                                    authViewModel.userId = authenticationResponse.userId
 
                                     findNavController().navigate(LoginNewFragmentDirections.actionLoginToDashboard())
                                 } else {
@@ -96,26 +91,17 @@ class LoginNewFragment : BaseFragment() {
                                 val errorMessage = "Signup failed. Please try again."
                                 Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                             }
-
                         }
-
 
                         override fun onFailure(call: Call<AuthenticationResponse>, t: Throwable) {
                             val errorMessage = "Network error. Please check your internet connection."
                             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                         }
-                    })}
-// ...
-
-
+                    })
                 }
-
-
             }
-
-
         }
-
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

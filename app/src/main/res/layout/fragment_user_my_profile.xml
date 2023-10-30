@@ -130,7 +130,6 @@
             android:layout_marginStart="105dp"
             android:layout_marginEnd="3dp"
             android:layout_marginBottom="20dp"
-            android:enabled="false"
             android:hint="Email"
             app:boxBackgroundColor="@color/cardview_shadow_start_color"
             app:layout_constraintBottom_toTopOf="@+id/phone_get"
@@ -139,6 +138,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
+                android:editable="true"
                 android:inputType="textWebEditText" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -160,7 +160,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/genericMaterialTextInputEditText"
                 android:editable="true"
-                android:inputType="textWebEditText|phone" />
+                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -207,6 +207,7 @@
             app:layout_constraintStart_toStartOf="@+id/cv_general_info">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/til_first_name_get"
                 style="@style/genericMaterialTextInputEditText"
                 android:inputType="textWebEditText" />
 

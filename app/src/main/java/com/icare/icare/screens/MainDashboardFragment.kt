@@ -2,6 +2,7 @@
 package com.icare.icare.screens
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,21 +60,26 @@ class MainDashboardFragment : BaseFragment() {
         binding?.viewToolbar?.ivMenu?.setOnClickListener {
             toggleSideMenu(true)
         }
+
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        authViewModel.initSharedPreferences(requireContext())
+        userId = authViewModel.user_id
+
+        Log.d("UserIdDebug", "UserId received from API: $userId")
+
 
         val accessToken = authViewModel.accessToken
         val apiService = ApiService(accessToken, "http://18.234.66.152:8080/")
         val progressApi = apiService.retrofit.create(ProgressApi::class.java)
         authService = RetrofitInstance.createprogService()
 
-        val mainActivity = activity as MainActivity
-        userId = mainActivity.getUserId()
 
         if (userId != null) {
             authService!!.getProgressIdCurrentTime(userId!!).enqueue(object : Callback<Long> {
                 override fun onResponse(call: Call<Long>, response: Response<Long>) {
                     if (response.isSuccessful) {
-                        progressId = response.body() // Assign the value to the class-level property
+                        progressId = response.body()
+                        Log.d("UserIdDebug", "UserId received from API: $progressId")
                     } else {
                         val errorMessage = "Retrieving the progress failed. Please try again later."
                         Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()                    }
@@ -143,7 +149,7 @@ class MainDashboardFragment : BaseFragment() {
                 val progressApi = RetrofitInstance.createProgressApi()
 
                 // Fetch data from the API for each TextView and update them
-                progressApi.getCropHealthy(progressId).enqueue(object :
+                progressApi.getCropHealthy(progressId!!).enqueue(object :
                     Callback<Int?> {
                     override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                         if (response.isSuccessful) {
@@ -171,7 +177,7 @@ class MainDashboardFragment : BaseFragment() {
                 val progressApi = RetrofitInstance.createProgressApi()
 
                 // Fetch data from the API for each TextView and update them
-                authService?.getSoilHealth(progressId)?.enqueue(object :
+                authService?.getSoilHealth(progressId!!)?.enqueue(object :
                     Callback<Boolean> {
                     override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                         if (response.isSuccessful) {
@@ -191,12 +197,13 @@ class MainDashboardFragment : BaseFragment() {
                         binding?.tvConditionText?.text = "Good!"
                     }
                 })
+                //////////////////////////////////////
 
                 iv_condition.setImageResource(R.drawable.soil_temperature_field__1_) // Replace with your drawable resource
                 tv_condition_label.text = "Soil Health"
 
 
-                authService?.getSoilHumidity(progressId)?.enqueue(object : Callback<Double> {
+                authService?.getSoilHumidity(progressId!!)?.enqueue(object : Callback<Double> {
                     override fun onResponse(call: Call<Double>, response: Response<Double>) {
                         if (response.isSuccessful) {
                             val Humidity = response.body() // Get the temperature from the response

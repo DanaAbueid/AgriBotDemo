@@ -21,7 +21,7 @@ class ReportEssayFragment : BaseFragment() {
     private val authViewModel: AuthViewModel by viewModels()
 
     private val ReportApi = RetrofitInstance.CreateReportApi()
-    val userId = authViewModel.userId
+    val userId = authViewModel.user_id
 
     // Replace with your authentication service
 

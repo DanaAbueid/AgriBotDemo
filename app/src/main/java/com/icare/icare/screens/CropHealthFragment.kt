@@ -60,7 +60,7 @@ class CropHealthFragment : BaseFragment() {
             val summaryApi = RetrofitInstance.createSummaryApi()
 
 
-            val userId = authViewModel.userId // Get the user ID from your ViewModel
+            val userId = authViewModel.user_id // Get the user ID from your ViewModel
 
             if (userId != null) {
                 // Create a Retrofit instance for your ProgressApi
@@ -100,7 +100,7 @@ class CropHealthFragment : BaseFragment() {
 
 
 
-            progressApi.getCropHealthy(progressId).enqueue(object : Callback<Int?> {
+            progressApi.getCropHealthy(progressId!!).enqueue(object : Callback<Int?> {
                 override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
@@ -120,7 +120,7 @@ class CropHealthFragment : BaseFragment() {
                 }
             })
 
-            progressApi.getCropEarlyBlight(progressId).enqueue(object : Callback<Int?> {
+            progressApi.getCropEarlyBlight(progressId!!).enqueue(object : Callback<Int?> {
                 override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response
@@ -140,7 +140,7 @@ class CropHealthFragment : BaseFragment() {
                 }
             })
 
-            progressApi.getCropLight(progressId).enqueue(object : Callback<Int?> {
+            progressApi.getCropLight(progressId!!).enqueue(object : Callback<Int?> {
                 override fun onResponse(call: Call<Int?>, response: Response<Int?>) {
                     if (response.isSuccessful) {
                         val Humidity = response.body() // Get the temperature from the response

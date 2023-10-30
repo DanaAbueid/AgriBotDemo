@@ -70,7 +70,7 @@ class SoilFragment : BaseFragment() {
 
         val progressApi = apiService.retrofit.create(ProgressApi::class.java)
 
-        val userId = authViewModel.userId // Get the user ID from your ViewModel
+        val userId = authViewModel.user_id // Get the user ID from your ViewModel
 
         if (userId != null) {
 
@@ -94,7 +94,7 @@ class SoilFragment : BaseFragment() {
 
 
 
-        progressApi.getSoilHealth(progressId).enqueue(object : Callback<Boolean> {
+        progressApi.getSoilHealth(progressId!!).enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 if (response.isSuccessful) {
                     val CropHealthy = response.body()
@@ -127,7 +127,7 @@ class SoilFragment : BaseFragment() {
 
 
         // Fetch data from the API for each TextView and update them
-        progressApi.getSoilTemperature(progressId).enqueue(object : Callback<Double> {
+        progressApi.getSoilTemperature(progressId!!).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val temperature = response.body() // Get the temperature from the response
@@ -148,7 +148,7 @@ class SoilFragment : BaseFragment() {
         })
 
 
-        progressApi.getSoilHumidity(progressId).enqueue(object : Callback<Double> {
+        progressApi.getSoilHumidity(progressId!!).enqueue(object : Callback<Double> {
             override fun onResponse(call: Call<Double>, response: Response<Double>) {
                 if (response.isSuccessful) {
                     val Humidity = response.body() // Get the temperature from the response
