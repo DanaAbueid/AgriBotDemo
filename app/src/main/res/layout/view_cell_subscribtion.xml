@@ -21,10 +21,10 @@
             android:layout_marginEnd="75dp"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/bree_serif"
-            android:text="Experience a weed-free future on your farm and more with Agribot. Try it now!"
+            android:text="Premium: Working towards a weed-free, sustainable farm and advanced soil and crop health management? Tap for more info!"
             android:textAlignment="center"
             android:textColor="@color/green3"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,10 +39,10 @@
             android:layout_marginEnd="224dp"
             android:layout_marginBottom="36dp"
             android:fontFamily="@font/bree_serif"
-            android:text="250$"
+            android:text="From 15$"
             android:textAlignment="center"
             android:textColor="@color/green5"
-            android:textSize="34sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,13 +56,25 @@
             android:layout_marginTop="49dp"
             android:layout_marginEnd="239dp"
             android:fontFamily="@font/bree_serif"
-            android:text="1 Year"
+            android:text="1 Day"
             android:textAlignment="center"
             android:textColor="@color/LIGHTER_gray"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView43"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_plan_describtion"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:srcCompat="@drawable/next_ltr__1_" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

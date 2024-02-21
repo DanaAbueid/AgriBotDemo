@@ -14,22 +14,23 @@ import com.icare.icare.databinding.ActivityMainBinding
 import com.icare.icare.databinding.ViewMenuItemBinding
 import android.view.Menu
 import android.view.MenuItem
-
+import androidx.activity.viewModels
+import com.icare.icare.ViewModel.AuthViewModel
 
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
+    private val authViewModel: AuthViewModel by viewModels()
+
     private var selectedItemId = R.id.user_main_dashboard
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-
         binding?.dlMain?.openDrawer(Gravity.LEFT)
         binding?.dlMain?.closeDrawer(Gravity.LEFT)
         UserSession.defaultMenu = R.menu.menu_user
-
 
     }
 
@@ -78,13 +79,13 @@ class MainActivity : AppCompatActivity() {
                     itemBinding.tvTitle.setTextColor(
                         ContextCompat.getColor(
                             this,
-                            R.color.light_green
+                            R.color.dark_green1
                         )
                     )
                     itemBinding.ivLogo.setColorFilter(
                         ContextCompat.getColor(
                             this,
-                            R.color.light_green
+                            R.color.dark_green1
                         )
                     )
                     itemBinding.root.setBackgroundColor(
@@ -125,6 +126,9 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.nav_host_fragment).popBackStack(fragId, false)
         else
             findNavController(R.id.nav_host_fragment).navigate(fragId)
+    }
+    fun getUserId(): Long? {
+        return authViewModel.user_id
     }
 
     private fun isFragmentInBackStack(destinationId: Int) =

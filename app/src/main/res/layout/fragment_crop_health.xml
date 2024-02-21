@@ -15,6 +15,156 @@
         android:layout_height="wrap_content"
         android:background="@color/light_gray">
 
+        <ImageView
+            android:id="@+id/cv_temp2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="299dp"
+            android:layout_marginEnd="272dp"
+            android:layout_marginBottom="480dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/green1_background" />
+
+        <ImageView
+            android:id="@+id/cv_humdity2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="299dp"
+            android:layout_marginEnd="155dp"
+            android:layout_marginBottom="480dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/green2_background" />
+
+        <ImageView
+            android:id="@+id/cv_health2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="272dp"
+            android:layout_marginTop="299dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="480dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/green3_background" />
+
+        <TextView
+            android:id="@+id/tv_healthC_value2"
+            style="@style/genericEditText"
+            android:layout_width="101dp"
+            android:layout_height="62dp"
+            android:text="16"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_temp2"
+            app:layout_constraintEnd_toEndOf="@+id/cv_temp2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/cv_temp2"
+            app:layout_constraintTop_toTopOf="@+id/cv_temp2"
+            app:layout_constraintVertical_bias="0.138" />
+
+        <TextView
+            android:id="@+id/tv_EarlyC_value"
+            style="@style/genericEditText"
+            android:layout_width="95dp"
+            android:layout_height="66dp"
+            android:text="9"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_humdity2"
+            app:layout_constraintEnd_toEndOf="@+id/cv_humdity2"
+            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintStart_toStartOf="@+id/cv_humdity2"
+            app:layout_constraintTop_toTopOf="@+id/cv_humdity2"
+            app:layout_constraintVertical_bias="0.138" />
+
+        <TextView
+            android:id="@+id/tv_LateC_value2"
+            style="@style/genericEditText"
+            android:layout_width="94dp"
+            android:layout_height="64dp"
+            android:text="11"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_health2"
+            app:layout_constraintEnd_toEndOf="@+id/cv_health2"
+            app:layout_constraintHorizontal_bias="0.625"
+            app:layout_constraintStart_toStartOf="@+id/cv_health2"
+            app:layout_constraintTop_toTopOf="@+id/cv_health2"
+            app:layout_constraintVertical_bias="0.135" />
+
+        <TextView
+            android:id="@+id/tv_Healthy_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Healthy Crops"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_temp2"
+            app:layout_constraintEnd_toEndOf="@+id/cv_temp2"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="@+id/cv_temp2" />
+
+        <TextView
+            android:id="@+id/tv_Late_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Late Blight crop"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_health2"
+            app:layout_constraintEnd_toEndOf="@+id/cv_health2"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintStart_toStartOf="@+id/cv_health2" />
+
+        <TextView
+            android:id="@+id/tv_Earlt_title4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Early Blight crop"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_green1"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_humdity2"
+            app:layout_constraintEnd_toEndOf="@+id/cv_humdity2"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="@+id/cv_humdity2" />
+
+        <ImageView
+            android:id="@+id/imageView38"
+            android:layout_width="375dp"
+            android:layout_height="166dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/green7_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <include
             android:id="@+id/view_toolbar"
             layout="@layout/view_toolbar"
@@ -23,11 +173,11 @@
 
         <ImageView
             android:id="@+id/cv_status_back"
-            android:layout_width="182dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="210dp"
+            android:layout_width="174dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="200dp"
             android:layout_marginTop="190dp"
-            android:layout_marginEnd="19dp"
+            android:layout_marginEnd="39dp"
             android:layout_marginBottom="648dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +189,7 @@
             android:id="@+id/tv_soil_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="193dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/bree_serif"
@@ -69,13 +219,13 @@
             android:id="@+id/tv_soil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="95dp"
-            android:layout_marginEnd="107dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="45dp"
             android:fontFamily="@font/bree_serif"
-            android:text="Crops Analysiz"
+            android:text="Crops Analysis"
             android:textAlignment="viewStart"
-            android:textColor="@color/dark_green1"
+            android:textColor="@color/light_gray"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,150 +244,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/cv_status_back"
             app:layout_constraintEnd_toEndOf="@+id/cv_status_back"
             app:layout_constraintTop_toTopOf="@+id/cv_status_back" />
-
-        <ImageView
-            android:id="@+id/cv_progress"
-            android:layout_width="374dp"
-            android:layout_height="161dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="250dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="468dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/backforadmin" />
-
-        <TextView
-            android:id="@+id/tv_label_soilH"
-            style="@style/genericEditText"
-            android:layout_width="68dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="5dp"
-            android:text="100%"
-            android:textAlignment="viewStart"
-            android:textColor="@color/green3"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_label_soilT"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/progressBar1" />
-
-        <TextView
-            android:id="@+id/tv_label_soilT"
-            style="@style/genericEditText"
-            android:layout_width="68dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="5dp"
-            android:text="100%"
-            android:textAlignment="viewStart"
-            android:textColor="@color/green3"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_label_soilC"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/progressBar2" />
-
-        <TextView
-            android:id="@+id/tv_label_soilC"
-            style="@style/genericEditText"
-            android:layout_width="68dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="16dp"
-            android:text="100%"
-            android:textAlignment="viewStart"
-            android:textColor="@color/green3"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/progressBar3" />
-
-        <TextView
-            android:id="@+id/tv_soilH_title"
-            style="@style/genericEditText"
-            android:layout_width="224dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="10dp"
-            android:text="Healthy Crop"
-            android:textAlignment="viewStart"
-            android:textColor="@color/green3"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.193"
-            app:layout_constraintStart_toStartOf="@+id/cv_progress"
-            app:layout_constraintTop_toTopOf="@+id/cv_progress" />
-
-        <ProgressBar
-            android:id="@+id/progressBar1"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="265dp"
-            android:layout_height="18dp"
-            android:progressDrawable="@drawable/custom_progress_bar"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.284"
-            app:layout_constraintStart_toStartOf="@+id/cv_progress"
-            app:layout_constraintTop_toBottomOf="@+id/tv_soilH_title" />
-
-        <TextView
-            android:id="@+id/tv_soilT_title"
-            style="@style/genericEditText"
-            android:layout_width="222dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="58dp"
-            android:text="Late Blight crop"
-            android:textAlignment="viewStart"
-            android:textColor="@color/green3"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.203"
-            app:layout_constraintStart_toStartOf="@+id/cv_progress"
-            app:layout_constraintTop_toTopOf="@+id/cv_progress" />
-
-        <ProgressBar
-            android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="265dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="62dp"
-            android:progressDrawable="@drawable/custom_progress_bar"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.284"
-            app:layout_constraintStart_toStartOf="@+id/cv_progress" />
-
-        <TextView
-            android:id="@+id/tv_soilC_title"
-            style="@style/genericEditText"
-            android:layout_width="222dp"
-            android:layout_height="24dp"
-            android:layout_marginBottom="36dp"
-            android:text="Early Blight crop"
-            android:textAlignment="viewStart"
-            android:textColor="@color/green3"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.19"
-            app:layout_constraintStart_toStartOf="@+id/cv_progress" />
-
-        <ProgressBar
-            android:id="@+id/progressBar3"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="265dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="18dp"
-            android:progressDrawable="@drawable/custom_progress_bar"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_progress"
-            app:layout_constraintEnd_toEndOf="@+id/cv_progress"
-            app:layout_constraintHorizontal_bias="0.284"
-            app:layout_constraintStart_toStartOf="@+id/cv_progress" />
 
         <TextView
             android:id="@+id/tv_summary"
@@ -304,10 +310,10 @@
 
         <ImageView
             android:id="@+id/cv_bar_back"
-            android:layout_width="376dp"
-            android:layout_height="255dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="23dp"
+            android:layout_width="346dp"
+            android:layout_height="243dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="65dp"
             android:layout_marginBottom="43dp"
             android:src="@drawable/whity_background"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -316,21 +322,148 @@
             app:srcCompat="@drawable/whity_background"
             tools:srcCompat="@drawable/whity_background" />
 
-        <com.db.williamchart.view.BarChartView
-            android:id="@+id/barChart"
-            android:layout_width="332dp"
-            android:layout_height="204dp"
-            app:chart_axis="x"
-            app:chart_barsColor="@color/green2"
-            app:chart_barsRadius="4dp"
-            app:chart_labelsColor="#FF70977F"
-            app:chart_labelsFont="@font/open_sans_bold"
-            app:chart_labelsSize="10sp"
-            app:chart_spacing="15dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_bar_back"
+        <ImageView
+            android:id="@+id/cv_progress3"
+            android:layout_width="346dp"
+            android:layout_height="169dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="618dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="92dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/backforadmin" />
+
+        <TextView
+            android:id="@+id/tv_label_soilT3"
+            style="@style/genericEditText"
+            android:layout_width="68dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="12dp"
+            android:text="100%"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress3"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress3"
+            app:layout_constraintVertical_bias="0.548" />
+
+        <TextView
+            android:id="@+id/tv_label_soilC3"
+            style="@style/genericEditText"
+            android:layout_width="68dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            android:text="100%"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress3"
             app:layout_constraintEnd_toEndOf="@+id/cv_bar_back"
-            app:layout_constraintStart_toStartOf="@+id/cv_bar_back"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress3"
+            app:layout_constraintVertical_bias="0.947" />
+
+        <TextView
+            android:id="@+id/tv_soilH_title3"
+            style="@style/genericEditText"
+            android:layout_width="224dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            android:text="Avarage Healthy Crops"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintHorizontal_bias="0.189"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress3"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress3" />
+
+        <ProgressBar
+            android:id="@+id/progressBar6"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="265dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="36dp"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress3"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress3" />
+
+        <TextView
+            android:id="@+id/tv_soilT_title3"
+            style="@style/genericEditText"
+            android:layout_width="222dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="88dp"
+            android:text="Avarage Late Blight crop"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintHorizontal_bias="0.179"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress3"
             app:layout_constraintTop_toTopOf="@+id/cv_bar_back" />
+
+        <ProgressBar
+            android:id="@+id/progressBar7"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="265dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="88dp"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress3"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress3" />
+
+        <TextView
+            android:id="@+id/tv_soilC_title3"
+            style="@style/genericEditText"
+            android:layout_width="222dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="36dp"
+            android:text="Avarage Early Blight crop"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress3"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintHorizontal_bias="0.179"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress3" />
+
+        <ProgressBar
+            android:id="@+id/progressBar8"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="265dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="10dp"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress3"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintHorizontal_bias="0.098"
+            app:layout_constraintStart_toStartOf="@+id/cv_progress3" />
+
+        <TextView
+            android:id="@+id/tv_label_soilH3"
+            style="@style/genericEditText"
+            android:layout_width="68dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="12dp"
+            android:text="100%"
+            android:textAlignment="textStart"
+            android:textColor="@color/green3"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_progress3"
+            app:layout_constraintEnd_toEndOf="@+id/cv_progress3"
+            app:layout_constraintTop_toTopOf="@+id/cv_progress3"
+            app:layout_constraintVertical_bias="0.203" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

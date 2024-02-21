@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.icare.icare.R
@@ -16,7 +17,7 @@ import com.icare.icare.screens.BaseFragment
 
 class UserReportListFragment : BaseFragment() {
     private var binding: FragmentUserReportListBinding? = null
-    override fun isLoggedin(): Boolean = true
+    override fun isLoggedin(): Boolean = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -30,20 +31,26 @@ class UserReportListFragment : BaseFragment() {
         binding?.viewToolbar?.ivMenu?.setOnClickListener {
             toggleSideMenu(true)
         }
+        binding?.let { bindingNotNull ->
+            bindingNotNull.button10.setOnClickListener {
+                findNavController().navigate(UserReportListFragmentDirections.makeToReport())
+            }
+        }
 
         val UserReportsAdapter = activity?.let {
             binding?.rvUserReportList?.let { it1 ->
                 UserReportsAdapter(
                     it1, it
-                )
+                ){ position ->
+                    val action = UserReportListFragmentDirections.listToReport(position)
+                    findNavController().navigate(action)
+                }
             }
         }
         val ReportsList = listOf<UserReports>(
-            UserReports("Test 1"),
-            UserReports("Test 2"),
-            UserReports("Test 3"),
-            UserReports("Test 4"),
-            UserReports("Test 5"),
+            UserReports("Report 1"),
+            UserReports("Report 2"),
+
         )
         val dividerItemDecoration = DividerItemDecoration(
             binding?.rvUserReportList?.context,

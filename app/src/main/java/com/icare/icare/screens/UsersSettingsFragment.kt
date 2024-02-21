@@ -33,7 +33,7 @@ class UsersSettingsFragment : BaseFragment() {
 
         binding?.let { bindingNotNull ->
             bindingNotNull.button.setOnClickListener {
-                findNavController().navigate(UsersSettingsFragmentDirections.actionSettingsToMyinfo())
+                findNavController().navigate(UsersSettingsFragmentDirections.actionSettingsToInfo())
             }
             bindingNotNull.button2.setOnClickListener {
                 findNavController().navigate(UsersSettingsFragmentDirections.actionSettingsToSubinfo())

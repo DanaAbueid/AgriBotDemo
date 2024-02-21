@@ -102,7 +102,6 @@
         android:layout_marginStart="105dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="20dp"
-        android:enabled="false"
         android:hint="Starting Date "
         app:boxBackgroundColor="@color/cardview_shadow_start_color"
         app:layout_constraintBottom_toTopOf="@+id/tv_end_get"
@@ -137,7 +136,6 @@
         android:layout_marginStart="105dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="20dp"
-        android:enabled="false"
         android:hint="Ending Date "
         app:boxBackgroundColor="@color/cardview_shadow_start_color"
         app:layout_constraintBottom_toTopOf="@+id/tv_price_get"
@@ -182,7 +180,6 @@
             style="@style/genericMaterialTextInputEditText"
             android:layout_width="224dp"
             android:layout_height="match_parent"
-            android:editable="false"
             android:inputType="number"
             tools:ignore="Deprecated" />
 
@@ -192,9 +189,13 @@
         android:id="@+id/imageView20"
         android:layout_width="367dp"
         android:layout_height="116dp"
-        app:srcCompat="@drawable/rounded_corner_background2"
-        tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="561dp" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_general_info2"
+        app:srcCompat="@drawable/rounded_corner_background2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tv_subs_get"
@@ -204,7 +205,6 @@
         android:layout_marginStart="105dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="4dp"
-        android:enabled="false"
         android:hint="Subscription ID"
         app:boxBackgroundColor="@color/cardview_shadow_start_color"
         app:layout_constraintBottom_toTopOf="@+id/tv_start_get"

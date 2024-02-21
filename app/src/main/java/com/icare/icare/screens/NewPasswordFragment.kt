@@ -12,7 +12,7 @@ class NewPasswordFragment : BaseFragment() {
 
     private var binding: FragmentNewPasswordBinding? = null
 
-    override fun isLoggedin(): Boolean = true
+    override fun isLoggedin(): Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -83,4 +83,9 @@
         <item>12:00am </item>
 
     </string-array>
+    <string-array name="reports">
+        <item>Unresolved</item>
+        <item>"Resolved"</item>
+    </string-array>
+
 </resources>

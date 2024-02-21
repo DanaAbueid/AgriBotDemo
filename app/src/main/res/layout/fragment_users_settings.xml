@@ -77,7 +77,7 @@
             android:id="@+id/button"
             style="@style/genericButton"
             android:layout_width="193dp"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/green3"
@@ -115,34 +115,35 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView20"
         app:srcCompat="@drawable/rounded_corner_background2" />
 
-    <TextView
-        android:id="@+id/tv_condition_label4"
-        android:layout_width="207dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="35dp"
-        android:backgroundTint="@color/green3"
-        android:fontFamily="@font/bree_serif"
-        android:text="View Subscribtion"
-        android:textAlignment="viewStart"
-        android:textColor="@color/green3"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView28"
-        app:layout_constraintStart_toStartOf="@+id/imageView28"
-        app:layout_constraintTop_toTopOf="@+id/imageView28" />
+        <TextView
+            android:id="@+id/tv_condition_label4"
+            android:layout_width="207dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/green3"
+            android:fontFamily="@font/bree_serif"
+            android:text="View Subscribtion"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView28"
+            app:layout_constraintStart_toStartOf="@+id/imageView28"
+            app:layout_constraintTop_toTopOf="@+id/imageView28"
+            app:layout_constraintVertical_bias="0.239" />
 
-    <Button
-        android:id="@+id/button2"
-        style="@style/genericButton"
-        android:layout_width="193dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="12dp"
-        android:backgroundTint="@color/green3"
-        android:text="View"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView28"
-        app:layout_constraintStart_toStartOf="@+id/imageView28"
-        app:layout_constraintTop_toTopOf="@+id/imageView28"
-        app:layout_constraintVertical_bias="0.783" />
+        <Button
+            android:id="@+id/button2"
+            style="@style/genericButton"
+            android:layout_width="193dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:backgroundTint="@color/green3"
+            android:text="View"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView28"
+            app:layout_constraintStart_toStartOf="@+id/imageView28"
+            app:layout_constraintTop_toTopOf="@+id/imageView28"
+            app:layout_constraintVertical_bias="0.783" />
 
     <ImageView
         android:id="@+id/imageView24"
@@ -155,32 +156,64 @@
         app:layout_constraintTop_toTopOf="@+id/imageView28"
         app:srcCompat="@drawable/payment_information_bro" />
 
-    <ImageView
-        android:id="@+id/imageView30"
-        android:layout_width="362dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView28"
-        app:srcCompat="@drawable/rounded_corner_background2" />
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="362dp"
+            android:layout_height="116dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView28"
+            app:srcCompat="@drawable/rounded_corner_background2" />
 
-    <Button
-        android:id="@+id/button3"
-        style="@style/genericButton"
-        android:layout_width="193dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="12dp"
-        android:backgroundTint="@color/green3"
-        android:text="Update"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView30"
-        app:layout_constraintStart_toStartOf="@+id/imageView30"
-        app:layout_constraintTop_toTopOf="@+id/imageView30"
-        app:layout_constraintVertical_bias="0.716" />
+        <TextView
+            android:id="@+id/tv_condition_label5"
+            android:layout_width="205dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/green3"
+            android:fontFamily="@font/bree_serif"
+            android:text="Change Password"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="23sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+            app:layout_constraintStart_toStartOf="@+id/imageView30"
+            app:layout_constraintTop_toTopOf="@+id/imageView30"
+            app:layout_constraintVertical_bias="0.238" />
 
-    <ImageView
+        <Button
+            android:id="@+id/button3"
+            style="@style/genericButton"
+            android:layout_width="193dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:backgroundTint="@color/green3"
+            android:text="Update"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+            app:layout_constraintStart_toStartOf="@+id/imageView30"
+            app:layout_constraintTop_toTopOf="@+id/imageView30"
+            app:layout_constraintVertical_bias="0.716" />
+
+        <ImageView
+            android:id="@+id/imageView29"
+            android:layout_width="153dp"
+            android:layout_height="113dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+            app:layout_constraintEnd_toEndOf="@+id/imageView30"
+            app:layout_constraintTop_toBottomOf="@+id/imageView28"
+            app:srcCompat="@drawable/mobile_login_bro" />
+
+        <ImageView
         android:id="@+id/imageView32"
         android:layout_width="366dp"
         android:layout_height="127dp"
@@ -203,62 +236,35 @@
         app:layout_constraintTop_toTopOf="@+id/imageView32"
         app:srcCompat="@drawable/exams_rafiki" />
 
-    <TextView
-        android:id="@+id/tv_condition_label5"
-        android:layout_width="205dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="35dp"
-        android:backgroundTint="@color/green3"
-        android:fontFamily="@font/bree_serif"
-        android:text="Change Password"
-        android:textAlignment="viewStart"
-        android:textColor="@color/green3"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView30"
-        app:layout_constraintStart_toStartOf="@+id/imageView30"
-        app:layout_constraintTop_toTopOf="@+id/imageView30"
-        app:layout_constraintVertical_bias="0.547" />
+        <TextView
+            android:id="@+id/tv_condition_label6"
+            android:layout_width="204dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="36dp"
+            android:backgroundTint="@color/green3"
+            android:fontFamily="@font/bree_serif"
+            android:text="Reports And Feedback"
+            android:textAlignment="viewStart"
+            android:textColor="@color/green3"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView32"
+            app:layout_constraintStart_toStartOf="@+id/imageView32"
+            app:layout_constraintTop_toTopOf="@+id/imageView32"
+            app:layout_constraintVertical_bias="0.166" />
 
-    <ImageView
-        android:id="@+id/imageView29"
-        android:layout_width="153dp"
-        android:layout_height="113dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView30"
-        app:layout_constraintEnd_toEndOf="@+id/imageView30"
-        app:layout_constraintTop_toBottomOf="@+id/imageView28"
-        app:srcCompat="@drawable/mobile_login_bro" />
-
-    <TextView
-        android:id="@+id/tv_condition_label6"
-        android:layout_width="204dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="36dp"
-        android:backgroundTint="@color/green3"
-        android:fontFamily="@font/bree_serif"
-        android:text="Reports And Feedback"
-        android:textAlignment="viewStart"
-        android:textColor="@color/green3"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView32"
-        app:layout_constraintStart_toStartOf="@+id/imageView32"
-        app:layout_constraintTop_toTopOf="@+id/imageView32" />
-
-    <Button
-        android:id="@+id/button7"
-        style="@style/genericButton"
-        android:layout_width="193dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="12dp"
-        android:backgroundTint="@color/green3"
-        android:text="Report A Problem"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView32"
-        app:layout_constraintStart_toStartOf="@+id/imageView32"
-        app:layout_constraintTop_toTopOf="@+id/imageView32"
-        app:layout_constraintVertical_bias="0.894" />
+        <Button
+            android:id="@+id/button7"
+            style="@style/genericButton"
+            android:layout_width="193dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:backgroundTint="@color/green3"
+            android:text="Report A Problem"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView32"
+            app:layout_constraintStart_toStartOf="@+id/imageView32"
+            app:layout_constraintTop_toTopOf="@+id/imageView32"
+            app:layout_constraintVertical_bias="0.894" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

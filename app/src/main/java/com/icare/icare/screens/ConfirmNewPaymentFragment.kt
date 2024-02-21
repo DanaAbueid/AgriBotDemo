@@ -16,7 +16,7 @@ class ConfirmNewPaymentFragment : BaseFragment() {
 
     private var binding: FragmentConfirmNewPaymentBinding? = null
 
-    override fun isLoggedin(): Boolean = true
+    override fun isLoggedin(): Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,

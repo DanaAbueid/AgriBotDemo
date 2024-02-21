@@ -6,24 +6,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecyclerViewAdapter<VIEW_HOLDER_TYPE, ViewHolder : RecyclerView.ViewHolder>(
-    private val recyclerView: RecyclerView,
+    private val recyclerView: RecyclerView?,
     private val orientation: Int = RecyclerView.VERTICAL
 ) : RecyclerView.Adapter<ViewHolder>() {
     private val listOfItems = ArrayList<VIEW_HOLDER_TYPE>()
     private var layoutManager: LinearLayoutManager? = null
 
     init {
-        if (recyclerView.layoutManager == null) {
+        if (recyclerView?.layoutManager == null) {
             layoutManager = LinearLayoutManager(
-                recyclerView.context,
+                recyclerView?.context,
                 orientation,
                 false
             )
 
-            recyclerView.layoutManager = layoutManager
+            recyclerView?.layoutManager = layoutManager
         }
-        if (recyclerView.adapter == null)
-            recyclerView.adapter = this
+        if (recyclerView?.adapter == null)
+            recyclerView?.adapter = this
     }
 
     abstract fun createViewHolder(
@@ -71,15 +71,15 @@ abstract class BaseRecyclerViewAdapter<VIEW_HOLDER_TYPE, ViewHolder : RecyclerVi
     }
 
     open fun refresh() = apply {
-        recyclerView.post(Runnable(this::notifyDataSetChanged))
+        recyclerView?.post(Runnable(this::notifyDataSetChanged))
     }
 
     open fun refresh(index: Int) = apply {
-        recyclerView.post(Runnable { notifyItemChanged(index) })
+        recyclerView?.post(Runnable { notifyItemChanged(index) })
     }
 
     open fun refresh(index: Int, item: VIEW_HOLDER_TYPE) = apply {
-        recyclerView.post(Runnable { notifyItemChanged(index, item) })
+        recyclerView?.post(Runnable { notifyItemChanged(index, item) })
     }
 
     open fun replaceItem(item: VIEW_HOLDER_TYPE) {
@@ -88,12 +88,12 @@ abstract class BaseRecyclerViewAdapter<VIEW_HOLDER_TYPE, ViewHolder : RecyclerVi
     }
 
     open fun addItemDecoration(decoration: RecyclerView.ItemDecoration) = apply {
-        recyclerView.addItemDecoration(decoration);
+        recyclerView?.addItemDecoration(decoration);
     }
 
     open fun setLayOutManager(lm: RecyclerView.LayoutManager) {
         layoutManager = null
-        recyclerView.layoutManager = lm
+        recyclerView?.layoutManager = lm
     }
 
     private var loading = true
@@ -101,7 +101,7 @@ abstract class BaseRecyclerViewAdapter<VIEW_HOLDER_TYPE, ViewHolder : RecyclerVi
     private var visibleItemCount = 0
     private var totalItemCount = 0
     open fun onScrollListener(onScroll: OnScroll) {
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        recyclerView?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 layoutManager?.let {
                     if (dy > 0) {

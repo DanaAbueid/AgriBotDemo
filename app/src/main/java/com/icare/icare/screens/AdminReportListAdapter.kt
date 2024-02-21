@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.icare.icare.databinding.ViewCellReportsListBinding
+import com.icare.icare.databinding.ViewCellAdminReportsBinding
 import com.icare.icare.generics.BaseRecyclerViewAdapter
 import com.icare.icare.models.AdminReports
 
@@ -16,7 +16,6 @@ class AdminReportListAdapter(
     recyclerView
 ) {
 
-    private val originalItems: MutableList<AdminReports> = mutableListOf()
 
     override fun createViewHolder(
         viewGroup: ViewGroup,
@@ -24,13 +23,15 @@ class AdminReportListAdapter(
         layoutInflater: LayoutInflater
     ): ViewHolder {
         return ViewHolder(
-            ViewCellReportsListBinding.inflate(
+            ViewCellAdminReportsBinding.inflate(
                 layoutInflater,
                 viewGroup,
                 false
             )
         )
     }
+
+
 
     override fun bindViewHolder(
         viewHolder: ViewHolder,
@@ -39,30 +40,12 @@ class AdminReportListAdapter(
     ) {
         with(viewHolder.binding) {
             tvUser.text = item.title
+            DeleteReport.text = item.isResolved
             resolveReport2.setOnClickListener {
                 onItemClick(position) // Invoke the callback when the button is clicked
             }
         }
     }
 
-    fun filter(query: String, resolvedFilter: Boolean) {
-        val filteredList = if (resolvedFilter) {
-            originalItems.filter { it.isResolved && it.title.contains(query, true) }
-        } else {
-            originalItems.filter { !it.isResolved && it.title.contains(query, true) }
-        }
-        clear()
-        addAll(filteredList)
-        refresh()
-    }
-
-    fun setOriginalItems(items: List<AdminReports>) {
-        originalItems.clear()
-        originalItems.addAll(items)
-        clear()
-        addAll(items)
-        refresh()
-    }
-
-    class ViewHolder(val binding: ViewCellReportsListBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ViewCellAdminReportsBinding) : RecyclerView.ViewHolder(binding.root)
 }
